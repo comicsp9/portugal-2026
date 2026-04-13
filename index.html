@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugal 2026 — Plano Operacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F4EDE0;--cream2:#EDE3D2;--cream3:#E4D7C4;
+  --terra:#B85C2A;--terra2:#D4785A;--terra3:#8B3C18;
+  --navy:#1B3252;--navy2:#2C4F7A;--navy3:#0F1E33;
+  --text:#18100A;--muted:#7A6356;--border:#D8CCBC;
+  --white:#FFFDF8;
+  --green:#2E6B3A;--green-bg:#EAF4EC;
+  --red:#A42828;--red-bg:#FFEEE8;
+  --amber:#B87920;--amber-bg:#FFF4E5;
+  --info-bg:#EAF0F8;--purple:#6B3A8B;
+  --b1:#C4622D;--b2:#2D5A8B;--b3:#3A7D44;--b4:#7A3A8B;--b5:#B87920;
+  --birthday:#C4622D;--anniversary:#7A3A8B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6}
+
+/* HEADER */
+.site-header{background:var(--navy3);padding:22px 20px 16px;position:relative;overflow:hidden}
+.site-header::after{content:'';position:absolute;top:-20px;right:-20px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,42,.18) 0%,transparent 70%)}
+.eyebrow{font-size:9px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--terra2);margin-bottom:5px}
+.main-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;line-height:1.1}
+.main-title em{font-style:italic;color:var(--terra2)}
+.header-meta{margin-top:9px;display:flex;gap:14px;flex-wrap:wrap}
+.hm{font-size:11px;color:rgba(255,255,255,.5)}
+.hm strong{color:rgba(255,255,255,.82);font-weight:500}
+
+.date-banner{display:flex;gap:8px;flex-wrap:wrap;padding:9px 18px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);border-bottom:1px solid rgba(255,255,255,.07)}
+.date-chip{display:flex;align-items:center;gap:6px;padding:3px 11px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.4px}
+.chip-birthday{background:rgba(196,98,45,.22);color:#FFB38A;border:1px solid rgba(196,98,45,.38)}
+.chip-anniversary{background:rgba(122,58,139,.22);color:#D4A8FF;border:1px solid rgba(122,58,139,.38)}
+
+/* TABS */
+.tab-nav{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);display:flex;overflow-x:auto;position:sticky;top:0;z-index:100;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:10px 15px;font-family:'Jost',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.36);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-btn:hover{color:rgba(255,255,255,.68)}
+.tab-btn.active{color:var(--terra2);border-bottom-color:var(--terra)}
+
+/* SECTIONS */
+.tab-section{display:none;padding:20px 15px 80px;max-width:900px;margin:0 auto}
+.tab-section.active{display:block}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:var(--navy);margin-bottom:3px}
+.sec-sub{font-size:11px;color:var(--muted);margin-bottom:20px;font-weight:300}
+
+/* BLOCK HEADERS */
+.block-hd{display:flex;align-items:center;gap:9px;margin:26px 0 10px}
+.block-hd:first-of-type{margin-top:0}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:2px;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.b1{background:var(--b1)}.b2{background:var(--b2)}.b3{background:var(--b3)}.b4{background:var(--b4)}.b5{background:var(--b5)}
+.block-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--text)}
+.block-period{font-size:10px;color:var(--muted);margin-left:auto;flex-shrink:0}
+
+/* DAY CARDS */
+.day-card{background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:7px;overflow:hidden}
+.day-card.special-birthday{border-color:var(--birthday);border-width:2px}
+.day-card.special-anniversary{border-color:var(--anniversary);border-width:2px}
+.dc-head{display:grid;grid-template-columns:44px 1fr auto;align-items:center;padding:8px 12px;background:var(--cream2);border-bottom:1px solid var(--border);gap:9px;cursor:pointer;user-select:none}
+.day-card.special-birthday .dc-head{background:linear-gradient(135deg,#FFF0E8 0%,var(--cream2) 100%)}
+.day-card.special-anniversary .dc-head{background:linear-gradient(135deg,#F3EAF8 0%,var(--cream2) 100%)}
+.dc-head:hover{filter:brightness(.97)}
+.dnum{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--navy);line-height:1;text-align:center}
+.dinfo .ddate{font-size:11.5px;font-weight:600;color:var(--text)}
+.dinfo .dsub{font-size:10px;color:var(--muted);font-weight:300;margin-top:1px}
+.special-label{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:1px 5px;border-radius:10px;margin-left:5px;vertical-align:middle}
+.sl-birthday{background:#FFEEE0;color:var(--birthday)}
+.sl-anniversary{background:#F0E5F8;color:var(--purple)}
+.dright{text-align:right;flex-shrink:0}
+.dkm{font-size:11px;font-weight:600;color:var(--navy2)}
+.dkmlabel{font-size:9px;color:var(--muted)}
+.dc-body{padding:12px;display:grid;gap:8px}
+.dc-body.hidden{display:none}
+
+/* PERIODS */
+.period{display:grid;grid-template-columns:58px 1fr;gap:7px;align-items:start}
+.plabel{font-size:8px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.pcontent{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.55}
+.pcontent strong{font-weight:500}
+.ptime{font-size:10px;font-weight:600;color:var(--navy2);margin-right:3px}
+.ptag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:1px 5px;border-radius:2px;margin-left:3px;vertical-align:middle}
+.ptag.res{background:#FFEEE8;color:var(--red)}
+.ptag.free{background:var(--green-bg);color:var(--green)}
+.ptag.ferry{background:var(--info-bg);color:var(--navy2)}
+.ptag.birthday{background:#FFEEE0;color:var(--birthday)}
+.ptag.anniversary{background:#F0E5F8;color:var(--purple)}
+
+/* JANTAR HIGHLIGHT */
+.jantar-block{background:linear-gradient(135deg,#1B3252 0%,#0F1E33 100%);border-radius:4px;padding:10px 13px;margin-top:2px}
+.jantar-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra2);margin-bottom:5px}
+.jantar-name{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.jantar-detail{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5}
+.jantar-meta{display:flex;gap:8px;margin-top:5px;flex-wrap:wrap}
+.jm-chip{font-size:9px;font-weight:600;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.jm-chip.res{background:rgba(164,40,40,.3);color:#FFB0B0}
+.jm-chip.view{background:rgba(44,79,122,.4);color:#9DC4FF}
+.jm-chip.casual{background:rgba(46,107,58,.3);color:#9FDDA8}
+.jm-chip.special{background:rgba(122,58,139,.35);color:#D4A8FF}
+.jm-chip.birthday-chip{background:rgba(196,98,45,.35);color:#FFB38A}
+
+/* PRIORITY */
+.priority{display:inline-flex;align-items:center;gap:4px;padding:1px 7px;border-radius:10px;font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.pri-essential{background:#FFEEE8;color:var(--red)}
+.pri-recommended{background:var(--amber-bg);color:var(--amber)}
+.pri-optional{background:var(--green-bg);color:var(--green)}
+.pri-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+
+/* ALERTS */
+.alert{display:flex;gap:8px;align-items:flex-start;padding:7px 10px;border-radius:3px;font-size:11px;line-height:1.45}
+.alert.warn{background:var(--amber-bg);border-left:3px solid var(--amber);color:#5C3D00}
+.alert.critical{background:var(--red-bg);border-left:3px solid var(--red);color:#5C1500}
+.alert.info{background:var(--info-bg);border-left:3px solid var(--navy2);color:#1B2A40}
+.alert.ok{background:var(--green-bg);border-left:3px solid var(--green);color:#163B1E}
+.alert.special{background:linear-gradient(135deg,#FFF0E0,#F8EAF8);border-left:3px solid var(--terra);color:var(--text)}
+.sleep-bar{display:flex;align-items:center;gap:7px;padding:6px 9px;background:#F0EBF8;border-radius:3px;font-size:11px;color:#3A1F6B}
+.planob{display:grid;gap:4px;padding:9px;background:#EEF2FF;border-radius:3px;border-left:3px solid var(--navy2)}
+.planob-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2)}
+.planob-content{font-size:11.5px;color:var(--text);font-weight:300;line-height:1.5}
+.tag-weekend{display:inline-block;font-size:7.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:1px 5px;border-radius:2px;background:#FFF0E8;color:var(--terra);margin-left:4px;vertical-align:middle}
+.special-notice{border-radius:4px;padding:11px 13px;margin-bottom:10px;font-size:12px;line-height:1.6}
+.sn-birthday{background:linear-gradient(135deg,#FFF0E0,#FFE4CC);border:1.5px solid var(--terra)}
+.sn-anniversary{background:linear-gradient(135deg,#F0E5F8,#E5D0F8);border:1.5px solid var(--purple)}
+.sn-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;margin-bottom:3px}
+.sn-birthday .sn-title{color:var(--birthday)}
+.sn-anniversary .sn-title{color:var(--purple)}
+
+/* ===== SUPERMERCADOS ===== */
+.super-section{margin-bottom:20px}
+.super-card{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.super-head{display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid var(--border)}
+.super-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.super-head-info{flex:1}
+.super-head-name{font-size:13px;font-weight:600;color:var(--text)}
+.super-head-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:2px;margin-top:2px}
+.sb-primary{background:var(--green-bg);color:var(--green)}
+.sb-backup{background:var(--amber-bg);color:var(--amber)}
+.super-body{padding:11px 13px;display:grid;gap:6px}
+.super-row{display:grid;grid-template-columns:80px 1fr;gap:6px;font-size:11.5px;align-items:start}
+.sr-label{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.sr-val{color:var(--text);font-weight:300;line-height:1.45}
+.super-tip{padding:8px 13px;background:var(--cream2);border-top:1px solid var(--border);font-size:11px;color:var(--muted);line-height:1.5}
+.waze-btn{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:var(--info-bg);border-radius:2px;font-size:10px;font-weight:600;color:var(--navy2);text-decoration:none;margin-top:3px}
+
+/* ===== GASTRONOMIA ===== */
+.gastro-intro{background:var(--navy3);border-radius:4px;padding:14px 16px;margin-bottom:18px;color:rgba(255,255,255,.75);font-size:12px;line-height:1.7}
+.gastro-intro strong{color:var(--terra2)}
+.prato-grid{display:grid;gap:8px;margin-bottom:18px}
+.prato-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:11px 13px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.prato-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--navy2);min-width:28px;text-align:center;padding-top:1px}
+.prato-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.prato-desc{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5}
+.prato-where{font-size:10px;font-weight:600;color:var(--terra);margin-top:3px}
+
+/* ===== ORÇAMENTO ===== */
+.budget-hero{background:var(--navy3);color:#fff;border-radius:4px;padding:15px 17px;margin-bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bt-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:2px}
+.bt-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;line-height:1}
+.bt-sub{font-size:10px;color:rgba(255,255,255,.32);margin-top:2px}
+.bud-block{background:var(--white);border:1px solid var(--border);border-radius:3px;margin-bottom:10px;overflow:hidden}
+.bud-block-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:9px 13px;background:var(--cream2);border-bottom:1px solid var(--border)}
+.bud-block-name{font-size:13px;font-weight:500}
+.bud-block-total{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--navy)}
+.bud-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:7px 13px;border-bottom:1px solid var(--border);font-size:12px;align-items:start}
+.bud-row:last-child{border-bottom:none}
+.bud-cat{font-weight:300;line-height:1.4}
+.bud-range{font-size:10px;color:var(--muted);text-align:right;padding-top:1px}
+.bud-mid{font-weight:500;color:var(--navy);text-align:right;min-width:52px}
+.bud-row.subtotal{background:var(--cream2)}
+.bud-row.subtotal .bud-cat{font-weight:700;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.nota{font-size:10.5px;color:var(--muted);padding:8px 13px;background:var(--cream2);border-top:1px solid var(--border);line-height:1.5}
+.price-note{background:var(--amber-bg);border:1px solid var(--amber);border-radius:3px;padding:9px 12px;font-size:11px;line-height:1.6;color:#5C3D00;margin-bottom:14px}
+
+/* ===== REALIZADO ===== */
+.real-block{background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden}
+.real-block-head{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 13px;background:var(--cream2);border-bottom:1px solid var(--border)}
+.real-block-name{font-size:12px;font-weight:600}
+.real-est{font-size:10px;color:var(--muted)}
+.real-total{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--navy);min-width:75px;text-align:right}
+.real-header-row{display:grid;grid-template-columns:1fr 88px 88px 65px;gap:5px;padding:5px 13px;background:var(--cream2);border-bottom:1px solid var(--border)}
+.real-header-row span{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
+.real-header-row span:first-child{text-align:left}
+.real-row{display:grid;grid-template-columns:1fr 88px 88px 65px;gap:5px;padding:7px 13px;border-bottom:1px solid var(--border);align-items:center;font-size:11.5px}
+.real-row:last-child{border-bottom:none}
+.real-row-label{color:var(--text);font-weight:300;line-height:1.4}
+.real-est-val{text-align:right;color:var(--muted);font-size:11px}
+.real-input{width:100%;border:1px solid var(--border);border-radius:3px;padding:4px 6px;font-family:'Jost',sans-serif;font-size:12px;color:var(--text);background:var(--cream);text-align:right;outline:none;transition:border-color .15s}
+.real-input:focus{border-color:var(--navy2);background:#fff}
+.real-diff{text-align:right;font-size:11px;font-weight:600}
+.diff-ok{color:var(--green)}.diff-over{color:var(--red)}.diff-empty{color:var(--muted)}
+.real-summary{background:var(--navy3);border-radius:4px;padding:15px;margin-bottom:16px}
+.rs-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:11px;align-items:center}
+.rs-row:last-child{border-bottom:none}
+.rs-label{color:rgba(255,255,255,.6)}
+.rs-est{color:rgba(255,255,255,.3);font-size:10px;text-align:right}
+.rs-real{font-weight:600;text-align:right;min-width:72px}
+.real-note-input{width:100%;border:1px solid var(--border);border-radius:3px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--text);background:var(--cream);resize:none;outline:none}
+.real-note-input:focus{border-color:var(--navy2);background:#fff}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="eyebrow">Plano Operacional · Versão Final</div>
+  <div class="main-title">Portugal <em>2026</em></div>
+  <div class="header-meta">
+    <div class="hm"><strong>29 Jun – 21 Jul 2026</strong> · 23 dias</div>
+    <div class="hm"><strong>Alexandre, Sara + Nicolas</strong> ~10 meses</div>
+    <div class="hm"><strong>5 bases · Carro · Cidadania PT</strong></div>
+  </div>
+</header>
+
+<div class="date-banner">
+  <div class="date-chip chip-birthday">🎂 Aniversário Alexandre · 03/07 · Dia 5 · Sesimbra</div>
+  <div class="date-chip chip-anniversary">💍 Casamento 15/07 · Celebração 16/07 · Ferry + Comporta + SAL</div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('roteiro',this)">Roteiro</button>
+  <button class="tab-btn" onclick="showTab('atracoes',this)">Atrações</button>
+  <button class="tab-btn" onclick="showTab('gastronomia',this)">Gastronomia</button>
+  <button class="tab-btn" onclick="showTab('supermercados',this)">Supermercados</button>
+  <button class="tab-btn" onclick="showTab('reservas',this)">Reservas</button>
+  <button class="tab-btn" onclick="showTab('logistica',this)">Logística</button>
+  <button class="tab-btn" onclick="showTab('orcamento',this)">Orçamento</button>
+  <button class="tab-btn" onclick="showTab('realizado',this)">✏ Realizado</button>
+</nav>
+
+<!-- ==================== ROTEIRO ==================== -->
+<section id="roteiro" class="tab-section active">
+<div class="sec-title">Roteiro Dia a Dia</div>
+<div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas · planos B · clique para expandir</div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:11px">
+  <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--red)"></span>Essencial</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--amber)"></span>Recomendado</span>
+  <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--green)"></span>Opcional</span>
+  <span style="color:var(--muted)">🌙 = janela de soneca protegida</span>
+</div>
+
+<!-- BLOCO 1 -->
+<div class="block-hd"><span class="badge b1">Bloco 1</span><span class="block-name">Sesimbra</span><span class="block-period">29/06–05/07 · 6 noites</span></div>
+
+<!-- DIA 1 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">1</div>
+    <div class="dinfo"><div class="ddate">29/06 · Segunda</div><div class="dsub">Chegada · Aeroporto → Sesimbra</div></div>
+    <div class="dright"><div class="dkm">~50 km</div><div class="dkmlabel">LIS→Base</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Chegada</div><div class="pcontent"><span class="ptime">17h00</span>Desembarque · bagagem · imigração ~45 min.<br><span class="ptime">19h00</span>Retirada carro Drive on Holidays (shuttle gratuito do terminal). Código <strong>1425981</strong>. Instalar cadeirinha antes de sair.<br><span class="ptime">~21h00</span>Chegada Sesimbra · check-in com Rita.</div></div>
+    <div class="period"><div class="plabel">Atenção</div><div class="pcontent">Caução <strong>€2.400</strong> bloqueada no cartão na retirada. Confirmar limite disponível antes de embarcar.<br>Se Pingo Doce Sesimbra ainda estiver aberto ao passar: parar para compras básicas. Se fechado, supermercado no Dia 2 manhã.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🌙 Jantar</div>
+      <div class="jantar-name">Jantar leve na acomodação ou snack</div>
+      <div class="jantar-detail">Chegada às 21h — não planejar restaurante. Supermercado na chegada ou pedir delivery simples. Prioridade: descanso total.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Sem reserva</span><span class="jm-chip">Na base</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIA 2 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">2</div>
+    <div class="dinfo"><div class="ddate">30/06 · Terça</div><div class="dsub">Praia da Califórnia · entrada leve</div></div>
+    <div class="dright"><div class="dkm">~5 km</div><div class="dkmlabel">Local</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Primeira praia · referência de base para Nicolas</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span>Supermercado Pingo Doce Sesimbra Castelo (EN379, logo na entrada da vila). Compras para a semana.<br><span class="ptime">10h30</span><strong>Praia da Califórnia</strong> — extensa, estruturada, acesso plano. Entrar com barraca UV montada antes das 11h.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Retorno à base. Almoço simples. Não sair com Nicolas no calor do meio-dia de julho.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h–16h30</span><strong>Soneca Nicolas</strong> — inviolável. Após: passeio leve pelo porto.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Ribamar — Marginal de Sesimbra</div>
+      <div class="jantar-detail">Vista panorâmica para a baía e o castelo. Peixe fresco, mexilhões, amêijoas. Ambiente descontraído, familiar. Av. dos Náufragos, beira-mar. ~€45–60 casal.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista mar</span><span class="jm-chip casual">Casual</span><span class="jm-chip">Sem reserva (chegar 19h30)</span></div>
+    </div>
+    <div class="sleep-bar">🌙 Soneca manhã ~10h–11h (carro ou base) · Soneca tarde 14h–16h30</div>
+  </div>
+</div>
+
+<!-- DIA 3 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">3</div>
+    <div class="dinfo"><div class="ddate">01/07 · Quarta</div><div class="dsub">Fortaleza + Vila histórica</div></div>
+    <div class="dright"><div class="dkm">~8 km</div><div class="dkmlabel">Local</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-recommended">🟡 Recomendado</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Fortaleza de Sesimbra</strong> — espaço aberto, panorama da costa. Acesso em rampa para carrinho. 1h.<br><span class="ptime">11h00</span>Centro histórico (mochila portabebê nos trechos estreitos).</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Restaurante Isaías</strong> — instituição local, só peixe assado, meia dúzia de mesas. Chegar às 12h. <em>Sem Multibanco — levar dinheiro.</em> Ou <strong>Peixaria Currais</strong> (R. Dr. Peixoto Correia, 33) como alternativa.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h–16h30</span>Soneca. Depois: praia urbana de Sesimbra.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Marisqueira Modesto — Porto de Sesimbra</div>
+      <div class="jantar-detail">Clássico do choco frito de Sesimbra. Frequentado por portugueses locais. Bom custo-benefício. R. Dr. Peixoto Correia. ~€40–55 casal. Ambiente de taberna de porto.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Tasca local</span><span class="jm-chip">Chegar 19h30</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Cancelar Fortaleza · só almoço de peixe + praia tarde + jantar no Modesto.</div></div>
+  </div>
+</div>
+
+<!-- DIA 4 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">4</div>
+    <div class="dinfo"><div class="ddate">02/07 · Quinta</div><div class="dsub">Lisboa — Belém + Oceanário</div></div>
+    <div class="dright"><div class="dkm">~100 km</div><div class="dkmlabel">RT</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Oceanário — reação de Nicolas garantida</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h00</span>Saída Sesimbra. A2→N10.<br><span class="ptime">09h00</span><strong>Torre de Belém</strong> (exterior, beira do Tejo) · <strong>Mosteiro dos Jerónimos</strong> (exterior + claustro).<br><span class="ptime">10h30</span><strong>Pastéis de Belém</strong> — chegar antes das 10h30. A receita original desde 1837.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Time Out Market Lisboa</strong> — variado, AC, sem fila, familiar.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h30</span><strong>Oceanário de Lisboa</strong> — Parque das Nações. AC, sons suaves, bebê reage bem. ~90 min. Comprar ingresso online. oceanario.pt · Adulto ~€24 · Bebê grátis.<br><span class="ptime">16h30</span>Retorno Sesimbra.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Na base · Jantar simples</div>
+      <div class="jantar-detail">Dia longo em Lisboa — retorno às 18h–19h. Jantar em casa com compras do supermercado. Nicolas precisa de rotina após dia intenso.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Na base</span><span class="jm-chip">Descanso</span></div>
+    </div>
+    <div class="sleep-bar">🌙 Soneca no carro Lisboa→Sesimbra (~16h30–17h30)</div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Só Belém (manhã) OU só Oceanário (tarde). Não tentar os dois se Nicolas irregular.</div></div>
+  </div>
+</div>
+
+<!-- DIA 5 — ANIVERSÁRIO ALEXANDRE -->
+<div class="day-card special-birthday">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">5</div>
+    <div class="dinfo">
+      <div class="ddate">03/07 · Sexta<span class="special-label sl-birthday">🎂 Aniversário Alexandre</span></div>
+      <div class="dsub">Cabo Espichel · Jantar A Padaria</div>
+    </div>
+    <div class="dright"><div class="dkm">~80 km</div><div class="dkmlabel">RT Sesimbra</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="special-notice sn-birthday"><div class="sn-title">🎂 Aniversário de Alexandre · 03/07 · Sexta</div>Manhã dramática no fim do mundo de Portugal. Tarde de descanso. Jantar no melhor restaurante gastronômico de Sesimbra.</div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Cabo Espichel</strong> — 30 min de Sesimbra. Falésia de 100m sobre o Atlântico, Santuário do séc. XVII, pegadas de dinossauros. Paisagem do "fim do mundo". Carrinho nos arredores do santuário. Para a beira da falésia: mochila portabebê. Entrada gratuita.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Retorno Sesimbra. <strong>Restaurante Modesto</strong> — almoço de choco frito, rápido e local.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h–17h30</span><strong>Descanso total.</strong> Tarde reservada para o jantar especial.</div></div>
+    <div class="jantar-block" style="background:linear-gradient(135deg,#5C2000 0%,#3A1200 100%)">
+      <div class="jantar-label" style="color:#FFB38A">🎂 Jantar de Aniversário · RESERVA OBRIGATÓRIA</div>
+      <div class="jantar-name" style="color:#fff">A Padaria · Chef Pedro Gomes</div>
+      <div class="jantar-detail" style="color:rgba(255,255,255,.65)">Fine dining — o melhor restaurante de Sesimbra (Time Out Portugal). Espadarte fumado com caldeirada, rissol de camarão virado do avesso, tamboril em cataplana. Mesa interior (bebê). ~€45–65/pax. Reservar com 3–4 semanas de antecedência. Confirmar cadeira alta.</div>
+      <div class="jantar-meta"><span class="jm-chip birthday-chip">Aniversário</span><span class="jm-chip res">Reserva essencial</span><span class="jm-chip">~€90–130 casal</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIA 6 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">6</div>
+    <div class="dinfo"><div class="ddate">04/07 · Sábado</div><div class="dsub">Buffer e praia <span class="tag-weekend">SÁB</span></div></div>
+    <div class="dright"><div class="dkm">—</div><div class="dkmlabel">Local</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-optional">🟢 Dia livre</span><span style="font-size:11px;color:var(--muted)">Buffer estratégico — não substituir por atividade</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h30</span>Praia da Califórnia — antes das 09h30 (sábado enche rápido).</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Descanso total. Preparar malas para Porto.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">O Batel · Esplanada com vista</div>
+      <div class="jantar-detail">Esplanada na marginal de Sesimbra. Vista para a baía e o castelo iluminado. Petiscos e peixe. Ambiente descontraído. Av. 25 de Abril — beira-mar. ~€40–55 casal. TheFork: 9.5 de nota.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista baía</span><span class="jm-chip casual">Esplanada</span><span class="jm-chip">Chegar 19h30</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIA 7 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">7</div>
+    <div class="dinfo"><div class="ddate">05/07 · Domingo</div><div class="dsub">Transição → Porto <span class="tag-weekend">DOM</span></div></div>
+    <div class="dright"><div class="dkm">~310 km</div><div class="dkmlabel">Sesimbra→Gaia</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h30</span>Check-out. A2→A1 Norte.</div></div>
+    <div class="period"><div class="plabel">Parada 1</div><div class="pcontent"><span class="ptime">09h15</span><strong>Área de Serviço Santarém</strong> — 20 min, café + troca Nicolas.</div></div>
+    <div class="period"><div class="plabel">Parada 2</div><div class="pcontent"><span class="ptime">11h30</span><strong>Área de Serviço Pombal</strong> — 25 min, almoço rápido + soneca no carro.</div></div>
+    <div class="period"><div class="plabel">Porto</div><div class="pcontent"><span class="ptime">~13h00</span>Check-in Gaia. Descanso até 16h.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Mercado Bom Sucesso · Porto</div>
+      <div class="jantar-detail">Mercado gourmet com food court variado — AC, ambiente familiar, sem fila, múltiplas opções. Praça do Bom Sucesso. Perfeito para primeiro jantar no Porto sem stress com Nicolas.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Mercado</span><span class="jm-chip">Sem reserva</span><span class="jm-chip">~€35–50 casal</span></div>
+    </div>
+    <div class="sleep-bar">🌙 Soneca 1: carro ~09h–10h · Soneca 2: após chegada 14h–16h30</div>
+  </div>
+</div>
+
+<!-- BLOCO 2 -->
+<div class="block-hd"><span class="badge b2">Bloco 2</span><span class="block-name">Porto / Gaia</span><span class="block-period">05/07–12/07 · 7 noites</span></div>
+
+<!-- DIA 8 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">8</div>
+    <div class="dinfo"><div class="ddate">06/07 · Segunda</div><div class="dsub">Ribeira + Ponte Dom Luís I + Jardim do Morro</div></div>
+    <div class="dright"><div class="dkm">~4 km</div><div class="dkmlabel">A pé/metro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Cais da Ribeira</strong> — casas coloridas, vida local, Douro à vista. Mochila portabebê nos trechos de calçada irregular.<br><span class="ptime">10h30</span>Atravessar <strong>Ponte Dom Luís I</strong> pelo nível inferior (carrinho OK). Vista para Gaia e as caves.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Taberna dos Mercadores</strong> (R. dos Mercadores 36) — petiscos criativos, ambiente autêntico, sem fila. ~€40–55 casal. Reservar.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">17h00</span><strong>Jardim do Morro</strong> (Gaia) — melhor vista panorâmica do Porto. Fim de tarde ideal. Pôr do sol ~21h em julho.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Blini · Gaia · Vista Douro</div>
+      <div class="jantar-detail">Vista deslumbrante para o Douro e a Ribeira. Peixe e mariscos de qualidade. Ceviche de gambas, tártaro de atum. Chef Cordeiro. Rua da Praia 602, Gaia. ~€50–70 casal. Ambiente elegante mas descontraído.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista Douro</span><span class="jm-chip res">Reservar</span><span class="jm-chip">~€50–70 casal</span></div>
+    </div>
+    <div class="alert warn"><span>⚠</span> Nível superior da Ponte Dom Luís I: sem barreira lateral adequada para bebê. Fazer apenas pelo nível inferior.</div>
+  </div>
+</div>
+
+<!-- DIA 9 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">9</div>
+    <div class="dinfo"><div class="ddate">07/07 · Terça</div><div class="dsub">Centro histórico · São Bento · Lello</div></div>
+    <div class="dright"><div class="dkm">~3 km</div><div class="dkmlabel">Centro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Estação São Bento</strong> — 20.000 azulejos. Rápido, AC, sem fila cedo.<br><span class="ptime">09h30</span><strong>Sé Catedral</strong> (exterior).<br><span class="ptime">10h00</span><strong>Rua das Flores</strong> — calçada plana.<br><span class="ptime">10h30</span><strong>Livraria Lello</strong> — só entrar se fila &lt;30 min. Ingresso €8. Escada estreita: mochila portabebê.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Café Santiago</strong> (R. Passos Manuel 226) — a francesinha original do Porto. Chegar às 12h ou reservar. Ou <strong>Brasão Cervejaria</strong> (versão mais moderna).</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Adega São Nicolau · Ribeira</div>
+      <div class="jantar-detail">Clássico da Ribeira com terraço com vista para o Douro. Polvo à lagareiro, bacalhau, pratos sazonais. R. de São Nicolau 1. ~€45–65 casal. Chegar antes das 20h para mesa exterior.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista Douro</span><span class="jm-chip res">Reservar</span><span class="jm-chip casual">Tradicional</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Só São Bento (5 min) + Rua das Flores + Café Santiago. Versão compacta 2h. Jantar mantido.</div></div>
+  </div>
+</div>
+
+<!-- DIA 10 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">10</div>
+    <div class="dinfo"><div class="ddate">08/07 · Quarta</div><div class="dsub">Serralves · Museu + Parque · Foz</div></div>
+    <div class="dright"><div class="dkm">~6 km</div><div class="dkmlabel">Foz do Douro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Melhor experiência Porto com bebê — 18ha planos</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Fundação Serralves</strong> — Parque (18ha, plano, sombreado, 100% carrinho). Museu AC para o calor. Ingresso ~€12 adulto. serralves.pt — comprar online.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">13h00</span><strong>Foz do Douro</strong> — zona nobre, brisa atlântica. <strong>Cafeína</strong> (reservar) ou <strong>O Lusitano em Matosinhos</strong>.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Praia de Matosinhos (~5 min) — plana, extensa, estruturada. Ótima para Nicolas.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Semea by Euskalduna · Gaia/Porto</div>
+      <div class="jantar-detail">Terraço com vista panorâmica sobre o Douro. Cozinha contemporânea, descontraída. Uma das melhores vistas para jantar em Porto. ~€50–70 casal. Reservar com antecedência.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Panorâmica Douro</span><span class="jm-chip res">Reservar</span><span class="jm-chip">~€50–70 casal</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIA 11 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">11</div>
+    <div class="dinfo"><div class="ddate">09/07 · Quinta</div><div class="dsub">WOW District · Vila Nova de Gaia</div></div>
+    <div class="dright"><div class="dkm">~5 km</div><div class="dkmlabel">Gaia</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-recommended">🟡 Recomendado</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span><strong>WOW</strong> — 1 atração: <em>The Story of Wine</em> (AC, 60 min, percurso interativo). wow.pt — reservar online.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Opcional: <strong>Caves Taylor's</strong> — jardins abertos e planos, vista excepcional do Porto. Mais relaxado que WOW.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Vinum · Graham's · Gaia</div>
+      <div class="jantar-detail">Terraço das Caves Graham's — a melhor vista noturna para Porto e Douro. Cozinha tradicional portuguesa de altitude. Cais de Gaia. ~€55–75 casal. Reservar — procurado em julho.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista Porto noturno</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Emblemático</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Cancelar WOW · ir diretamente ao Vinum para jantar, passar tarde nas Caves Taylor's (jardins abertos).</div></div>
+  </div>
+</div>
+
+<!-- DIA 12 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">12</div>
+    <div class="dinfo"><div class="ddate">10/07 · Sexta</div><div class="dsub">Piscinas de Leça da Palmeira ou Aveiro</div></div>
+    <div class="dright"><div class="dkm">~130 km</div><div class="dkmlabel">RT se Aveiro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Opção A</div><div class="pcontent"><span class="priority pri-essential" style="display:inline-flex;margin-bottom:4px">🔴 Piscinas de Leça</span><br><strong>Piscinas de Maré de Leça da Palmeira</strong> — obra de Álvaro Siza Vieira (1966). Piscinas naturais oceânicas integradas nas rochas, entrada gratuita, zona rasa perfeita para Nicolas. ~15 min de Gaia. Chegar às 08h30. Almoço em Matosinhos (frutos do mar, referência nacional). Waze: "Piscinas de Maré de Leça da Palmeira".</div></div>
+    <div class="period"><div class="plabel">Opção B</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Aveiro</span><br>Saída 08h → Moliceiro (€13/adulto, 35 min pelos canais) → Costa Nova (fachadas listradas) → retorno 13h. Soneca de carro.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Casa de Pasto da Palmeira · Foz do Douro</div>
+      <div class="jantar-detail">Tasca moderna muito bem avaliada na Foz. Petiscos criativos, ambiente descontraído, sem pretensão. R. do Padrão, Foz. ~€40–55 casal.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Tasca moderna</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Foz do Douro</span></div>
+    </div>
+    <div class="sleep-bar">🌙 Se Aveiro: soneca no carro volta ~10h45. Se Leça: soneca após almoço Matosinhos ~13h30.</div>
+  </div>
+</div>
+
+<!-- DIA 13 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">13</div>
+    <div class="dinfo"><div class="ddate">11/07 · Sábado</div><div class="dsub">Bolhão + Compras <span class="tag-weekend">SÁB</span></div></div>
+    <div class="dright"><div class="dkm">~2 km</div><div class="dkmlabel">Centro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Mercado do Bolhão</strong> (reformado 2022) — flores, queijos, enchidos, pão. Compras. Bonito, AC.<br><span class="ptime">11h00</span>Rua de Santa Catarina.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Preparação malas. Descanso.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar de encerramento · Porto</div>
+      <div class="jantar-name">DeCastro Gaia · Chef Miguel Castro e Silva</div>
+      <div class="jantar-detail">Reaberto em 2025. Cozinha tradicional portuguesa contemporânea. Vista para o Douro. Um dos mais respeitados do Norte. Rua da Praia, Gaia. ~€60–80 casal. Reservar — referência obrigatória.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista Douro</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Encerramento Porto</span></div>
+    </div>
+    <div class="alert warn"><span>⚠</span> Sábado: centro lotado. Estacionar Parque Trindade e ir a pé. Não entrar de carro no centro histórico.</div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Bolhão muito cheio → ir à Foz (quieto). Jantar DeCastro mantido — reserva é garantia.</div></div>
+  </div>
+</div>
+
+<!-- DIA 14 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">14</div>
+    <div class="dinfo"><div class="ddate">12/07 · Domingo</div><div class="dsub">Porto → Guimarães <span class="tag-weekend">DOM</span></div></div>
+    <div class="dright"><div class="dkm">~60 km</div><div class="dkmlabel">Gaia→São Torcato</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span>Check-out Gaia. <strong>Pingo Doce Guimarães</strong> (Av. D. João IV) — parar aqui ANTES de ir à base rural. Compras para 3 dias.<br><span class="ptime">~11h30</span>Chegada São Torcato. Check-in António Cardoso.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">15h30</span>(Opcional) <strong>Basílica de São Torcato</strong> — neogótica imponente, do próprio local. 30 min.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Jantar na base · São Torcato</div>
+      <div class="jantar-detail">Domingo rural — descanso total após a transição. Jantar com compras do supermercado. Guardar energia para Guimarães amanhã.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Na base</span><span class="jm-chip">Descanso</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 3 -->
+<div class="block-hd"><span class="badge b3">Bloco 3</span><span class="block-name">Guimarães / São Torcato</span><span class="block-period">12/07–15/07 · 3 noites</span></div>
+
+<!-- DIA 15 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">15</div>
+    <div class="dinfo"><div class="ddate">13/07 · Segunda</div><div class="dsub">Centro histórico UNESCO de Guimarães</div></div>
+    <div class="dright"><div class="dkm">~8 km</div><div class="dkmlabel">Centro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">UNESCO · Berço de Portugal</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span><strong>Largo da Oliveira + Praça de Santiago</strong> — coração medieval. Mochila portabebê no paralelepípedo.<br><span class="ptime">10h30</span><strong>Paço dos Duques de Bragança</strong> (exterior) — espaço aberto.<br><span class="ptime">11h00</span><strong>Castelo de Guimarães</strong> — entrada €2. Estacionar: Parque de Couros.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Histórico by Papaboa</strong> — jardim interior, ambiente histórico, polvo à lagareiro e bochechas de porco preto. Centro histórico. ~€25–35/pax. Muito bem avaliado.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Retorno São Torcato. Descanso rural.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Casa Amarela · Guimarães</div>
+      <div class="jantar-detail">Espaço histórico com jardim e ambiente acolhedor. Cozinha minhota — posta à Trás-os-Montes, polvo à lagareiro, bacalhau com broa. Clássico de Guimarães. Reservar. ~€40–55 casal.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Tradicional minhota</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Jardim interior</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Só Largo da Oliveira + Praça de Santiago + almoço Histórico. Cancelar Castelo e Paço. 2h total.</div></div>
+  </div>
+</div>
+
+<!-- DIA 16 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">16</div>
+    <div class="dinfo"><div class="ddate">14/07 · Terça</div><div class="dsub">Braga · Bom Jesus do Monte</div></div>
+    <div class="dright"><div class="dkm">~60 km</div><div class="dkmlabel">RT Guimarães→Braga</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-recommended">🟡 Recomendado</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span>Saída São Torcato → Braga (~30 min).<br><span class="ptime">09h30</span><strong>Bom Jesus do Monte</strong> — parque inferior, subir de <strong>funicular</strong> (€3/pax). Jardins superiores planos, sombreados. ~1h30.<br><span class="ptime">11h00</span>Sé de Braga (exterior, 20 min) — se Nicolas bem-disposto.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Braga centro — <strong>Toca do Abade</strong> (petiscos minhotos, ambiente de tasca, muito bem avaliado).</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h00</span>Retorno São Torcato. <strong>Malas prontas esta noite</strong> — saída amanhã cedo.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Jantar na base · São Torcato</div>
+      <div class="jantar-detail">Último jantar na base rural. Compras já feitas — jantar caseiro. Guardar energia para a longa viagem amanhã (360 km) e para a celebração do casamento no dia seguinte.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Na base</span><span class="jm-chip">Preparar malas</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Só Bom Jesus (funicular + jardins, 1h30) sem Braga centro. Sair às 10h se Nicolas acordou tarde.</div></div>
+  </div>
+</div>
+
+<!-- DIA 17 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">17</div>
+    <div class="dinfo"><div class="ddate">15/07 · Quarta<span class="special-label sl-anniversary">💍 Data real</span></div><div class="dsub">Transição longa → Setúbal · 360 km</div></div>
+    <div class="dright"><div class="dkm">~360 km</div><div class="dkmlabel">Guimarães→Setúbal</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="alert special"><span>💍</span> Aniversário de casamento é HOJE — mas a celebração completa é amanhã (16/07) por logística. Jantar leve esta noite. A grande experiência é amanhã.</div>
+    <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h00</span>Checkout São Torcato. A11→A3→A1 Sul.</div></div>
+    <div class="period"><div class="plabel">Parada 1</div><div class="pcontent"><span class="ptime">08h45</span>Coimbra ~25 min — café + troca.</div></div>
+    <div class="period"><div class="plabel">Parada 2</div><div class="pcontent"><span class="ptime">11h30</span>Área de Serviço Santarém — almoço + 20 min soneca no carro.</div></div>
+    <div class="period"><div class="plabel">Chegada</div><div class="pcontent"><span class="ptime">~15h00</span>Setúbal. Check-in Marc. Vista para o estuário do Sado.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">O Xtória · Setúbal</div>
+      <div class="jantar-detail">Restaurante central de Setúbal, boa qualidade, ambiente descontraído. Peixe e carnes. R. Guilherme Gomes Fernandes 17. ~€40–55 casal. Aberto qui–seg 19h30. Reservar. Jantar leve — grande celebração amanhã.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Casual</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Jantar leve</span></div>
+    </div>
+    <div class="sleep-bar">🌙 Soneca manhã: carro Coimbra→Santarém. Soneca tarde: após checkin ~15h30.</div>
+    <div class="alert critical"><span>🚨</span> Nenhuma atividade após chegada. Descanso = prioridade para a celebração de amanhã.</div>
+  </div>
+</div>
+
+<!-- BLOCO 4 -->
+<div class="block-hd"><span class="badge b4">Bloco 4</span><span class="block-name">Setúbal</span><span class="block-period">15/07–18/07 · 3 noites</span></div>
+
+<!-- DIA 18 — ANIVERSÁRIO DE CASAMENTO -->
+<div class="day-card special-anniversary">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">18</div>
+    <div class="dinfo">
+      <div class="ddate">16/07 · Quinta<span class="special-label sl-anniversary">💍 Celebração</span></div>
+      <div class="dsub">Bacalhôa + Ferry + Tróia + SAL + Comporta</div>
+    </div>
+    <div class="dright"><div class="dkm">~120 km</div><div class="dkmlabel">Ferry+Comporta</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="special-notice sn-anniversary"><div class="sn-title">💍 Celebração do Casamento · 16/07</div>O dia mais especial da viagem. Bacalhôa → Ferry pelo Estuário do Sado (golfinhos) → SAL Comporta → Carrasqueira → pôr do sol no Castelo São Filipe.</div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Bacalhôa Winery</strong> (~15 km, Azeitão) <span class="ptag anniversary">CASAMENTO</span> — Tour vinícola + jardins renascentistas do séc. XVI. ~1h30. Reservar. bacalhoa.com</div></div>
+    <div class="period"><div class="plabel">Ferry</div><div class="pcontent"><span class="ptime">11h30</span><strong>Ferry Setúbal→Tróia com carro</strong> <span class="ptag ferry">FERRY</span> — Atlantic Ferries. ~25 min. Golfinhos roazes do Sado frequentes. Bebê reage bem ao barco. ~€21 carro (ida). Tel: +351 265 235 101</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">13h00</span>Tróia→Carvalhal (~30 km).<br><strong>Restaurante SAL · Praia do Carvalhal, Comporta</strong> <span class="ptag res">RESERVA ESSENCIAL</span><br>Peixe fresco com pés na areia e oceano à frente. 12h30–17h (qui–seg). Tel: +351 265 490 129</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">15h30</span><strong>Comporta village</strong> — ruas brancas, arroz, design.<br><span class="ptime">17h00</span><strong>Cais Palafítico da Carrasqueira</strong> — palafitas sobre o Sado, pôr do sol.</div></div>
+    <div class="jantar-block" style="background:linear-gradient(135deg,#3A1A5A 0%,#1A0A30 100%)">
+      <div class="jantar-label" style="color:#D4A8FF">💍 Jantar de Aniversário</div>
+      <div class="jantar-name" style="color:#fff">Pousada São Filipe · Setúbal</div>
+      <div class="jantar-detail" style="color:rgba(255,255,255,.65)">Jantar na Pousada instalada no Castelo de São Filipe (séc. XVI), com terraço sobre o estuário do Sado e o pôr do sol por volta das 21h. Um dos jantares mais especiais de Portugal. ~€55–80 casal. Reservar com semanas de antecedência.</div>
+      <div class="jantar-meta"><span class="jm-chip special">Aniversário casamento</span><span class="jm-chip res">Reservar</span><span class="jm-chip view">Vista estuário Sado</span></div>
+    </div>
+    <div class="alert special"><span>💍</span> SAL abre quinta ✅. Reservar por telefone — não aceita e-mail. Bacalhôa: confirmar quinta. Ferry com carro: confirmar horário ~11h30.</div>
+  </div>
+</div>
+
+<!-- DIA 19 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">19</div>
+    <div class="dinfo"><div class="ddate">17/07 · Sexta</div><div class="dsub">Mercado do Livramento + Choco frito</div></div>
+    <div class="dright"><div class="dkm">~5 km</div><div class="dkmlabel">Centro</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h30</span><strong>Mercado do Livramento</strong> — um dos melhores mercados de peixe de Portugal. Sexta = movimento pleno. Chegar antes das 09h30. Seg–Sáb.</div></div>
+    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h00</span><strong>Casa Santiago</strong> — referência do choco frito de Setúbal. Tel: +351 265 221 688. Reservar.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Descanso. <strong>Malas prontas esta noite.</strong></div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">O Batareo · Setúbal</div>
+      <div class="jantar-detail">Restaurante tradicional de peixe e marisco frescos escolhidos na montra — você escolhe, eles preparam. R. das Fontaínhas 64. Aberto ter–dom. ~€40–55 casal. Autêntico e sem encenação.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Peixe fresco</span><span class="jm-chip">Tradicional</span><span class="jm-chip">Chegar 19h30</span></div>
+    </div>
+    <div class="alert warn"><span>⚠</span> Preparar malas esta noite — saída amanhã às 07h para Arrábida com malas já no carro.</div>
+  </div>
+</div>
+
+<!-- DIA 20 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">20</div>
+    <div class="dinfo"><div class="ddate">18/07 · Sábado</div><div class="dsub">Arrábida → Transição Algarve <span class="tag-weekend">SÁB</span></div></div>
+    <div class="dright"><div class="dkm">~280 km</div><div class="dkmlabel">Setúbal→Alvor</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Chegar às 08h — inegociável em sábado de julho</span></div>
+    <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h00</span>Setúbal. Malas no carro desde ontem à noite.</div></div>
+    <div class="period"><div class="plabel">Arrábida</div><div class="pcontent"><span class="ptime">07h45–12h30</span><strong>Portinho da Arrábida</strong> — água turquesa, falésia branca. Estacionar antes das 08h. Almoço: Bar do Náutico na praia.</div></div>
+    <div class="period"><div class="plabel">Algarve</div><div class="pcontent"><span class="ptime">14h00</span>Saída Arrábida → Alvor. A2→A22 (Via Verde).<br><span class="ptime">~17h00</span>Check-in Nadia · Alvor.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">Village Inn · Alvor · Primeiro jantar no Algarve</div>
+      <div class="jantar-detail">Tasca na vila de Alvor — vista para a ria. Peixe fresco, ambiente local, terraço. Rua Marquês de Pombal, Alvor. ~€40–55 casal. Chegar cedo, dia de transição longa.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Vista ria</span><span class="jm-chip casual">Casual Algarve</span><span class="jm-chip">Chegar 19h30</span></div>
+    </div>
+    <div class="alert critical"><span>🚨</span> Sábado de julho na Arrábida = máxima demanda. Sem chegada às 08h não há garantia de acesso. Malas DEVEM estar no carro na sexta à noite.</div>
+    <div class="sleep-bar">🌙 Soneca bebê: carro Arrábida→Alvor ~14h–15h30.</div>
+  </div>
+</div>
+
+<!-- BLOCO 5 -->
+<div class="block-hd"><span class="badge b5">Bloco 5</span><span class="block-name">Algarve — Alvor</span><span class="block-period">18/07–21/07 · 3 noites</span></div>
+
+<!-- DIA 21 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">21</div>
+    <div class="dinfo"><div class="ddate">19/07 · Domingo</div><div class="dsub">Lagos + Barco Ponta da Piedade <span class="tag-weekend">DOM</span></div></div>
+    <div class="dright"><div class="dkm">~40 km</div><div class="dkmlabel">RT Alvor→Lagos</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Ponta da Piedade — só de barco com Nicolas</span></div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h30</span>Lagos. Parque do Cais.<br><span class="ptime">09h00</span><strong>Centro histórico Lagos</strong> — Praça Gil Eanes, muralhas medievais. 1h de passeio plano.<br><span class="ptime">10h30</span><strong>Barco Ponta da Piedade</strong> — saída Cais de Lagos. ~45 min pelas grutas alaranjadas. Reservar online (domingo de julho esgota). <em>Não fazer trilha a pé com bebê.</em></div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">15h30</span><strong>Praia Meia Praia</strong> — extensa, plana, estruturada. Melhor praia para Nicolas no Algarve.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar</div>
+      <div class="jantar-name">A Forja · Lagos centro histórico</div>
+      <div class="jantar-detail">Restaurante de referência em Lagos. Frutos do mar, peixe atlântico, ambiente tradicional com pedra à vista. R. dos Ferreiros 17, Lagos. ~€45–65 casal. Reservar — domingo em julho lota.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Tradicional Lagos</span><span class="jm-chip res">Reservar</span><span class="jm-chip">~€45–65 casal</span></div>
+    </div>
+    <div class="planob"><div class="planob-title">Plano B</div><div class="planob-content">Nicolas sem condições para barco → só Lagos centro + Meia Praia + A Forja. Barco pode ser tentado no Dia 22 manhã.</div></div>
+  </div>
+</div>
+
+<!-- DIA 22 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">22</div>
+    <div class="dinfo"><div class="ddate">20/07 · Segunda</div><div class="dsub">Praia de Alvor + Silves + Ria ao pôr do sol</div></div>
+    <div class="dright"><div class="dkm">~60 km</div><div class="dkmlabel">Alvor+Silves RT</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h00</span><strong>Praia de Alvor</strong> — a melhor praia para bebê do roteiro. Larga, plana, protegida. Sair antes das 12h.</div></div>
+    <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">14h30</span><strong>Castelo de Silves</strong> (~30 min) — castelo mourisco do séc. VIII, o mais bem conservado do Algarve. Vista sobre a Ribeira Alentejana. Pátio com carrinho. ~€4.<br><span class="ptime">17h30</span>Retorno. <strong>Ria de Alvor ao pôr do sol (~21h)</strong> — caminhar pela beira da ria.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Jantar de encerramento da viagem</div>
+      <div class="jantar-name">Caniço · Alvor · Restaurante dentro da falésia</div>
+      <div class="jantar-detail">Experiência única: restaurante dentro de uma gruta nas falésias de Alvor, acesso por elevador. Vista direta para o oceano. Peixe e marisco. Reserva obrigatória. Tel: 967 764 290. ~€55–75 casal. O jantar mais especial do Algarve.</div>
+      <div class="jantar-meta"><span class="jm-chip view">Gruta + oceano</span><span class="jm-chip res">Reserva obrigatória</span><span class="jm-chip special">Encerramento</span></div>
+    </div>
+    <div class="alert ok"><span>✓</span> Segunda: menos turistas em Silves e Alvor. Waze: "Castelo de Silves".</div>
+  </div>
+</div>
+
+<!-- DIA 23 -->
+<div class="day-card">
+  <div class="dc-head" onclick="toggle(this)">
+    <div class="dnum">23</div>
+    <div class="dinfo"><div class="ddate">21/07 · Terça</div><div class="dsub">Alvor → Lisboa → Embarque</div></div>
+    <div class="dright"><div class="dkm">~280 km</div><div class="dkmlabel">Alvor→LIS</div></div>
+  </div>
+  <div class="dc-body hidden">
+    <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h00</span>Alvor. A22→A2 Norte. Chegada Lisboa ~10h.</div></div>
+    <div class="period"><div class="plabel">Carro</div><div class="pcontent">Fotografar 360° antes de entregar. Confirmar ponto de devolução (aeroporto). Drive on Holidays tem shuttle de volta ao terminal.</div></div>
+    <div class="period"><div class="plabel">Folga</div><div class="pcontent"><span class="ptime">11h–14h</span>(Se voo tardio) <strong>Parque Eduardo VII</strong> — verde, plano, central, carrinho OK.</div></div>
+    <div class="period"><div class="plabel">Aeroporto</div><div class="pcontent">Chegar com <strong>3h de antecedência</strong> com bebê. Solicitar berço de avião (bassinette) no check-in. Voo: <strong>LA8151 · 19h30</strong>.</div></div>
+    <div class="jantar-block">
+      <div class="jantar-label">🍽 Último almoço em Portugal</div>
+      <div class="jantar-name">Time Out Market ou Mercado da Ribeira · Lisboa</div>
+      <div class="jantar-detail">Almoço variado, AC, rápido. Cais do Sodré. Sem stress, múltiplas opções, sem reserva. ~€30–40 casal. Último sabor português antes do embarque.</div>
+      <div class="jantar-meta"><span class="jm-chip casual">Sem reserva</span><span class="jm-chip">Último almoço</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== ATRAÇÕES ==================== -->
+<section id="atracoes" class="tab-section">
+<div class="sec-title">Atrações</div>
+<div class="sec-sub">Todas as atrações do roteiro · organizadas por destino · links diretos Google Maps e site oficial</div>
+
+<style>
+.atr-dest{margin-bottom:32px}
+.atr-dest-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.atr-dest-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--navy)}
+.atr-dest-period{font-size:10px;color:var(--muted);font-weight:300}
+.atr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.atr-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s}
+.atr-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.10)}
+.atr-card.essential{border-top:3px solid var(--red)}
+.atr-card.recommended{border-top:3px solid var(--amber)}
+.atr-card.optional{border-top:3px solid var(--green)}
+.atr-card.special{border-top:3px solid var(--purple)}
+.atr-img{width:100%;height:155px;object-fit:cover;display:block;background:var(--cream2)}
+.atr-img-placeholder{width:100%;height:155px;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,var(--cream2),var(--cream3))}
+.atr-body{padding:12px 13px;flex:1;display:flex;flex-direction:column;gap:6px}
+.atr-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.atr-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;flex:1}
+.atr-pri{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:2px;flex-shrink:0;white-space:nowrap}
+.pri-ess{background:var(--red-bg);color:var(--red)}
+.pri-rec{background:var(--amber-bg);color:var(--amber)}
+.pri-opt{background:var(--green-bg);color:var(--green)}
+.pri-spe{background:#F0E5F8;color:var(--purple)}
+.atr-day{font-size:10px;color:var(--navy2);font-weight:600}
+.atr-desc{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5;flex:1}
+.atr-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:2px}
+.atr-chip{font-size:9px;font-weight:600;padding:2px 7px;border-radius:10px;background:var(--cream2);color:var(--muted);white-space:nowrap}
+.atr-chip.free{background:var(--green-bg);color:var(--green)}
+.atr-chip.paid{background:var(--info-bg);color:var(--navy2)}
+.atr-chip.baby{background:#FFF0E8;color:var(--terra)}
+.atr-chip.res{background:var(--red-bg);color:var(--red)}
+.atr-links{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.atr-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:3px;font-size:10px;font-weight:600;text-decoration:none;transition:opacity .18s;white-space:nowrap}
+.atr-link:hover{opacity:.78}
+.atr-link.maps{background:var(--info-bg);color:var(--navy2)}
+.atr-link.web{background:var(--cream2);color:var(--navy)}
+.atr-link.book{background:var(--red-bg);color:var(--red)}
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;font-size:11px;align-items:center}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+</style>
+
+<div class="legend-row">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>Essencial — não pular</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--amber)"></div>Recomendado</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Opcional / bônus</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--purple)"></div>Especial · data comemorativa</div>
+</div>
+
+<!-- ===== SESIMBRA ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b1">Bloco 1</span>
+    <span class="atr-dest-name">Sesimbra</span>
+    <span class="atr-dest-period">29/06 – 05/07 · 6 noites</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/7b/4b/89/praia-da-california.jpg?w=600&h=400&s=1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Praia da Califórnia">
+      <div class="atr-img-placeholder" style="display:none">🏖️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Praia da Califórnia</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 2 · 30/06 · e Dia 6</div>
+        <div class="atr-desc">A melhor praia de Sesimbra para bebê. Extensa, plana, acesso direto de carro, estrutura completa. Água calma dentro da baía protegida. Chegar antes das 09h em julho.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Bebê</span><span class="atr-chip">Carrinho OK</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Praia+da+California+Sesimbra" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card special">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Cabo_Espichel_-_2012-08-28.jpg/1200px-Cabo_Espichel_-_2012-08-28.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cabo Espichel">
+      <div class="atr-img-placeholder" style="display:none">🌊</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Cabo Espichel</div><span class="atr-pri pri-spe">🎂 Aniversário</span></div>
+        <div class="atr-day">Dia 5 · 03/07 · Aniversário Alexandre</div>
+        <div class="atr-desc">Falésia de 100m sobre o Atlântico. Santuário barroco do séc. XVII. Pegadas de dinossauros do Cretácico. Paisagem do "fim do mundo" — um dos cenários mais dramáticos de Portugal.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip">~30 min de Sesimbra</span><span class="atr-chip">Vento forte</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Cabo+Espichel+Sesimbra" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sesimbra_castle.jpg/1200px-Sesimbra_castle.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Fortaleza Sesimbra">
+      <div class="atr-img-placeholder" style="display:none">🏰</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Fortaleza de Sesimbra</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 3 · 01/07 · manhã</div>
+        <div class="atr-desc">Castelo mouro do séc. XII no alto do promontório. Espaço aberto, panorama completo da costa e da baía. Acesso em rampa — carrinho funciona nos pátios.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Bebê</span><span class="atr-chip">Rampa de acesso</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Fortaleza+de+Sesimbra" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== LISBOA (excursão) ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b1">B1 · Excursão</span>
+    <span class="atr-dest-name">Lisboa — Belém + Oceanário</span>
+    <span class="atr-dest-period">Dia 4 · 02/07</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Torre_belém.jpg/1200px-Torre_belém.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Torre de Belém">
+      <div class="atr-img-placeholder" style="display:none">🗼</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Torre de Belém</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 4 · 02/07 · 09h00</div>
+        <div class="atr-desc">Ícone de Lisboa à beira do Tejo. Visitar o exterior — a arquitetura manuelina é toda a experiência. Interior tem escadas muito estreitas, não vale com bebê.</div>
+        <div class="atr-meta"><span class="atr-chip free">Exterior grátis</span><span class="atr-chip">Foto obrigatória</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Torre+de+Belem+Lisboa" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.torrebelem.gov.pt" target="_blank">🌐 Site</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Mosteiro_dos_Jeronimos_-_Entrances.jpg/1200px-Mosteiro_dos_Jeronimos_-_Entrances.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Mosteiro dos Jerónimos">
+      <div class="atr-img-placeholder" style="display:none">⛪</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Mosteiro dos Jerónimos</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 4 · 02/07 · 09h30</div>
+        <div class="atr-desc">Obra máxima do estilo manuelino português — séc. XVI, UNESCO. Fachada monumental, claustro com jardim central. Rampa lateral para carrinho no claustro.</div>
+        <div class="atr-meta"><span class="atr-chip paid">€10 adulto</span><span class="atr-chip free">Bebê grátis</span><span class="atr-chip baby">✓ Carrinho</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.mosteirojeronimos.gov.pt" target="_blank">🌐 Site</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oceanarium_Lisbon.jpg/1200px-Oceanarium_Lisbon.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Oceanário de Lisboa">
+      <div class="atr-img-placeholder" style="display:none">🦈</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Oceanário de Lisboa</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 4 · 02/07 · 14h30</div>
+        <div class="atr-desc">Melhor aquário da Europa. Iluminação azul suave, sons do oceano — reação do bebê garantida. AC total. Parque das Nações. Comprar ingresso online com antecedência.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€24 adulto</span><span class="atr-chip free">Bebê grátis</span><span class="atr-chip baby">✓ Carrinho AC</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Oceanario+de+Lisboa" target="_blank">📍 Maps</a>
+          <a class="atr-link book" href="https://www.oceanario.pt" target="_blank">🎟 Comprar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PORTO / GAIA ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b2">Bloco 2</span>
+    <span class="atr-dest-name">Porto / Vila Nova de Gaia</span>
+    <span class="atr-dest-period">05/07 – 12/07 · 7 noites</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ribeira_Square%2C_Porto.jpg/1200px-Ribeira_Square%2C_Porto.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cais da Ribeira Porto">
+      <div class="atr-img-placeholder" style="display:none">🏘️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Cais da Ribeira + Ponte Dom Luís I</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 8 · 06/07 · manhã</div>
+        <div class="atr-desc">A imagem mais icônica do Porto — casas coloridas caindo sobre o Douro. Atravessar a ponte pelo nível inferior (carrinho OK). Vista das Caves de Gaia. Mochila portabebê nos trechos irregulares.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip">Nível inferior carrinho</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Cais+da+Ribeira+Porto" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Sao_Bento_railway_station_-_interior.jpg/1200px-Sao_Bento_railway_station_-_interior.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Estação São Bento">
+      <div class="atr-img-placeholder" style="display:none">🚉</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Estação de São Bento</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 9 · 07/07 · 09h00</div>
+        <div class="atr-desc">20.000 azulejos azuis e brancos ilustrando a história de Portugal — obra do séc. XX considerada uma das estações mais belas do mundo. Visita de 10–15 min, interior acessível, sem fila cedo.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Carrinho AC</span><span class="atr-chip">10 min</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Estacao+Sao+Bento+Porto" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Serralves_Museum.jpg/1200px-Serralves_Museum.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Fundação Serralves">
+      <div class="atr-img-placeholder" style="display:none">🌿</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Fundação Serralves</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 10 · 08/07 · 09h30</div>
+        <div class="atr-desc">18 hectares de jardins planos, sombreados e 100% carrinho-friendly. Museu de Arte Contemporânea com AC. Lagos, roseirais, horta, bosque. A melhor experiência do Porto com bebê.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€12 adulto</span><span class="atr-chip free">Bebê grátis</span><span class="atr-chip baby">✓ Carrinho perfeito</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Fundacao+Serralves+Porto" target="_blank">📍 Maps</a>
+          <a class="atr-link book" href="https://www.serralves.pt" target="_blank">🎟 Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://wow.pt/wp-content/uploads/2021/05/WOW-Exterior.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="WOW World of Wine">
+      <div class="atr-img-placeholder" style="display:none">🍷</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">WOW — World of Wine</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 11 · 09/07 · 10h00</div>
+        <div class="atr-desc">Complexo cultural em Gaia com 7 museus. Escolher 1: "The Story of Wine" (AC, 60 min, percurso interativo) é o melhor para família. Vista panorâmica para Porto incluída.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€15 adulto</span><span class="atr-chip baby">✓ AC</span><span class="atr-chip res">Reservar online</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=WOW+World+of+Wine+Gaia" target="_blank">📍 Maps</a>
+          <a class="atr-link book" href="https://wow.pt" target="_blank">🎟 wow.pt</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg/1200px-Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Piscinas de Leça da Palmeira">
+      <div class="atr-img-placeholder" style="display:none">🌊</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Piscinas de Maré de Leça da Palmeira</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 12 · 10/07 · Opção A · 08h30</div>
+        <div class="atr-desc">Obra icônica de Álvaro Siza Vieira (1966). Piscinas naturais oceânicas integradas nas rochas. Zona rasa perfeita para Nicolas. Gratuita. A 15 min de Gaia — uma das mais bonitas de Portugal.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Zona rasa bebê</span><span class="atr-chip">Vestiário + duche</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Piscinas+de+Mare+Leca+da+Palmeira" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Livraria_Lello_-_Escadaria.jpg/800px-Livraria_Lello_-_Escadaria.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Livraria Lello">
+      <div class="atr-img-placeholder" style="display:none">📚</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Livraria Lello</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 9 · 07/07 · 10h30</div>
+        <div class="atr-desc">Uma das livrarias mais bonitas do mundo — art nouveau, escadaria vermelha, vitrais. Entrar apenas se fila &lt;30 min. Usar mochila portabebê — escada estreita, muito cheio em julho.</div>
+        <div class="atr-meta"><span class="atr-chip paid">€8 adulto</span><span class="atr-chip">Mochila portabebê</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Livraria+Lello+Porto" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.livrarialello.pt" target="_blank">🌐 Site</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== GUIMARÃES / BRAGA ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b3">Bloco 3</span>
+    <span class="atr-dest-name">Guimarães / Braga</span>
+    <span class="atr-dest-period">12/07 – 15/07 · 3 noites</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Guimaraes_Castle_5.jpg/1200px-Guimaraes_Castle_5.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Castelo de Guimarães">
+      <div class="atr-img-placeholder" style="display:none">🏰</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Castelo de Guimarães</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 15 · 13/07 · 11h00</div>
+        <div class="atr-desc">O castelo onde nasceu D. Afonso Henriques — o primeiro rei de Portugal, séc. XII. "Aqui nasceu Portugal" está gravado na pedra. Torres e pátios acessíveis. Vista da cidade medieval.</div>
+        <div class="atr-meta"><span class="atr-chip paid">€2 adulto</span><span class="atr-chip free">Bebê grátis</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Castelo+de+Guimaraes" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Paço_dos_Duques_de_Bragança.jpg/1200px-Paço_dos_Duques_de_Bragança.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Paço dos Duques de Bragança">
+      <div class="atr-img-placeholder" style="display:none">👑</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Paço dos Duques + Praça de Santiago</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 15 · 13/07 · 10h00</div>
+        <div class="atr-desc">Palácio ducal do séc. XV — exterior imponente em espaço aberto. Praça de Santiago ao lado: a praça medieval mais fotogênica de Guimarães. Centro histórico UNESCO.</div>
+        <div class="atr-meta"><span class="atr-chip free">Exterior grátis</span><span class="atr-chip baby">✓ Espaço aberto</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Paco+dos+Duques+Guimaraes" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG/1200px-Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Bom Jesus do Monte Braga">
+      <div class="atr-img-placeholder" style="display:none">⛪</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Bom Jesus do Monte — Braga</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 16 · 14/07 · 09h30</div>
+        <div class="atr-desc">Santuário do séc. XVIII com a escadaria barroca mais célebre de Portugal. Subir de funicular (€3, 3 min) — não subir a pé com bebê em julho. Jardins superiores planos e sombreados.</div>
+        <div class="atr-meta"><span class="atr-chip paid">€3 funicular</span><span class="atr-chip baby">✓ Jardins planos</span><span class="atr-chip">30 min de Guimarães</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Bom+Jesus+do+Monte+Braga" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.bom-jesus.pt" target="_blank">🌐 Site</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SETÚBAL / COMPORTA ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b4">Bloco 4</span>
+    <span class="atr-dest-name">Setúbal · Comporta · Arrábida</span>
+    <span class="atr-dest-period">15/07 – 18/07 · 3 noites</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card special">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Atlantic_Ferries_Setubal.jpg/1200px-Atlantic_Ferries_Setubal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ferry Setúbal Tróia">
+      <div class="atr-img-placeholder" style="display:none">⛴️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Ferry Setúbal → Tróia com golfinhos</div><span class="atr-pri pri-spe">💍 Aniversário</span></div>
+        <div class="atr-day">Dia 18 · 16/07 · ~11h30</div>
+        <div class="atr-desc">Travessia de 25 min pelo Estuário do Sado com carro. Os golfinhos roazes do Sado são frequentemente avistados. Nicolas vai adorar ver o barco navegar. Uma das experiências mais únicas da viagem.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€21 carro · bebê grátis</span><span class="atr-chip baby">✓ Bebê no colo</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Terminal+Ferries+Setubal" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.atlanticferries.pt" target="_blank">🌐 Atlantic Ferries</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card special">
+      <img class="atr-img" src="https://images.squarespace-cdn.com/content/v1/5bdc4034e666b1452b842a14/1583440088501-UIKEVJF8EQWH7SL8JXQV/comporta+white+village+portugal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Comporta village">
+      <div class="atr-img-placeholder" style="display:none">🌾</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Comporta Village</div><span class="atr-pri pri-spe">💍 Aniversário</span></div>
+        <div class="atr-day">Dia 18 · 16/07 · 15h30</div>
+        <div class="atr-desc">O destino mais exclusivo e discreto da costa portuguesa. Casas brancas, arrozais, pinheiros, praia de 30 km sem construções. Arquitetura minimal, lojas únicas. Destino de eleição de Lisboa.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis passear</span><span class="atr-chip baby">✓ Carrinho OK</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Comporta+Portugal" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card special">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Carrasqueira_Cais_Palaf%C3%ADtico.jpg/1200px-Carrasqueira_Cais_Palaf%C3%ADtico.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cais Palafítico Carrasqueira">
+      <div class="atr-img-placeholder" style="display:none">🛶</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Cais Palafítico da Carrasqueira</div><span class="atr-pri pri-spe">💍 Aniversário</span></div>
+        <div class="atr-day">Dia 18 · 16/07 · 17h00</div>
+        <div class="atr-desc">Cais histórico de palafitas sobre o Rio Sado — estrutura de madeira única, barcos de pesca tradicionais, pôr do sol dourado sobre o estuário. Um dos locais mais fotogênicos de Portugal.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip">Pôr do sol ~21h</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Cais+Palafitico+Carrasqueira" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Arrabida_5.jpg/1200px-Arrabida_5.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Portinho da Arrábida">
+      <div class="atr-img-placeholder" style="display:none">🏖️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Portinho da Arrábida</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 20 · 18/07 · Chegar às 08h</div>
+        <div class="atr-desc">A praia mais impressionante do roteiro. Falésia calcária branca de 500m, água turquesa cristalina com fundo visível a 5m. Parque Natural. Chegar antes das 08h em sábado de julho — obrigatório.</div>
+        <div class="atr-meta"><span class="atr-chip free">Praia grátis</span><span class="atr-chip baby">✓ Bebê</span><span class="atr-chip">Sáb: chegar às 08h</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Portinho+da+Arrabida+Portugal" target="_blank">📍 Maps</a>
+          <a class="atr-link web" href="https://www.icnf.pt/parquesnaturais/pnarrabida" target="_blank">🌐 Parque Natural</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Mercado_do_Livramento%2C_Set%C3%BAbal.jpg/1200px-Mercado_do_Livramento%2C_Set%C3%BAbal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Mercado do Livramento Setúbal">
+      <div class="atr-img-placeholder" style="display:none">🐟</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Mercado do Livramento — Setúbal</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 19 · 17/07 · 08h30</div>
+        <div class="atr-desc">Um dos melhores mercados de peixe fresco de Portugal. Sexta = movimento pleno, peixe direto dos barcos de Sesimbra e Setúbal. Painéis de azulejos decorativos. Abre seg–sáb até às 13h.</div>
+        <div class="atr-meta"><span class="atr-chip free">Entrada grátis</span><span class="atr-chip baby">✓ Carrinho OK</span><span class="atr-chip">Abre seg–sáb</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Mercado+do+Livramento+Setubal" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ALGARVE ===== -->
+<div class="atr-dest">
+  <div class="atr-dest-title">
+    <span class="badge b5">Bloco 5</span>
+    <span class="atr-dest-name">Algarve — Alvor · Lagos</span>
+    <span class="atr-dest-period">18/07 – 21/07 · 3 noites</span>
+  </div>
+  <div class="atr-grid">
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Praia_de_Alvor.jpg/1200px-Praia_de_Alvor.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Praia de Alvor">
+      <div class="atr-img-placeholder" style="display:none">🏖️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Praia de Alvor</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 22 · 20/07 · 08h00</div>
+        <div class="atr-desc">A melhor praia para bebê do roteiro inteiro. Larga, plana, protegida pela baía, areia fina dourada. Estrutura completa. Acesso direto da vila. Entrar antes das 09h para pegar sombra e espaço.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Melhor praia bebê</span><span class="atr-chip">Plana</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Praia+de+Alvor+Portugal" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card essential">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/1200px-Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ponta da Piedade Lagos">
+      <div class="atr-img-placeholder" style="display:none">🚤</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Ponta da Piedade — Barco</div><span class="atr-pri pri-ess">Essencial</span></div>
+        <div class="atr-day">Dia 21 · 19/07 · 10h30</div>
+        <div class="atr-desc">As formações rochosas alaranjadas mais fotogênicas de Portugal — grutas, arcos, pilares sobre o Atlântico. Fazer exclusivamente de barco com bebê (trilha a pé tem degraus sem proteção). Reservar online.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€15–20 adulto</span><span class="atr-chip free">Bebê grátis</span><span class="atr-chip res">Reservar domingo</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Ponta+da+Piedade+Lagos+Portugal" target="_blank">📍 Maps</a>
+          <a class="atr-link book" href="https://www.sea-dreams.pt" target="_blank">🎟 Sea Dreams</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Silves_castle_-_panoramio.jpg/1200px-Silves_castle_-_panoramio.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Castelo de Silves">
+      <div class="atr-img-placeholder" style="display:none">🏰</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Castelo de Silves</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 22 · 20/07 · 14h30</div>
+        <div class="atr-desc">O castelo mourisco mais bem conservado de Portugal, séc. VIII. Construído em xisto vermelho característico. Pátio interno com carrinho. Vista 360° sobre laranjais e vale do Arade. Menos turístico que Lagos.</div>
+        <div class="atr-meta"><span class="atr-chip paid">~€4 adulto</span><span class="atr-chip free">Bebê grátis</span><span class="atr-chip baby">✓ Pátio carrinho</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Castelo+de+Silves+Portugal" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card recommended">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Lagos%2C_Algarve.jpg/1200px-Lagos%2C_Algarve.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Lagos centro histórico">
+      <div class="atr-img-placeholder" style="display:none">🏘️</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Lagos — Centro Histórico</div><span class="atr-pri pri-rec">Recomendado</span></div>
+        <div class="atr-day">Dia 21 · 19/07 · 09h00</div>
+        <div class="atr-desc">O centro histórico mais bem preservado do Algarve, com muralhas medievais e Praça Gil Eanes. Ruas planas no núcleo central — carrinho funciona bem. 45 min de passeio antes do barco.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Centro plano</span><span class="atr-chip">45 min</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Centro+Historico+Lagos+Algarve" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="atr-card optional">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alvor_ria.jpg/1200px-Alvor_ria.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ria de Alvor">
+      <div class="atr-img-placeholder" style="display:none">🌅</div>
+      <div class="atr-body">
+        <div class="atr-top"><div class="atr-name">Ria de Alvor ao pôr do sol</div><span class="atr-pri pri-opt">Opcional</span></div>
+        <div class="atr-day">Dia 22 · 20/07 · 19h30</div>
+        <div class="atr-desc">Passeio à beira da ria de Alvor no fim da tarde — passadiços de madeira sobre a zona húmida, barcos coloridos, pôr do sol por volta das 21h. Sem esforço, sem carro, saindo da vila a pé.</div>
+        <div class="atr-meta"><span class="atr-chip free">Grátis</span><span class="atr-chip baby">✓ Passadiços planos</span><span class="atr-chip">Pôr do sol ~21h</span></div>
+        <div class="atr-links">
+          <a class="atr-link maps" href="https://maps.google.com/?q=Ria+de+Alvor+Portugal" target="_blank">📍 Maps</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+<!-- ==================== GASTRONOMIA ==================== -->
+<section id="gastronomia" class="tab-section">
+<div class="sec-title">Guia Gastronômico</div>
+<div class="sec-sub">Pratos obrigatórios · O que pedir em cada destino · Perfil: casual com vista · €40–70/jantar</div>
+
+<div class="gastro-intro">
+  Portugal tem uma das culinárias mais subestimadas da Europa. O domínio absoluto é o peixe e o marisco — comprado no porto na madrugada e na mesa ao almoço. Nos 23 dias deste roteiro, cobrem-se <strong>5 regiões gastronômicas distintas</strong>: Costa Azul (Sesimbra), Douro Litoral (Porto/Gaia), Minho (Guimarães/Braga), Estuário do Sado (Setúbal/Comporta) e Algarve (Alvor/Lagos). Cada uma tem pratos que não aparecem nas outras.
+</div>
+
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">OS 15 PRATOS QUE PRECISA COMER</div>
+<div class="prato-grid">
+  <div class="prato-card"><div class="prato-num">1</div><div><div class="prato-name">Choco frito</div><div class="prato-desc">Sepia (choco) cortada, passada em farinha e frita no azeite. Único em Sesimbra e Setúbal — em nenhum outro lugar de Portugal tem a mesma qualidade. Exterior crocante, interior macio. Servir com batata frita caseira e limão.</div><div class="prato-where">Onde: Modesto (Sesimbra) · Casa Santiago (Setúbal)</div></div></div>
+  <div class="prato-card"><div class="prato-num">2</div><div><div class="prato-name">Francesinha</div><div class="prato-desc">Sandwich de carnes curadas e linguiça, coberta de queijo derretido e molho de tomate com cerveja. Prato de Porto — não existente em mais nenhum lugar do país com a mesma autenticidade.</div><div class="prato-where">Onde: Café Santiago ou Brasão (Porto)</div></div></div>
+  <div class="prato-card"><div class="prato-num">3</div><div><div class="prato-name">Pastel de Belém</div><div class="prato-desc">Creme de ovos em massa folhada, polvilhado de açúcar e canela. A receita original de 1837 só existe nesta pastelaria. O mesmo produto vendido no Brasil como "pastel de nata" tem outra receita.</div><div class="prato-where">Onde: Pastéis de Belém, Lisboa (fila vale)</div></div></div>
+  <div class="prato-card"><div class="prato-num">4</div><div><div class="prato-name">Polvo à lagareiro</div><div class="prato-desc">Polvo assado no forno com azeite, alho e batatinhas "a murro" (esmagadas). Prato nacional presente do Porto ao Algarve, mas o preparo no Norte (Guimarães) com alho minhoto é particularmente bom.</div><div class="prato-where">Onde: Histórico by Papaboa (Guimarães) · Adega São Nicolau (Porto)</div></div></div>
+  <div class="prato-card"><div class="prato-num">5</div><div><div class="prato-name">Arroz de marisco</div><div class="prato-desc">Arroz caldoso — não seco como o risoto — com mexilhão, amêijoa, camarão e caranguejo. Cor alaranjada intensa do corante do marisco. Prato para 2, servido em panela.</div><div class="prato-where">Onde: Ribamar (Sesimbra) · Marisqueiras de Setúbal</div></div></div>
+  <div class="prato-card"><div class="prato-num">6</div><div><div class="prato-name">Cataplana</div><div class="prato-desc">Ensopado cozido em panela de cobre oval (a cataplana). Versão algarvia: amêijoas + linguiça ou tamboril + camarão. Cozinhado no vapor da própria panela. Sabor incomparável.</div><div class="prato-where">Onde: A Forja (Lagos) · qualquer marisqueira do Algarve</div></div></div>
+  <div class="prato-card"><div class="prato-num">7</div><div><div class="prato-name">Peixe grelhado no sal</div><div class="prato-desc">Robalo, dourada ou pregado inteiro, grelhado com sal grosso e azeite. Simplicidade absoluta. Qualidade depende da frescura — em Sesimbra e Alvor, o peixe chega do mar pela manhã.</div><div class="prato-where">Onde: Isaías (Sesimbra) · Batareo (Setúbal) · Qualquer restaurante de Alvor</div></div></div>
+  <div class="prato-card"><div class="prato-num">8</div><div><div class="prato-name">Bacalhau à Gomes de Sá</div><div class="prato-desc">Prato portuense — bacalhau desfiado assado com batata, cebola, azeite e ovos cozidos. Um dos 365 modos de cozinhar bacalhau em Portugal. Este é o original do Porto.</div><div class="prato-where">Onde: Taberna dos Mercadores (Porto) · qualquer tasca portuense</div></div></div>
+  <div class="prato-card"><div class="prato-num">9</div><div><div class="prato-name">Tripas à moda do Porto</div><div class="prato-desc">Ensopado de tripas com feijão branco, salpicão e carnes. Prato histórico do Porto desde o séc. XV — os portuenses são chamados "tripeiros" por isso. Pesado, para almoço.</div><div class="prato-where">Onde: Solar Moinho de Vento ou O Rápido (Porto)</div></div></div>
+  <div class="prato-card"><div class="prato-num">10</div><div><div class="prato-name">Posta à Trás-os-Montes</div><div class="prato-desc">Bife alto de vitela mirandesa grelhado — a melhor carne bovina do Norte de Portugal. Simples, sem molho, com batata e grelos. Típico de Guimarães e Braga.</div><div class="prato-where">Onde: Casa Amarela (Guimarães)</div></div></div>
+  <div class="prato-card"><div class="prato-num">11</div><div><div class="prato-name">Perceves</div><div class="prato-desc">Crustáceo raro e caro (~€30–50/kg), colhido nas rochas batidas pelo oceano. Servido cozido em água do mar com sal. Sabor de oceano puro. Único do Atlântico ibérico.</div><div class="prato-where">Onde: Marisqueiras de Sesimbra e Setúbal (perguntar se têm)</div></div></div>
+  <div class="prato-card"><div class="prato-num">12</div><div><div class="prato-name">Amêijoas à Bulhão Pato</div><div class="prato-desc">Amêijoas salteadas em azeite, alho, coentros e vinho branco. Prato de entrada/aperitivo. Servir com pão para molhar o caldo. Clássico em todo o litoral português.</div><div class="prato-where">Onde: Qualquer marisqueira · excelentes no Ribamar (Sesimbra)</div></div></div>
+  <div class="prato-card"><div class="prato-num">13</div><div><div class="prato-name">Arroz de pato à portuguesa</div><div class="prato-desc">Pato desfiado cozinhado com arroz, linguiça e laranja. Assado no forno até o arroz criar crosta crocante. Especialidade do Norte — Braga e Guimarães têm versões excelentes.</div><div class="prato-where">Onde: Toca do Abade (Braga) · Histórico (Guimarães)</div></div></div>
+  <div class="prato-card"><div class="prato-num">14</div><div><div class="prato-name">Peixe grelhado na Comporta</div><div class="prato-desc">No SAL, o peixe é escolhido a olho na montra e grelhado na hora com azeite alentejano. Contexto único: pés na areia, oceano à frente. Uma das experiências gastronômicas mais completas do roteiro.</div><div class="prato-where">Onde: Restaurante SAL (Carvalhal, Comporta)</div></div></div>
+  <div class="prato-card"><div class="prato-num">15</div><div><div class="prato-name">Toucinho-do-céu</div><div class="prato-desc">Sobremesa conventual de ovos, açúcar e amêndoa. Origem nos conventos do Minho. Muito diferente da versão brasileira — mais densa, mais perfumada, servida quente. Finalizar qualquer jantar em Guimarães com este.</div><div class="prato-where">Onde: Histórico by Papaboa · Casa Amarela (Guimarães)</div></div></div>
+</div>
+
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:24px 0 10px">GUIA DE JANTARES · 23 NOITES · RESUMO RÁPIDO</div>
+<div style="background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden">
+  <div style="display:grid;grid-template-columns:44px 1fr auto auto;gap:6px;padding:6px 12px;background:var(--cream2);border-bottom:1px solid var(--border)">
+    <span style="font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)">Dia</span>
+    <span style="font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)">Restaurante / Local</span>
+    <span style="font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right">Aprox.</span>
+    <span style="font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right">Reserva</span>
+  </div>
+  <div id="jantar-table"></div>
+</div>
+</section>
+
+<!-- ==================== SUPERMERCADOS ==================== -->
+<section id="supermercados" class="tab-section">
+<div class="sec-title">Supermercados por Bloco</div>
+<div class="sec-sub">Parar antes do check-in · Compras para a semana · Horários e endereços validados</div>
+
+<div class="alert info" style="margin-bottom:16px"><span>ℹ</span> <strong>Estratégia:</strong> Pingo Doce é a melhor relação qualidade/preço para turistas em Portugal — produtos de marca própria excelentes, frescos superiores, peixaria e talho com boa qualidade. Continente é maior e mais variado quando precisar de produtos específicos. Lidl para produtos mais baratos em listas longas.</div>
+
+<!-- BLOCO 1 · SESIMBRA -->
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b1);margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)">● Bloco 1 · Sesimbra · 29/06–05/07</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#E8F5E8">🛒</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Sesimbra — Castelo</div><div class="super-head-badge sb-primary">Principal · Parar na chegada (Dia 1)</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">EN379 · Zona Castelo · Sesimbra (na estrada de entrada vinda do aeroporto)</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · 08h–21h (verificar se aberto às 21h na chegada do Dia 1)</div></div>
+    <div class="super-row"><div class="sr-label">Quando ir</div><div class="sr-val">Dia 1 na chegada (se aberto) OU Dia 2 manhã às 09h antes da praia</div></div>
+    <div class="super-row"><div class="sr-label">O que comprar</div><div class="sr-val">Papinhas Nicolas, FPS 50+ mineral, fraldas, água, frutas, café, pão, frios, protetor solar</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Sesimbra Castelo"</a></div>
+  </div>
+  <div class="super-tip">✓ Confirmado no site oficial Pingo Doce — loja ativa. Este é o ponto exato na EN379 antes de entrar na vila, no caminho do aeroporto para Sesimbra.</div>
+</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#FFF4E5">🏪</div>
+    <div class="super-head-info"><div class="super-head-name">Continente Modelo Sesimbra</div><div class="super-head-badge sb-backup">Backup · Maior variedade</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Avenida João Paulo II · Sesimbra</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · até 23h</div></div>
+    <div class="super-row"><div class="sr-label">Quando usar</div><div class="sr-val">Compra maior de meio da semana · mais variado que o Pingo Doce</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Continente Modelo Sesimbra"</a></div>
+  </div>
+</div>
+
+<!-- BLOCO 2 · PORTO/GAIA -->
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b2);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)">● Bloco 2 · Porto / Vila Nova de Gaia · 05/07–12/07</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#E8F5E8">🛒</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Gaia — Av. República</div><div class="super-head-badge sb-primary">Principal · Parar na chegada (Dia 7)</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Av. da República 1174–1182 · Vila Nova de Gaia</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · 08h–22h</div></div>
+    <div class="super-row"><div class="sr-label">Quando ir</div><div class="sr-val">Dia 7 (domingo) ao chegar de Sesimbra, antes do check-in às 15h. Compras para 7 noites.</div></div>
+    <div class="super-row"><div class="sr-label">O que comprar</div><div class="sr-val">Papinhas 7 dias, frutas, iogurtes, leite, pão, ovos, café, água, frios — semana completa</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Gaia Av. República"</a></div>
+  </div>
+  <div class="super-tip">Porto tem 7 noites — a maior estadia. Vale fazer compra mais completa. Pingo Doce Gaia tem excelente peixaria e secção de papinhas/alimentos infantis.</div>
+</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#FFF4E5">🏪</div>
+    <div class="super-head-info"><div class="super-head-name">Mercadona Gaia / Continente Gaia</div><div class="super-head-badge sb-backup">Backup · Reposição mid-week</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Mercadona</div><div class="sr-val">Av. Vasco da Gama · Gaia — aberto domingos, mistura produtos PT+ES</div></div>
+    <div class="super-row"><div class="sr-label">Continente</div><div class="sr-val">Av. Vasco da Gama · Gaia — maior variedade de toda a rede nacional</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Mercadona Gaia" ou "Continente Gaia Av. Vasco da Gama"</a></div>
+  </div>
+</div>
+
+<!-- BLOCO 3 · GUIMARÃES -->
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b3);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)">● Bloco 3 · São Torcato / Guimarães · 12/07–15/07</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#E8F5E8">🛒</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Guimarães — Av. D. João IV</div><div class="super-head-badge sb-primary">⚠ PARAR em Guimarães antes de ir à base rural</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Av. D. João IV · Guimarães (central)</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · 08h–21h</div></div>
+    <div class="super-row"><div class="sr-label">Quando ir</div><div class="sr-val"><strong>Dia 14 (domingo)</strong> — parar AQUI ao passar por Guimarães ANTES de ir a São Torcato. São Torcato é zona rural — supermercado mais próximo fica em Guimarães (~8 km).</div></div>
+    <div class="super-row"><div class="sr-label">O que comprar</div><div class="sr-val">Provisões para 3 dias: leite, frutas, pão, papinhas, água, café, legumes, queijo, frios</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Guimarães Av. D. João IV"</a></div>
+  </div>
+  <div class="super-tip">⚠ BASE RURAL — não deixar para comprar chegando em São Torcato. Mercearia local pode ter apenas o básico. Fazer compra completa para 3 dias aqui.</div>
+</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#FFF4E5">🏪</div>
+    <div class="super-head-info"><div class="super-head-name">Intermarché Guimarães</div><div class="super-head-badge sb-backup">Alternativa · Bons frescos</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Quando usar</div><div class="sr-val">Se Pingo Doce estiver cheio ou precisar de produtos específicos. Intermarché Guimarães tem boa secção de carnes e produtos regionais do Minho.</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Intermarché Guimarães"</a></div>
+  </div>
+</div>
+
+<!-- BLOCO 4 · SETÚBAL -->
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b4);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)">● Bloco 4 · Setúbal · 15/07–18/07</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#E8F5E8">🛒</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Setúbal — Av. Luísa Todi</div><div class="super-head-badge sb-primary">Principal · Marginal ribeirinha</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Av. Luísa Todi 149 · Setúbal (marginal do estuário do Sado)</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · 08h–21h</div></div>
+    <div class="super-row"><div class="sr-label">Quando ir</div><div class="sr-val">Dia 17 (quarta) ao chegar a Setúbal (~15h), antes do check-in. Compras para 3 dias.</div></div>
+    <div class="super-row"><div class="sr-label">O que comprar</div><div class="sr-val">Café da manhã Dia 18 (aniversário) · Lanches + água para o dia do ferry · Itens bebê</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Av. Luísa Todi Setúbal"</a></div>
+  </div>
+  <div class="super-tip">3 noites em Setúbal — almoços e jantares fora. Compras para: café da manhã × 3 + lanches + itens bebê. Não precisar de grande volume.</div>
+</div>
+
+<!-- BLOCO 5 · ALVOR -->
+<div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--b5);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)">● Bloco 5 · Alvor · Algarve · 18/07–21/07</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#E8F5E8">🛒</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Alvor</div><div class="super-head-badge sb-primary">Principal · Dentro da vila</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Estrada de Alvor · Urbanização S. Pedro Lavaredo · Alvor (EN125 → Alvor)</div></div>
+    <div class="super-row"><div class="sr-label">Horário</div><div class="sr-val">Segunda a domingo · 08h–21h</div></div>
+    <div class="super-row"><div class="sr-label">Quando ir</div><div class="sr-val">Dia 20 (sábado) ao chegar de Arrábida antes do check-in às 16h (~17h chegada). Ou Dia 21 manhã.</div></div>
+    <div class="super-row"><div class="sr-label">O que comprar</div><div class="sr-val">Algarve = calor intenso. Prioridade: <strong>água extra</strong> (hidratação Nicolas), protetor solar de reposição, frutas frescas, iogurtes, itens refresco</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Alvor"</a></div>
+  </div>
+  <div class="super-tip">Alvor é pequeno mas tem Pingo Doce dentro da vila. Para compras maiores: Pingo Doce Portimão ou Continente Portimão (15 min). Lidl em Portimão é o mais barato.</div>
+</div>
+<div class="super-card">
+  <div class="super-head">
+    <div class="super-icon" style="background:#FFF4E5">🏪</div>
+    <div class="super-head-info"><div class="super-head-name">Pingo Doce Portimão · Alternativa maior</div><div class="super-head-badge sb-backup">Backup · 15 min de Alvor</div></div>
+  </div>
+  <div class="super-body">
+    <div class="super-row"><div class="sr-label">Endereço</div><div class="sr-val">Av. Dr. Francisco Sá Carneiro · Portimão</div></div>
+    <div class="super-row"><div class="sr-label">Quando usar</div><div class="sr-val">Se precisar de farmácia, produtos infantis específicos ou compra maior. Portimão tem rede completa.</div></div>
+    <div class="sr-val"><a class="waze-btn" href="#" onclick="return false">📍 Waze: "Pingo Doce Portimão Francisco Sá Carneiro"</a></div>
+  </div>
+</div>
+
+<div class="alert ok" style="margin-top:8px"><span>✓</span> <strong>Dica de compra:</strong> O Pingo Doce tem o cartão de fidelidade Poupa Mais — registar na app antes de viajar. Descontos automáticos e acumulação de pontos ao longo dos 23 dias podem valer €10–20 de desconto.</div>
+</section>
+
+<!-- ==================== RESERVAS ==================== -->
+<section id="reservas" class="tab-section">
+<div class="sec-title">Lista de Reservas</div>
+<div class="sec-sub">Ordenado por urgência · Tudo deve ser feito antes de embarcar no Brasil</div>
+
+<div class="alert critical" style="margin-bottom:16px"><span>🚨</span> Portugal em julho = lotação máxima. Restaurantes esgotam com 4–8 semanas de antecedência. Reservas de barco e ferry são confirmadas mas perecíveis — verificar com 30 dias.</div>
+
+<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">🔴 FAZER AGORA — Imediato</div>
+
+<div style="display:grid;gap:7px;margin-bottom:18px">
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
+      <div style="font-size:13px;font-weight:500">🎂 A Padaria — Sesimbra · Jantar aniversário Alexandre</div>
+      <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">03/07 (Sexta) · 20h00 · Mesa interior · confirmar cadeira alta · ~€90–130 casal</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Ligar ou e-mail. Sexta de julho em Sesimbra = esgotado com semanas de antecedência.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
+      <div style="font-size:13px;font-weight:500">💍 Restaurante SAL · Comporta · Almoço aniversário casamento</div>
+      <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 13h00 · Praia do Carvalhal · Tel: +351 265 490 129</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Não aceita e-mail — só telefone. Confirmar abertura quinta em julho. Confirmar acesso bebê e cadeira alta. Esgota com 6+ semanas de antecedência.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
+      <div style="font-size:13px;font-weight:500">💍 Pousada São Filipe · Setúbal · Jantar aniversário casamento</div>
+      <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 20h00 · Castelo São Filipe · Vista estuário do Sado</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Jantar de encerramento do aniversário. Terraço sobre o estuário ao pôr do sol (~21h). pousadas.pt ou telefone.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
+      <div style="font-size:13px;font-weight:500">🍽 Caniço · Alvor · Jantar de encerramento da viagem</div>
+      <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">20/07 (Segunda) · 20h00 · Tel: 967 764 290 · Restaurante dentro de gruta nas falésias de Alvor</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Só funciona com reserva. Espaço muito limitado. Experiência única — não deixar para tentar de Portugal.</div>
+  </div>
+</div>
+
+<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">🟡 URGENTE — Fazer em abril/maio</div>
+
+<div style="display:grid;gap:7px;margin-bottom:18px">
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">Barco Ponta da Piedade · Lagos</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">19/07 (Dom) · 10h30 · Cais de Lagos · ~45 min · €15–20/adulto · bebê grátis</div>
+    <div style="font-size:11px;color:var(--text)">Domingo em julho esgota. Confirmar política bebê e colete salva-vidas tamanho bebê. sea-dreams.pt ou bomdiaborttips.com</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">Oceanário de Lisboa</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">02/07 (Qui) · 14h30 · Adulto ~€24 · bebê &lt;3 anos grátis · oceanario.pt</div>
+    <div style="font-size:11px;color:var(--text)">Comprar online garante entrada e evita fila. Julho tem controle de fluxo.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">💍 Bacalhôa Winery — Tour vinícola</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">16/07 (Qui) · 09h30 · Azeitão · bacalhoa.com</div>
+    <div style="font-size:11px;color:var(--text)">Confirmar: tour quinta-feira · carrinho acessível · jardins renascentistas.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">Vinum Restaurant · Graham's · Gaia</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">09/07 (Qui) · 20h00 · Caves Graham's · Vista Porto noturno</div>
+    <div style="font-size:11px;color:var(--text)">Procurado em julho. Reservar pelo site ou TheFork.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">DeCastro Gaia · Chef Miguel Castro e Silva</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">11/07 (Sáb) · 20h00 · Cais de Gaia · Jantar encerramento Porto</div>
+    <div style="font-size:11px;color:var(--text)">Reaberto em 2025. Reservar pelo TheFork ou telefone. Sábado de julho = esgotado.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">WOW District · The Story of Wine</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">09/07 (Qui) · 10h00 · wow.pt</div>
+    <div style="font-size:11px;color:var(--text)">Comprar online. 1 atração (The Story of Wine = AC, 60 min, melhor para bebê).</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">Ferry Setúbal → Tróia com carro</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">16/07 (Qui) · ~11h30 · Atlantic Ferries · +351 265 235 101 · atlanticferries.pt</div>
+    <div style="font-size:11px;color:var(--text)">Verificar horários de verão. Julho: alta demanda mesmo em dia de semana. ~€21 carro (ida).</div>
+  </div>
+</div>
+
+<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">🟢 NORMAL — 2–3 semanas antes</div>
+<div style="display:grid;gap:5px">
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>Serralves · Museu + Parque</strong> <span style="color:var(--muted)">— 08/07 (Qua) 09h30 · serralves.pt</span></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>Casa Santiago · Setúbal</strong> <span style="color:var(--muted)">— 17/07 (Sex) 12h00 · +351 265 221 688</span></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>A Forja · Lagos</strong> <span style="color:var(--muted)">— 19/07 (Dom) 20h00 · Domingo exige reserva</span></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>Adega São Nicolau · Porto Ribeira</strong> <span style="color:var(--muted)">— 07/07 (Ter) 20h00</span></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>Blini · Gaia</strong> <span style="color:var(--muted)">— 06/07 (Seg) 20h00 · R. da Praia 602, Gaia</span></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:3px;padding:8px 13px;font-size:12px"><strong>Histórico by Papaboa · Guimarães</strong> <span style="color:var(--muted)">— 13/07 (Seg) 12h30 · Almoço</span></div>
+</div>
+</section>
+
+<!-- ==================== LOGÍSTICA ==================== -->
+<section id="logistica" class="tab-section">
+<div class="sec-title">Protocolo de Logística</div>
+<div class="sec-sub">Voos · Carro · Ferry · Paradas · Bebê · Apps</div>
+
+<div style="background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden">
+  <div style="padding:9px 13px;background:var(--navy3);color:var(--terra2);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">VOOS LATAM — HEQDBX</div>
+  <div style="padding:12px 13px;display:grid;gap:8px">
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Ida</div><div style="font-weight:300">LA8150 · FOR→LIS · 29/06 · <strong>06h05→17h00</strong></div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Volta</div><div style="font-weight:300">LA8151 · LIS→FOR · 21/07 · <strong>19h30→23h30</strong></div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Pago</div><div style="font-weight:300;color:var(--green)">R$12.118,75 ✅ · cartão 9676</div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px"><div style="font-weight:500;color:var(--navy)">Nicolas</div><div style="font-weight:300">Lap infant. Solicitar bassinet no check-in online. Carrinho: porão gratuito.</div></div>
+  </div>
+</div>
+
+<div style="background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden">
+  <div style="padding:9px 13px;background:var(--navy3);color:var(--terra2);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase">CARRO — DRIVE ON HOLIDAYS</div>
+  <div style="padding:12px 13px;display:grid;gap:8px">
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Veículo</div><div style="font-weight:300">Toyota Corolla Touring · Station Wagon · Porta-malas grande</div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Retirada</div><div style="font-weight:300">29/06 · <strong>19h00</strong> · LIS Airport · Shuttle gratuito · Código: <strong>1425981</strong></div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Seguro</div><div style="font-weight:300">Flex Plan €0,00 — CDW+TP+Theft incluídos ✅</div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px;border-bottom:1px solid var(--border);padding-bottom:8px"><div style="font-weight:500;color:var(--navy)">Pago / saldo</div><div style="font-weight:300">€79,22 pago · <strong>€466,01 na retirada</strong> · Caução: <strong>€2.400 bloqueados no cartão</strong></div></div>
+    <div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-size:12px"><div style="font-weight:500;color:var(--navy)">Pedágios</div><div style="font-weight:300">Via Verde Visitors (viaverde.pt) — adquirir antes. Estimativa: €120 total. Instalar no para-brisas ao retirar o carro.</div></div>
+  </div>
+</div>
+
+<div style="background:var(--info-bg);border:1px solid rgba(44,79,122,.2);border-radius:4px;padding:13px;margin-bottom:12px">
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy2);margin-bottom:9px">⛴ FERRY SETÚBAL ↔ TRÓIA · ANIVERSÁRIO</div>
+  <div style="font-size:12px;line-height:1.7;color:var(--text);font-weight:300">
+    <strong>Empresa:</strong> Atlantic Ferries · atlanticferries.pt · +351 265 235 101<br>
+    <strong>Terminal Setúbal:</strong> Av. Jaime Rebelo (Doca do Comércio)<br>
+    <strong>Horário verão:</strong> Saídas a cada hora, 07h30–22h00<br>
+    <strong>Duração:</strong> ~25 min (ferry com carro)<br>
+    <strong>Preços:</strong> Carro ~€21 ida · Passageiro €4,90 · Bebê &lt;5 anos: gratuito<br>
+    <strong>Extra:</strong> Golfinhos roazes do Sado — avistamento frequente na travessia
+  </div>
+</div>
+
+<div style="background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden">
+  <div style="padding:9px 13px;background:var(--cream2);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy)">PARADAS ESTRATÉGICAS — TRECHOS LONGOS</div>
+  <div style="padding:12px 13px;display:grid;gap:10px">
+    <div style="font-size:12px;border-bottom:1px solid var(--border);padding-bottom:10px"><span style="font-weight:600;color:var(--navy2)">Sesimbra→Porto (Dia 7 · 310 km)</span><br><span style="font-weight:300">Parada 1: Área Santarém A1 ~09h15 · 20 min. Parada 2: Área Pombal A1 ~11h30 · 25 min (almoço/soneca).</span></div>
+    <div style="font-size:12px;border-bottom:1px solid var(--border);padding-bottom:10px"><span style="font-weight:600;color:var(--navy2)">Guimarães→Setúbal (Dia 17 · 360 km)</span><br><span style="font-weight:300">Parada 1: Coimbra Sul ~08h45 · 25 min. Parada 2: Área Santarém A1 ~11h30 · 30 min (almoço + soneca).</span></div>
+    <div style="font-size:12px;border-bottom:1px solid var(--border);padding-bottom:10px"><span style="font-weight:600;color:var(--navy2)">Arrábida→Alvor (Dia 20 · 260 km)</span><br><span style="font-weight:300">Parada 1: Área Grândola A2 ~15h30 · 25 min. Almoço já foi na Arrábida.</span></div>
+    <div style="font-size:12px"><span style="font-weight:600;color:var(--navy2)">Alvor→Aeroporto LIS (Dia 23 · 280 km)</span><br><span style="font-weight:300">Parada 1: Área Grândola A2 ~08h45 · 20 min. Aeroporto: chegar às 16h30 no máximo.</span></div>
+  </div>
+</div>
+
+<div style="background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden">
+  <div style="padding:9px 13px;background:var(--cream2);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy)">APPS · INSTALAR ANTES DE EMBARCAR</div>
+  <div style="padding:12px 13px;display:grid;gap:7px;font-size:12px">
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">Waze</div><div style="font-weight:300">Melhor para Portugal. Baixar mapas offline antes de embarcar.</div></div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">Via Verde</div><div style="font-weight:300">App + dispositivo Via Verde Visitors. viaverde.pt</div></div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">EasyPark</div><div style="font-weight:300">Estacionamento pago. Criar conta antes. Funciona em Lisboa, Porto, Lagos, Setúbal.</div></div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">IPMA</div><div style="font-weight:300">Previsão meteorológica oficial de Portugal. Mais precisa que Weather/Google.</div></div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">SNS24</div><div style="font-weight:300">808 24 24 24 — triagem antes de ir à urgência. Emergência: 112.</div></div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:7px"><div style="font-weight:500;color:var(--navy)">TheFork</div><div style="font-weight:300">Reservas de restaurante. Muitos desconto de 30–50% para reservas antecipadas.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== ORÇAMENTO ==================== -->
+<section id="orcamento" class="tab-section">
+<div class="sec-title">Orçamento</div>
+<div class="sec-sub">Valores confirmados + estimativas · €1 = R$6,10 (casa de câmbio)</div>
+
+<div class="budget-hero">
+  <div><div class="bt-label">Total estimado</div><div class="bt-value">R$60.820</div><div class="bt-sub">Hospedagem + voos + €4.500</div></div>
+  <div><div class="bt-label">Média por dia</div><div class="bt-value">€300–390</div><div class="bt-sub">23 dias · família</div></div>
+</div>
+
+<div class="bud-block">
+  <div class="bud-block-head"><div class="bud-block-name">✅ Já pago / confirmado</div><div class="bud-block-total" style="color:var(--green)">R$33.370</div></div>
+  <div class="bud-row" style="background:var(--green-bg)"><div class="bud-cat">Hospedagem · 5 bases · 22 noites · Airbnb</div><div class="bud-range" style="color:var(--green)">✅ Pago</div><div class="bud-mid" style="color:var(--green)">R$21.251</div></div>
+  <div class="bud-row" style="background:var(--green-bg)"><div class="bud-cat">Voos LATAM · LA8150/8151 · 3 passageiros</div><div class="bud-range" style="color:var(--green)">✅ Pago</div><div class="bud-mid" style="color:var(--green)">R$12.119</div></div>
+  <div class="bud-row subtotal"><div class="bud-cat">Subtotal confirmado</div><div class="bud-range"></div><div class="bud-mid">R$33.370</div></div>
+</div>
+
+<div class="bud-block">
+  <div class="bud-block-head"><div class="bud-block-name">💶 A comprar em euros</div><div class="bud-block-total">€4.173</div></div>
+  <div class="bud-row"><div class="bud-cat">Alimentação (almoços + jantares + padarias · 23 dias)</div><div class="bud-range">~€95/dia</div><div class="bud-mid">€2.200</div></div>
+  <div class="bud-row"><div class="bud-cat">Carro · saldo na retirada (Drive on Holidays)</div><div class="bud-range">29/06 LIS</div><div class="bud-mid">€466</div></div>
+  <div class="bud-row"><div class="bud-cat">Combustível (~3.200 km · ~€1,75/L)</div><div class="bud-range">Estimado</div><div class="bud-mid">€392</div></div>
+  <div class="bud-row"><div class="bud-cat">Pedágios Via Verde</div><div class="bud-range">A1+A2+A22+A11</div><div class="bud-mid">€120</div></div>
+  <div class="bud-row"><div class="bud-cat">Ferry Setúbal↔Tróia com carro (RT)</div><div class="bud-range">16/07</div><div class="bud-mid">€38</div></div>
+  <div class="bud-row"><div class="bud-cat">Estacionamentos</div><div class="bud-range">Lisboa, Porto, Lagos</div><div class="bud-mid">€60</div></div>
+  <div class="bud-row"><div class="bud-cat">Atrações (Oceanário, Serralves, WOW, barco, Lello…)</div><div class="bud-range">2 adultos</div><div class="bud-mid">€222</div></div>
+  <div class="bud-row"><div class="bud-cat">Seguro viagem Sara</div><div class="bud-range">23 dias</div><div class="bud-mid">€200</div></div>
+  <div class="bud-row"><div class="bud-cat">Farmácia / saúde / bebê</div><div class="bud-range"></div><div class="bud-mid">€75</div></div>
+  <div class="bud-row"><div class="bud-cat">Compras / souvenirs</div><div class="bud-range"></div><div class="bud-mid">€200</div></div>
+  <div class="bud-row"><div class="bud-cat">Margem de segurança</div><div class="bud-range">~5%</div><div class="bud-mid">€200</div></div>
+  <div class="bud-row subtotal"><div class="bud-cat">Total a desembolsar em euros</div><div class="bud-range"></div><div class="bud-mid">€4.173</div></div>
+</div>
+
+<div style="background:linear-gradient(135deg,#FFF8E0,#FFF0CC);border:1.5px solid var(--amber);border-radius:4px;padding:14px 16px;margin-bottom:14px">
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px">💶 META DE EUROS A COMPRAR</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px">
+    <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">Mínimo necessário</div><div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--navy)">€4.173</div><div style="font-size:10px;color:var(--muted)">= R$25.455</div></div>
+    <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">Recomendado (com folga)</div><div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--terra)">€4.500</div><div style="font-size:10px;color:var(--muted)">= R$27.450 · folga €327</div></div>
+  </div>
+  <div style="font-size:11px;color:#5C3D00;line-height:1.6"><strong>Cotação hoje (13/04/2026):</strong> €1 = R$5,93 comercial · ~R$6,10 casa de câmbio.<br><strong>Estratégia:</strong> Comprar €2.500 em maio + €2.000 em junho. Câmbio em mínima de 52 semanas — momento favorável.<br><strong>Caução carro:</strong> €2.400 bloqueados no cartão de crédito (não é saída de dinheiro, é reserva de limite).</div>
+</div>
+
+<div style="background:var(--navy3);border-radius:4px;padding:16px;margin-top:4px">
+  <div style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--terra2);margin-bottom:12px">CUSTO TOTAL DA VIAGEM</div>
+  <div style="display:grid;gap:5px;margin-bottom:12px">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:6px 9px;background:rgba(255,255,255,.06);border-radius:3px;font-size:11px"><span style="color:rgba(255,255,255,.65)">Hospedagem · 22 noites</span><span style="color:#8FD9A0;font-weight:600">R$21.251 ✅</span></div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:6px 9px;background:rgba(255,255,255,.06);border-radius:3px;font-size:11px"><span style="color:rgba(255,255,255,.65)">Voos LATAM · 3 passageiros</span><span style="color:#8FD9A0;font-weight:600">R$12.119 ✅</span></div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:6px 9px;background:rgba(255,255,255,.06);border-radius:3px;font-size:11px"><span style="color:rgba(255,255,255,.65)">€4.500 × R$6,10</span><span style="color:var(--terra2);font-weight:600">R$27.450</span></div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px;background:rgba(255,255,255,.12);border-radius:3px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.15);margin-top:2px"><span style="color:#fff">TOTAL ESTIMADO</span><span style="color:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400">R$60.820</span></div>
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);line-height:1.5">Acompanhe o custo real na aba <strong style="color:rgba(255,255,255,.5)">✏ Realizado</strong>.</div>
+</div>
+</section>
+
+<!-- ==================== REALIZADO ==================== -->
+<section id="realizado" class="tab-section">
+<div class="sec-title">Custos Realizados</div>
+<div class="sec-sub">Preencha durante e após a viagem · Comparação automática com estimado</div>
+
+<div class="real-summary">
+  <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra2);margin-bottom:10px">PAINEL COMPARATIVO</div>
+  <div class="rs-row"><span class="rs-label">Hospedagem</span><span class="rs-est">Est. R$21.251</span><span class="rs-real" style="color:#8FD9A0" id="rs-hosp">R$21.251 ✅</span></div>
+  <div class="rs-row"><span class="rs-label">Voos LATAM</span><span class="rs-est">Est. R$12.119</span><span class="rs-real" style="color:#8FD9A0" id="rs-voos">R$12.119 ✅</span></div>
+  <div class="rs-row"><span class="rs-label">Euros comprados</span><span class="rs-est">Meta €4.500</span><span class="rs-real" style="color:var(--terra2)" id="rs-euros">—</span></div>
+  <div class="rs-row"><span class="rs-label">Alimentação</span><span class="rs-est">Est. €2.200</span><span class="rs-real" style="color:rgba(255,255,255,.8)" id="rs-alim">—</span></div>
+  <div class="rs-row"><span class="rs-label">Transporte em PT</span><span class="rs-est">Est. €1.076</span><span class="rs-real" style="color:rgba(255,255,255,.8)" id="rs-transp">—</span></div>
+  <div class="rs-row"><span class="rs-label">Atrações</span><span class="rs-est">Est. €222</span><span class="rs-real" style="color:rgba(255,255,255,.8)" id="rs-atrac">—</span></div>
+  <div class="rs-row"><span class="rs-label">Extras</span><span class="rs-est">Est. €475</span><span class="rs-real" style="color:rgba(255,255,255,.8)" id="rs-extra">—</span></div>
+  <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:9px 0 2px;font-size:12px;font-weight:600;align-items:center;border-top:1px solid rgba(255,255,255,.18);margin-top:4px">
+    <span style="color:#fff">TOTAL REAL</span>
+    <span style="font-size:10px;text-align:right" id="rs-diff-label">—</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#fff;text-align:right" id="rs-total">R$60.820 (est.)</span>
+  </div>
+</div>
+
+<!-- EUROS COMPRADOS -->
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">💶 Euros Comprados</div><div class="real-est">Meta €4.500 / R$27.450</div><div class="real-total" id="tot-euros">—</div></div>
+  <div class="real-header-row"><span>Tranche</span><span>€ comprados</span><span>Cotação R$/€</span><span>Total R$</span></div>
+  <div class="real-row"><div class="real-row-label">Tranche 1 (maio)</div><div><input class="real-input" id="e1-eur" type="number" placeholder="2500" oninput="calcEuros()"></div><div><input class="real-input" id="e1-cot" type="number" placeholder="6.10" step="0.01" oninput="calcEuros()"></div><div class="real-diff diff-empty" id="e1-tot">—</div></div>
+  <div class="real-row"><div class="real-row-label">Tranche 2 (junho)</div><div><input class="real-input" id="e2-eur" type="number" placeholder="2000" oninput="calcEuros()"></div><div><input class="real-input" id="e2-cot" type="number" placeholder="6.10" step="0.01" oninput="calcEuros()"></div><div class="real-diff diff-empty" id="e2-tot">—</div></div>
+  <div class="real-row"><div class="real-row-label">Tranche 3 (extra)</div><div><input class="real-input" id="e3-eur" type="number" placeholder="0" oninput="calcEuros()"></div><div><input class="real-input" id="e3-cot" type="number" placeholder="6.10" step="0.01" oninput="calcEuros()"></div><div class="real-diff diff-empty" id="e3-tot">—</div></div>
+</div>
+
+<!-- ALIMENTAÇÃO -->
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">Alimentação</div><div class="real-est">Est. €2.200</div><div class="real-total" id="tot-alim">—</div></div>
+  <div class="real-header-row"><span>Local</span><span>Est. €</span><span>Real €</span><span>Dif.</span></div>
+  <div class="real-row"><div class="real-row-label">🎂 A Padaria · Aniversário Alexandre</div><div class="real-est-val">€100</div><div><input class="real-input alim" id="al1" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al1d">—</div></div>
+  <div class="real-row"><div class="real-row-label">💍 SAL Comporta · Aniversário casamento</div><div class="real-est-val">€120</div><div><input class="real-input alim" id="al2" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al2d">—</div></div>
+  <div class="real-row"><div class="real-row-label">💍 Pousada São Filipe · Jantar aniversário</div><div class="real-est-val">€80</div><div><input class="real-input alim" id="al3" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al3d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bloco 1 — Sesimbra (resto)</div><div class="real-est-val">€280</div><div><input class="real-input alim" id="al4" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al4d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bloco 2 — Porto / Gaia (7 dias)</div><div class="real-est-val">€700</div><div><input class="real-input alim" id="al5" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al5d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bloco 3 — Guimarães / Braga (3 dias)</div><div class="real-est-val">€310</div><div><input class="real-input alim" id="al6" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al6d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bloco 4 — Setúbal (3 dias)</div><div class="real-est-val">€380</div><div><input class="real-input alim" id="al7" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al7d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bloco 5 — Algarve / Alvor (3 dias)</div><div class="real-est-val">€230</div><div><input class="real-input alim" id="al8" type="number" placeholder="0" oninput="calcCat('alim',2200)"></div><div class="real-diff diff-empty" id="al8d">—</div></div>
+</div>
+
+<!-- TRANSPORTE -->
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">Transporte em Portugal</div><div class="real-est">Est. €1.076</div><div class="real-total" id="tot-transp">—</div></div>
+  <div class="real-header-row"><span>Item</span><span>Est. €</span><span>Real €</span><span>Dif.</span></div>
+  <div class="real-row"><div class="real-row-label">Drive on Holidays · saldo retirada</div><div class="real-est-val">€466</div><div><input class="real-input transp" id="tr1" type="number" placeholder="0" oninput="calcCat('transp',1076)"></div><div class="real-diff diff-empty" id="tr1d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Combustível (~3.200 km)</div><div class="real-est-val">€392</div><div><input class="real-input transp" id="tr2" type="number" placeholder="0" oninput="calcCat('transp',1076)"></div><div class="real-diff diff-empty" id="tr2d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Pedágios Via Verde</div><div class="real-est-val">€120</div><div><input class="real-input transp" id="tr3" type="number" placeholder="0" oninput="calcCat('transp',1076)"></div><div class="real-diff diff-empty" id="tr3d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Ferry Setúbal→Tróia RT</div><div class="real-est-val">€38</div><div><input class="real-input transp" id="tr4" type="number" placeholder="0" oninput="calcCat('transp',1076)"></div><div class="real-diff diff-empty" id="tr4d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Estacionamentos</div><div class="real-est-val">€60</div><div><input class="real-input transp" id="tr5" type="number" placeholder="0" oninput="calcCat('transp',1076)"></div><div class="real-diff diff-empty" id="tr5d">—</div></div>
+</div>
+
+<!-- ATRAÇÕES -->
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">Atrações</div><div class="real-est">Est. €222</div><div class="real-total" id="tot-atrac">—</div></div>
+  <div class="real-header-row"><span>Atração</span><span>Est. €</span><span>Real €</span><span>Dif.</span></div>
+  <div class="real-row"><div class="real-row-label">Oceanário Lisboa</div><div class="real-est-val">€48</div><div><input class="real-input atrac" id="at1" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at1d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Serralves</div><div class="real-est-val">€27</div><div><input class="real-input atrac" id="at2" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at2d">—</div></div>
+  <div class="real-row"><div class="real-row-label">WOW Gaia</div><div class="real-est-val">€37</div><div><input class="real-input atrac" id="at3" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at3d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Livraria Lello</div><div class="real-est-val">€16</div><div><input class="real-input atrac" id="at4" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at4d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bom Jesus funicular</div><div class="real-est-val">€6</div><div><input class="real-input atrac" id="at5" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at5d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Bacalhôa tour vinícola</div><div class="real-est-val">€25</div><div><input class="real-input atrac" id="at6" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at6d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Barco Ponta da Piedade</div><div class="real-est-val">€35</div><div><input class="real-input atrac" id="at7" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at7d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Outras</div><div class="real-est-val">€28</div><div><input class="real-input atrac" id="at8" type="number" placeholder="0" oninput="calcCat('atrac',222)"></div><div class="real-diff diff-empty" id="at8d">—</div></div>
+</div>
+
+<!-- EXTRAS -->
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">Extras</div><div class="real-est">Est. €475</div><div class="real-total" id="tot-extra">—</div></div>
+  <div class="real-header-row"><span>Item</span><span>Est. €</span><span>Real €</span><span>Dif.</span></div>
+  <div class="real-row"><div class="real-row-label">Seguro viagem Sara</div><div class="real-est-val">€200</div><div><input class="real-input extra" id="ex1" type="number" placeholder="0" oninput="calcCat('extra',475)"></div><div class="real-diff diff-empty" id="ex1d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Farmácia / saúde / bebê</div><div class="real-est-val">€75</div><div><input class="real-input extra" id="ex2" type="number" placeholder="0" oninput="calcCat('extra',475)"></div><div class="real-diff diff-empty" id="ex2d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Compras / souvenirs</div><div class="real-est-val">€200</div><div><input class="real-input extra" id="ex3" type="number" placeholder="0" oninput="calcCat('extra',475)"></div><div class="real-diff diff-empty" id="ex3d">—</div></div>
+  <div class="real-row"><div class="real-row-label">Outros imprevistos</div><div class="real-est-val">—</div><div><input class="real-input extra" id="ex4" type="number" placeholder="0" oninput="calcCat('extra',475)"></div><div class="real-diff diff-empty" id="ex4d">—</div></div>
+</div>
+
+<div class="real-block">
+  <div class="real-block-head"><div class="real-block-name">📝 Observações gerais</div></div>
+  <div style="padding:12px 13px"><textarea style="width:100%;border:1px solid var(--border);border-radius:3px;padding:7px 9px;font-family:'Jost',sans-serif;font-size:11.5px;color:var(--text);background:var(--cream);resize:vertical;outline:none;line-height:1.6" rows="5" placeholder="Surpresas de custo, o que valeu mais, o que evitar na próxima vez, restaurantes que decepcionaram ou surpreenderam, dicas para quem vier depois..."></textarea></div>
+</div>
+</section>
+
+<script>
+// TAB NAV
+function showTab(id,btn){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggle(el){
+  el.nextElementSibling.classList.toggle('hidden');
+}
+
+// JANTAR TABLE
+var jantares=[
+  {d:1,dt:'29/06 Seg',r:'Na base',v:'—',res:false},
+  {d:2,dt:'30/06 Ter',r:'Ribamar · Sesimbra',v:'€45–60',res:false},
+  {d:3,dt:'01/07 Qua',r:'Marisqueira Modesto · Sesimbra',v:'€40–55',res:false},
+  {d:4,dt:'02/07 Qui',r:'Na base (dia longo Lisboa)',v:'—',res:false},
+  {d:5,dt:'03/07 Sex',r:'🎂 A Padaria · Chef Pedro Gomes',v:'€90–130',res:true},
+  {d:6,dt:'04/07 Sáb',r:'O Batel · Esplanada marginal',v:'€40–55',res:false},
+  {d:7,dt:'05/07 Dom',r:'Mercado Bom Sucesso · Porto',v:'€35–50',res:false},
+  {d:8,dt:'06/07 Seg',r:'Blini · Gaia · Vista Douro',v:'€50–70',res:true},
+  {d:9,dt:'07/07 Ter',r:'Adega São Nicolau · Ribeira',v:'€45–65',res:true},
+  {d:10,dt:'08/07 Qua',r:'Semea by Euskalduna · Porto',v:'€50–70',res:true},
+  {d:11,dt:'09/07 Qui',r:'Vinum · Graham\'s · Gaia',v:'€55–75',res:true},
+  {d:12,dt:'10/07 Sex',r:'Casa de Pasto da Palmeira · Foz',v:'€40–55',res:true},
+  {d:13,dt:'11/07 Sáb',r:'DeCastro Gaia · Chef Castro e Silva',v:'€60–80',res:true},
+  {d:14,dt:'12/07 Dom',r:'Na base · São Torcato',v:'—',res:false},
+  {d:15,dt:'13/07 Seg',r:'Casa Amarela · Guimarães',v:'€40–55',res:true},
+  {d:16,dt:'14/07 Ter',r:'Na base · São Torcato',v:'—',res:false},
+  {d:17,dt:'15/07 Qua',r:'O Xtória · Setúbal',v:'€40–55',res:true},
+  {d:18,dt:'16/07 Qui',r:'💍 Pousada São Filipe · Castelo',v:'€55–80',res:true},
+  {d:19,dt:'17/07 Sex',r:'O Batareo · Setúbal',v:'€40–55',res:false},
+  {d:20,dt:'18/07 Sáb',r:'Village Inn · Alvor',v:'€40–55',res:false},
+  {d:21,dt:'19/07 Dom',r:'A Forja · Lagos',v:'€45–65',res:true},
+  {d:22,dt:'20/07 Seg',r:'🌟 Caniço · Gruta falésia · Alvor',v:'€55–75',res:true},
+  {d:23,dt:'21/07 Ter',r:'Almoço Time Out Market Lisboa',v:'€30–40',res:false}
+];
+var tb=document.getElementById('jantar-table');
+jantares.forEach(function(j){
+  var div=document.createElement('div');
+  div.style.cssText='display:grid;grid-template-columns:44px 1fr auto auto;gap:6px;padding:6px 12px;border-bottom:1px solid var(--border);align-items:center;font-size:11.5px';
+  div.innerHTML='<span style="font-family:\'Cormorant Garamond\',serif;font-size:16px;font-weight:300;color:var(--navy);text-align:center">'+j.d+'</span>'
+    +'<span style="font-weight:300;color:var(--text)">'+j.r+'<br><span style="font-size:10px;color:var(--muted)">'+j.dt+'</span></span>'
+    +'<span style="font-size:11px;color:var(--muted);text-align:right">'+j.v+'</span>'
+    +'<span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;text-align:center;'+(j.res?'background:var(--red-bg);color:var(--red)':'background:var(--green-bg);color:var(--green)')+'">'+( j.res?'RES':'—')+'</span>';
+  tb.appendChild(div);
+});
+
+// CALCULADORA REALIZADO
+var HOSP=21251,VOOS=12119;
+function fmt(v){return'€'+Math.round(v).toLocaleString('pt-BR')}
+function fmtR(v){return'R$'+Math.round(v).toLocaleString('pt-BR')}
+function setDiff(id,real,est){
+  var el=document.getElementById(id);
+  if(!real){el.textContent='—';el.className='real-diff diff-empty';return;}
+  var d=real-est;
+  el.textContent=(d>0?'+':'')+Math.round(d);
+  el.className='real-diff '+(d<=0?'diff-ok':'diff-over');
+}
+function calcEuros(){
+  var totalR=0,totalE=0;
+  for(var i=1;i<=3;i++){
+    var e=parseFloat(document.getElementById('e'+i+'-eur').value)||0;
+    var c=parseFloat(document.getElementById('e'+i+'-cot').value)||0;
+    var t=e*c;
+    var el=document.getElementById('e'+i+'-tot');
+    el.textContent=t>0?fmtR(t):'—';
+    el.className='real-diff '+(t>0?'diff-ok':'diff-empty');
+    totalR+=t;totalE+=e;
+  }
+  document.getElementById('tot-euros').textContent=totalE>0?fmt(totalE)+' / '+fmtR(totalR):'—';
+  document.getElementById('rs-euros').textContent=totalR>0?fmtR(totalR)+(totalE>=4500?' ✅':''):'—';
+  updateTotal();
+}
+function getNum(id){
+  var t=document.getElementById(id).textContent;
+  if(t==='—'||!t)return 0;
+  return parseFloat(t.replace(/[€R$\.\s]/g,'').replace(',','.'))||0;
+}
+var catIds={alim:['al1','al2','al3','al4','al5','al6','al7','al8'],transp:['tr1','tr2','tr3','tr4','tr5'],atrac:['at1','at2','at3','at4','at5','at6','at7','at8'],extra:['ex1','ex2','ex3','ex4']};
+var catEst={alim:[100,120,80,280,700,310,380,230],transp:[466,392,120,38,60],atrac:[48,27,37,16,6,25,35,28],extra:[200,75,200,0]};
+var catMap={alim:'rs-alim',transp:'rs-transp',atrac:'rs-atrac',extra:'rs-extra'};
+function calcCat(cat,est){
+  var ids=catIds[cat],ests=catEst[cat],total=0;
+  ids.forEach(function(id,i){
+    var v=parseFloat(document.getElementById(id).value)||0;
+    setDiff(id+'d',v,ests[i]);
+    total+=v;
+  });
+  document.getElementById('tot-'+cat).textContent=total>0?fmt(total):'—';
+  document.getElementById(catMap[cat]).textContent=total>0?fmt(total):'—';
+  updateTotal();
+}
+function updateTotal(){
+  var eurosR=0;
+  for(var i=1;i<=3;i++){
+    var e=parseFloat(document.getElementById('e'+i+'-eur').value)||0;
+    var c=parseFloat(document.getElementById('e'+i+'-cot').value)||0;
+    eurosR+=e*c;
+  }
+  var totalR=HOSP+VOOS+(eurosR>0?eurosR:27450);
+  var diff=totalR-60820;
+  var el=document.getElementById('rs-total');
+  var dl=document.getElementById('rs-diff-label');
+  el.textContent=fmtR(totalR);
+  if(eurosR>0){
+    dl.textContent=(diff>=0?'+':'')+fmtR(diff)+' vs est.';
+    dl.style.color=diff<=0?'#8FD9A0':'#FFB38A';
+  }else{
+    dl.textContent='(est.)';dl.style.color='rgba(255,255,255,.3)';
+  }
+}
+</script>
+</body>
+</html>
