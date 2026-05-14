@@ -158,6 +158,24 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 .prato-desc{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5}
 .prato-where{font-size:10px;font-weight:600;color:var(--terra);margin-top:3px}
 
+/* ===== ORÇAMENTO ===== */
+.budget-hero{background:var(--navy3);color:#fff;border-radius:4px;padding:15px 17px;margin-bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bt-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:2px}
+.bt-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;line-height:1}
+.bt-sub{font-size:10px;color:rgba(255,255,255,.32);margin-top:2px}
+.bud-block{background:var(--white);border:1px solid var(--border);border-radius:3px;margin-bottom:10px;overflow:hidden}
+.bud-block-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:9px 13px;background:var(--cream2);border-bottom:1px solid var(--border)}
+.bud-block-name{font-size:13px;font-weight:500}
+.bud-block-total{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--navy)}
+.bud-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:7px 13px;border-bottom:1px solid var(--border);font-size:12px;align-items:start}
+.bud-row:last-child{border-bottom:none}
+.bud-cat{font-weight:300;line-height:1.4}
+.bud-range{font-size:10px;color:var(--muted);text-align:right;padding-top:1px}
+.bud-mid{font-weight:500;color:var(--navy);text-align:right;min-width:52px}
+.bud-row.subtotal{background:var(--cream2)}
+.bud-row.subtotal .bud-cat{font-weight:700;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.nota{font-size:10.5px;color:var(--muted);padding:8px 13px;background:var(--cream2);border-top:1px solid var(--border);line-height:1.5}
+.price-note{background:var(--amber-bg);border:1px solid var(--amber);border-radius:3px;padding:9px 12px;font-size:11px;line-height:1.6;color:#5C3D00;margin-bottom:14px}
 
 /* ===== REALIZADO ===== */
 .real-block{background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden}
@@ -217,7 +235,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 <!-- ==================== ROTEIRO ==================== -->
 <section id="roteiro" class="tab-section active">
 <div class="sec-title">Roteiro Dia a Dia</div>
-<div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas · planos B · clique para expandir</div>
+<div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas · planos B · clique para expandir · <strong>V5: alternativas adicionais nos Dias 6, 7, 12, 18</strong></div>
 
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:11px">
   <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--red)"></span>Essencial</span>
@@ -347,15 +365,16 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dright"><div class="dkm">—</div><div class="dkmlabel">Local</div></div>
   </div>
   <div class="dc-body hidden">
-    <div class="pri-row"><span class="priority pri-optional">🟢 Dia livre</span><span style="font-size:11px;color:var(--muted)">Buffer estratégico — não substituir por atividade</span></div>
-    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h30</span>Praia da Califórnia — antes das 09h30 (sábado enche rápido).</div></div>
-    <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Descanso total. Preparar malas para Porto.</div></div>
+    <div class="pri-row"><span class="priority pri-optional">🟢 Dia livre · Decidir no dia</span><span style="font-size:11px;color:var(--muted)">Buffer estratégico OU Lisboa real (alternativa)</span></div>
+    <div class="period"><div class="plabel">Opção A</div><div class="pcontent"><span class="priority pri-optional" style="display:inline-flex;margin-bottom:4px">🟢 Buffer + Praia</span><br><span class="ptime">08h30</span>Praia da Califórnia — antes das 09h30 (sábado enche rápido).<br><span class="ptime">14h–17h</span>Descanso total. Preparar malas para Porto. <strong>Plano preferido</strong> se Nicolas estiver cansado ou viagem estiver intensa.</div></div>
+    <div class="period"><div class="plabel">Opção B</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Lisboa real — só se bebê estiver bem</span><br><span class="ptime">09h00</span>Saída Sesimbra → Lisboa centro. Estacionar Camões/Chiado ou Martim Moniz.<br><span class="ptime">10h00</span><strong>Alfama</strong> a pé partindo do Largo das Portas do Sol — mirante com Tejo aberto. Ladeiras estreitas: mochila portabebê.<br><span class="ptime">11h00</span><strong>Castelo de São Jorge</strong> — esplanada plana com pavões, vista total. Carrinho funciona no jardim. €15 adulto, bebê grátis.<br><span class="ptime">12h30</span><strong>Time Out Market</strong> (Cais do Sodré) — 30+ bancas, AC, cadeira alta. Manteigaria para pastel de nata.<br><span class="ptime">14h–16h</span>Descanso obrigatório (Jardim da Estrela ou retorno).<br><span class="ptime">16h00</span>Retorno Sesimbra. <em>Sábado de julho em Alfama = pico — chegar cedo é mandatório.</em></div></div>
     <div class="jantar-block">
       <div class="jantar-label">🍽 Jantar</div>
       <div class="jantar-name">O Batel · Esplanada com vista</div>
       <div class="jantar-detail">Esplanada na marginal de Sesimbra. Vista para a baía e o castelo iluminado. Petiscos e peixe. Ambiente descontraído. Av. 25 de Abril — beira-mar. ~€40–55 casal. TheFork: 9.5 de nota.</div>
       <div class="jantar-meta"><span class="jm-chip view">Vista baía</span><span class="jm-chip casual">Esplanada</span><span class="jm-chip">Chegar 19h30</span></div>
     </div>
+    <div class="planob"><div class="planob-title">Decisão no dia</div><div class="planob-content">Avaliar manhã: se Nicolas dormiu bem e está bem-disposto → Opção B (Lisboa real). Se acumulou cansaço da semana → Opção A. Não sacrificar bem-estar para tentar a Lisboa real — Belém + Oceanário do Dia 4 já cobrem a vitrine de Lisboa.</div></div>
   </div>
 </div>
 
@@ -369,8 +388,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="dc-body hidden">
     <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h30</span>Check-out. A2→A1 Norte.</div></div>
     <div class="period"><div class="plabel">Parada 1</div><div class="pcontent"><span class="ptime">09h15</span><strong>Área de Serviço Santarém</strong> — 20 min, café + troca Nicolas.</div></div>
-    <div class="period"><div class="plabel">Parada 2</div><div class="pcontent"><span class="ptime">11h30</span><strong>Área de Serviço Pombal</strong> — 25 min, almoço rápido + soneca no carro.</div></div>
-    <div class="period"><div class="plabel">Porto</div><div class="pcontent"><span class="ptime">~13h00</span>Check-in Gaia. Descanso até 16h.</div></div>
+    <div class="period"><div class="plabel">Parada 2 · Opção A</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Coimbra · almoço com pausa real</span><br><span class="ptime">11h00</span><strong>Coimbra centro</strong> — saída da A1, ~1h30–2h de parada. Estacionar Parque Camões ou Mercado D. Pedro V (€1,20/h). Almoço no <strong>Zé Manel dos Ossos</strong> (clássico estudantil) ou <strong>Solar do Bacalhau</strong> (formal, cadeira alta). Banheiro, troca de fralda, esticar pernas. Evitar entrar de carro no centro histórico (ladeiras estreitas).</div></div>
+    <div class="period"><div class="plabel">Parada 2 · Opção B</div><div class="pcontent"><span class="priority pri-optional" style="display:inline-flex;margin-bottom:4px">🟢 Pombal · parada técnica curta</span><br><span class="ptime">11h30</span><strong>Área de Serviço Pombal A1</strong> — 25 min, almoço rápido + soneca no carro. <em>Usar se Nicolas não suportar parada mais longa em Coimbra.</em></div></div>
+    <div class="period"><div class="plabel">Porto</div><div class="pcontent"><span class="ptime">~14h–15h</span>Check-in Gaia. Descanso até 16h30.</div></div>
     <div class="jantar-block">
       <div class="jantar-label">🍽 Jantar</div>
       <div class="jantar-name">Mercado Bom Sucesso · Porto</div>
@@ -479,13 +499,14 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="dc-body hidden">
     <div class="period"><div class="plabel">Opção A</div><div class="pcontent"><span class="priority pri-essential" style="display:inline-flex;margin-bottom:4px">🔴 Piscinas de Leça</span><br><strong>Piscinas de Maré de Leça da Palmeira</strong> — obra de Álvaro Siza Vieira (1966). Piscinas naturais oceânicas integradas nas rochas, entrada gratuita, zona rasa perfeita para Nicolas. ~15 min de Gaia. Chegar às 08h30. Almoço em Matosinhos (frutos do mar, referência nacional). Waze: "Piscinas de Maré de Leça da Palmeira".</div></div>
     <div class="period"><div class="plabel">Opção B</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Aveiro</span><br>Saída 08h → Moliceiro (€13/adulto, 35 min pelos canais) → Costa Nova (fachadas listradas) → retorno 13h. Soneca de carro.</div></div>
+    <div class="period"><div class="plabel">Opção C</div><div class="pcontent"><span class="priority pri-optional" style="display:inline-flex;margin-bottom:4px">🟢 Trem Panorâmico do Douro — só se bebê estiver bem</span><br><span class="ptime">08h30</span><strong>Linha do Douro</strong> — sair da Estação Campanhã (Porto) com destino <strong>Pinhão</strong>. ~2h15–2h30 de trajeto. O trecho cênico real começa após a Régua, com terraços vinhateiros da Região Demarcada (UNESCO) descendo ao rio. Lado direito do trem (sentido Pinhão) tem a vista. ~€14/adulto, &lt;3 anos grátis. Reservar em <strong>cp.pt</strong>.<br><span class="ptime">~11h00</span>Chegada Pinhão. Estação de azulejos icônica. Almoço no <strong>DOC Restaurant</strong> (chef Rui Paula, à beira do rio) ou <strong>Veladouro</strong>. Ambos com cadeira alta.<br><span class="ptime">14h30</span>Trem de retorno Pinhão→Campanhã. Chegada ~17h. <em>Dia longo — só executar se ciclos de sono de Nicolas estiverem firmes.</em></div></div>
     <div class="jantar-block">
       <div class="jantar-label">🍽 Jantar</div>
       <div class="jantar-name">Casa de Pasto da Palmeira · Foz do Douro</div>
       <div class="jantar-detail">Tasca moderna muito bem avaliada na Foz. Petiscos criativos, ambiente descontraído, sem pretensão. R. do Padrão, Foz. ~€40–55 casal.</div>
       <div class="jantar-meta"><span class="jm-chip casual">Tasca moderna</span><span class="jm-chip res">Reservar</span><span class="jm-chip">Foz do Douro</span></div>
     </div>
-    <div class="sleep-bar">🌙 Se Aveiro: soneca no carro volta ~10h45. Se Leça: soneca após almoço Matosinhos ~13h30.</div>
+    <div class="sleep-bar">🌙 Se Aveiro: soneca no carro volta ~10h45. Se Leça: soneca após almoço Matosinhos ~13h30. Se Douro: soneca no trem ida ~10h e volta ~15h30.</div>
   </div>
 </div>
 
@@ -614,10 +635,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dright"><div class="dkm">~120 km</div><div class="dkmlabel">Ferry+Comporta</div></div>
   </div>
   <div class="dc-body hidden">
-    <div class="special-notice sn-anniversary"><div class="sn-title">💍 Celebração do Casamento · 16/07</div>O dia mais especial da viagem. Bacalhôa → Ferry pelo Estuário do Sado (golfinhos) → SAL Comporta → Carrasqueira → pôr do sol no Castelo São Filipe.</div>
-    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Bacalhôa Winery</strong> (~15 km, Azeitão) <span class="ptag anniversary">CASAMENTO</span> — Tour vinícola + jardins renascentistas do séc. XVI. ~1h30. Reservar. bacalhoa.com</div></div>
-    <div class="period"><div class="plabel">Ferry</div><div class="pcontent"><span class="ptime">11h30</span><strong>Ferry Setúbal→Tróia com carro</strong> <span class="ptag ferry">FERRY</span> — Atlantic Ferries. ~25 min. Golfinhos roazes do Sado frequentes. Bebê reage bem ao barco. ~€21 carro (ida). Tel: +351 265 235 101</div></div>
-    <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">13h00</span>Tróia→Carvalhal (~30 km).<br><strong>Restaurante SAL · Praia do Carvalhal, Comporta</strong> <span class="ptag res">RESERVA ESSENCIAL</span><br>Peixe fresco com pés na areia e oceano à frente. 12h30–17h (qui–seg). Tel: +351 265 490 129</div></div>
+    <div class="special-notice sn-anniversary"><div class="sn-title">💍 Celebração do Casamento · 16/07</div>O dia mais especial da viagem. Bacalhôa → Ferry pelo Estuário do Sado (golfinhos) → SAL Comporta ou JNcQUOI (alternativa) → Carrasqueira → pôr do sol no Castelo São Filipe.</div>
+    <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span><strong>Palácio da Bacalhôa</strong> (Azeitão, ~25 min de Setúbal) <span class="ptag anniversary">CASAMENTO</span> — Visita guiada às 10h00 + prova de 4 vinhos com queijo de Azeitão e frutos secos. €6/pax. Chegar 9h50 para validação. Reservar antecipadamente. <em>Atenção: este é o Palácio em Azeitão — não confundir com Bacalhôa Buddha Eden, que fica em Bombarral (norte de Lisboa).</em> bacalhoa.pt / portugalvineyards.com</div></div>
+    <div class="period"><div class="plabel">Ferry</div><div class="pcontent"><span class="ptime">11h30</span><strong>Ferry Setúbal→Tróia com carro</strong> <span class="ptag ferry">FERRY</span> — Atlantic Ferries, Terminal Av. Jaime Rebelo (Doca do Comércio). ~25 min de travessia. Frequência ~30 min em alta temporada. Golfinhos roazes do Sado frequentes. ~€21 carro, Nicolas grátis (&lt;5 anos). <strong>Sem reserva antecipada</strong> — chegar 30 min antes em julho. Tel: +351 265 235 101</div></div>
+    <div class="period"><div class="plabel">Almoço · Plano A</div><div class="pcontent"><span class="ptime">12h45</span>Tróia→Carvalhal (~25 min N253-1).<br><strong>Restaurante SAL · Praia do Carvalhal, Comporta</strong> <span class="ptag res">WALK-IN</span><br>Peixe fresco com pés na areia e oceano à frente. <strong>Não aceita reserva em alta temporada.</strong> Estratégia: chegar 12h45–13h00, 30–45 min antes da abertura às 13h30, para fila e tentativa de mesa interna. Sem garantia. Tel para confirmar política: +351 265 490 129</div></div>
+    <div class="period"><div class="plabel">Almoço · Plano A alternativo</div><div class="pcontent"><span class="ptime">13h30</span><strong>JNcQUOI Beach Club · Praia do Pego</strong> <span class="ptag res">RESERVA PREVENTIVA</span><br>~5 min de carro do SAL. Mesmo segmento beach club premium, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Atmosfera romântica reconhecida. Reservar com mesa interna e cadeira alta — cancelável se SAL der certo. <em>Estratégia: tentar SAL primeiro; se fila &gt;30 min ou Nicolas irritado, deslocar para JNcQUOI já confirmado.</em><br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · book@jncquoibeachclub.com</div></div>
     <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">15h30</span><strong>Comporta village</strong> — ruas brancas, arroz, design.<br><span class="ptime">17h00</span><strong>Cais Palafítico da Carrasqueira</strong> — palafitas sobre o Sado, pôr do sol.</div></div>
     <div class="jantar-block" style="background:linear-gradient(135deg,#3A1A5A 0%,#1A0A30 100%)">
       <div class="jantar-label" style="color:#D4A8FF">💍 Jantar de Aniversário</div>
@@ -625,7 +647,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
       <div class="jantar-detail" style="color:rgba(255,255,255,.65)">Jantar na Pousada instalada no Castelo de São Filipe (séc. XVI), com terraço sobre o estuário do Sado e o pôr do sol por volta das 21h. Um dos jantares mais especiais de Portugal. ~€55–80 casal. Reservar com semanas de antecedência.</div>
       <div class="jantar-meta"><span class="jm-chip special">Aniversário casamento</span><span class="jm-chip res">Reservar</span><span class="jm-chip view">Vista estuário Sado</span></div>
     </div>
-    <div class="alert special"><span>💍</span> SAL abre quinta ✅. Reservar por telefone — não aceita e-mail. Bacalhôa: confirmar quinta. Ferry com carro: confirmar horário ~11h30.</div>
+    <div class="alert special"><span>💍</span> Estratégia operacional: SAL walk-in como plano A · JNcQUOI Beach Club com reserva preventiva 13h30 como alternativa garantida · Bacalhôa = Palácio em Azeitão (não Buddha Eden) · Ferry sem reserva antecipada — chegar 30 min antes.</div>
   </div>
 </div>
 
@@ -1502,11 +1524,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
-      <div style="font-size:13px;font-weight:500">💍 Restaurante SAL · Comporta · Almoço aniversário casamento</div>
+      <div style="font-size:13px;font-weight:500">💍 Restaurante SAL · Comporta · Almoço aniversário (WALK-IN)</div>
+      <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">SEM RESERVA</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · Chegar 12h45 · Praia do Carvalhal · Tel confirmação política: +351 265 490 129</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5"><strong>Não aceita reserva em alta temporada.</strong> Estratégia walk-in: chegar 30–45 min antes da abertura (13h30), pedir mesa interna e cadeira alta. Sem garantia. <strong>Combinar com reserva preventiva no JNcQUOI Beach Club abaixo</strong> como plano de queda.</div>
+  </div>
+  <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
+      <div style="font-size:13px;font-weight:500">💍 JNcQUOI Beach Club · Praia do Pego · Alternativa ao SAL</div>
       <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 13h00 · Praia do Carvalhal · Tel: +351 265 490 129</div>
-    <div style="font-size:11px;color:var(--text);line-height:1.5">Não aceita e-mail — só telefone. Confirmar abertura quinta em julho. Confirmar acesso bebê e cadeira alta. Esgota com 6+ semanas de antecedência.</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 13h30 · ~5 min do SAL · Reserva preventiva cancelável</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Mesmo segmento beach club premium do SAL, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Pedir mesa interna e cadeira alta. Mencionar possibilidade de cancelamento se SAL der certo. <br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · book@jncquoibeachclub.com</div>
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
@@ -1540,9 +1570,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div style="font-size:11px;color:var(--text)">Comprar online garante entrada e evita fila. Julho tem controle de fluxo.</div>
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
-    <div style="font-size:13px;font-weight:500;margin-bottom:3px">💍 Bacalhôa Winery — Tour vinícola</div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">16/07 (Qui) · 09h30 · Azeitão · bacalhoa.com</div>
-    <div style="font-size:11px;color:var(--text)">Confirmar: tour quinta-feira · carrinho acessível · jardins renascentistas.</div>
+    <div style="font-size:13px;font-weight:500;margin-bottom:3px">💍 Palácio da Bacalhôa · Azeitão (não confundir com Buddha Eden)</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px">16/07 (Qui) · 10h00 · Visita guiada + prova 4 vinhos · €6/pax · São Simão, Azeitão</div>
+    <div style="font-size:11px;color:var(--text)"><strong>Atenção:</strong> Buddha Eden fica em Bombarral (norte de Lisboa) — não é este. O correto é Palácio em Azeitão. Chegar 9h50 para validação do voucher. Inclui prova com queijo de Azeitão e frutos secos. portugalvineyards.com ou bacalhoa.pt/pt/enoturismo</div>
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:10px 13px">
     <div style="font-size:13px;font-weight:500;margin-bottom:3px">Vinum Restaurant · Graham's · Gaia</div>
@@ -1608,9 +1638,12 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div style="font-size:12px;line-height:1.7;color:var(--text);font-weight:300">
     <strong>Empresa:</strong> Atlantic Ferries · atlanticferries.pt · +351 265 235 101<br>
     <strong>Terminal Setúbal:</strong> Av. Jaime Rebelo (Doca do Comércio)<br>
-    <strong>Horário verão:</strong> Saídas a cada hora, 07h30–22h00<br>
-    <strong>Duração:</strong> ~25 min (ferry com carro)<br>
+    <strong>Terminal Tróia:</strong> Cais Sul (junto a Soltróia)<br>
+    <strong>Frequência alta temporada:</strong> Car ferry + catamarã efetivamente a cada 30 min · Operação 24h em julho<br>
+    <strong>Primeira / última partida:</strong> 06h20 (Setúbal) · 04h30 (Tróia última volta)<br>
+    <strong>Duração:</strong> Car ferry ~25 min · Catamarã passageiro ~15 min<br>
     <strong>Preços:</strong> Carro ~€21 ida · Passageiro €4,90 · Bebê &lt;5 anos: gratuito<br>
+    <strong>Reserva:</strong> <em>Não aceita reserva antecipada.</em> Compra nas bilheteiras dos terminais (dinheiro ou cartão · Via Verde aceito). Em julho chegar 30 min antes do embarque desejado.<br>
     <strong>Extra:</strong> Golfinhos roazes do Sado — avistamento frequente na travessia
   </div>
 </div>
