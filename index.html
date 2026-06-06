@@ -202,39 +202,324 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 .rs-real{font-weight:600;text-align:right;min-width:72px}
 .real-note-input{width:100%;border:1px solid var(--border);border-radius:3px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--text);background:var(--cream);resize:none;outline:none}
 .real-note-input:focus{border-color:var(--navy2);background:#fff}
+
+/* ============================================================
+   REDESIGN v2 — sistema visual refinado (sobrescreve o acima)
+   ============================================================ */
+:root{
+  --cream:#F4EEE1;--cream2:#EDE5D5;--cream3:#E3D7C4;
+  --white:#FFFEFB;
+  --border:#E7DDCD;            /* hairlines mais suaves */
+  --text:#1C140D;--muted:#86715F;
+  --navy:#1B3252;--navy2:#345C86;--navy3:#11233B;
+  --terra:#BB5A28;--terra2:#DC8460;--terra3:#8A3A16;
+  --green:#2C6638;--green-bg:#E8F2EA;
+  --red:#A22A2A;--red-bg:#FBEBE6;
+  --amber:#A9701B;--amber-bg:#FBF1DF;
+  --info-bg:#E9F0F8;--purple:#6B3A8B;
+  --shadow-sm:0 1px 2px rgba(28,20,13,.05),0 3px 10px rgba(27,50,82,.05);
+  --shadow-md:0 2px 6px rgba(28,20,13,.06),0 14px 36px rgba(27,50,82,.09);
+  --rad:16px;--rad-sm:11px;
+}
+body{font-size:15px;-webkit-font-smoothing:antialiased}
+
+/* ---------- HEADER ---------- */
+.site-header{background:linear-gradient(165deg,#16294380 0%,var(--navy3) 60%),var(--navy3);padding:26px 18px 16px;border-bottom:none}
+.site-header::after{width:240px;height:240px;top:-60px;right:-50px;background:radial-gradient(circle,rgba(187,90,40,.22) 0%,transparent 70%)}
+.hdr-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px;position:relative;z-index:1}
+.eyebrow{font-size:10px;letter-spacing:3px;color:var(--terra2);margin:0}
+.hdr-dates{font-size:10.5px;letter-spacing:1.5px;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase}
+.main-title{font-size:42px;letter-spacing:-.5px;position:relative;z-index:1}
+.header-meta{margin-top:11px;gap:7px 16px;position:relative;z-index:1}
+.hm{font-size:11.5px;color:rgba(255,255,255,.52)}
+.hm strong{color:rgba(255,255,255,.9);font-weight:600}
+
+/* ---------- DATE BANNER (dentro do header) ---------- */
+.date-banner{background:none;border:none;padding:14px 0 2px;margin-top:14px;gap:8px;border-top:1px solid rgba(255,255,255,.1);position:relative;z-index:1}
+.date-chip{padding:6px 12px;border-radius:11px;font-size:11px;letter-spacing:.2px;line-height:1.3}
+.chip-birthday{background:rgba(187,90,40,.18);color:#F4B493;border:1px solid rgba(187,90,40,.32)}
+.chip-anniversary{background:rgba(122,58,139,.2);color:#D9AEF5;border:1px solid rgba(122,58,139,.34)}
+
+/* ---------- SECTIONS ---------- */
+.tab-section{padding:24px 16px 124px;max-width:768px}
+.sec-title{font-size:31px;margin-bottom:5px;letter-spacing:-.3px}
+.sec-sub{font-size:13px;margin-bottom:22px;line-height:1.55;font-weight:400}
+
+/* ---------- BLOCK HEADERS ---------- */
+.block-hd{margin:36px 0 14px;gap:11px}
+.badge{padding:4px 10px;border-radius:7px;font-size:9px;letter-spacing:1.4px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.block-name{font-size:22px;font-weight:600}
+.block-period{font-size:11px}
+
+/* ---------- DAY CARDS ---------- */
+.day-card{border-radius:var(--rad);border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:12px;transition:box-shadow .2s}
+.day-card:has(.dc-body:not(.hidden)){box-shadow:var(--shadow-md)}
+.day-card.special-birthday{border-color:var(--terra);border-width:1px;box-shadow:0 2px 16px rgba(187,90,40,.18)}
+.day-card.special-anniversary{border-color:var(--anniversary);border-width:1px;box-shadow:0 2px 16px rgba(122,58,139,.18)}
+.dc-head{grid-template-columns:46px 1fr auto 16px;padding:14px 16px;gap:13px}
+.dc-head::after{content:'';justify-self:end;align-self:center;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-2px) rotate(45deg);transition:transform .25s ease}
+.day-card:has(.dc-body:not(.hidden)) .dc-head::after{transform:translateY(2px) rotate(-135deg)}
+.dnum{font-size:30px}
+.dinfo .ddate{font-size:14px;font-weight:600}
+.dinfo .dsub{font-size:12px;margin-top:2px}
+.dkm{font-size:12px}.dkmlabel{font-size:9.5px}
+.dc-body{padding:8px 16px 18px;gap:15px}
+
+/* ---------- PERIODS (timeline-feel) ---------- */
+.period{grid-template-columns:58px 1fr;gap:13px;align-items:start}
+.plabel{font-size:9.5px;letter-spacing:1.4px;color:var(--terra);font-weight:700;padding-top:3px}
+.pcontent{font-size:14px;line-height:1.62}
+.ptime{display:inline-block;font-size:11px;font-weight:700;color:var(--navy2);background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:1px 7px;margin:0 5px 3px 0;line-height:1.5}
+.pri-row{gap:9px;margin-bottom:6px}
+.priority{padding:3px 9px;border-radius:11px;font-size:9px;letter-spacing:.6px}
+
+/* ---------- JANTAR ---------- */
+.jantar-block{border-radius:var(--rad-sm);padding:13px 15px;box-shadow:0 4px 16px rgba(17,35,59,.18)}
+.jantar-label{font-size:9px;letter-spacing:2px;margin-bottom:6px}
+.jantar-name{font-size:15px;font-weight:600;margin-bottom:3px}
+.jantar-detail{font-size:12px;line-height:1.55}
+.jantar-meta{gap:6px;margin-top:8px}
+.jm-chip{font-size:10px;padding:3px 9px;border-radius:11px}
+
+/* ---------- ALERTS / SLEEP / PLANO B / SPECIAL ---------- */
+.alert{padding:11px 13px;border-radius:var(--rad-sm);font-size:13px;line-height:1.5;gap:10px}
+.alert.warn,.alert.critical,.alert.info,.alert.ok{border-left-width:4px}
+.sleep-bar{padding:9px 13px;border-radius:var(--rad-sm);font-size:12.5px;gap:8px}
+.planob{padding:12px 14px;border-radius:var(--rad-sm);gap:5px;border-left-width:4px}
+.planob-title{font-size:9.5px;letter-spacing:1.4px}
+.planob-content{font-size:12.5px;line-height:1.55}
+.special-notice{border-radius:var(--rad-sm);padding:14px 16px;font-size:13px;line-height:1.6;border-left:5px solid}
+.sn-birthday{border-color:var(--terra)}
+.sn-anniversary{border-color:var(--purple)}
+.sn-title{font-size:19px;margin-bottom:5px}
+.tag-weekend{font-size:8px;padding:2px 6px;border-radius:5px}
+.special-label{font-size:8.5px;padding:2px 7px;border-radius:11px}
+
+/* ---------- SUPERMERCADOS ---------- */
+.super-card{border-radius:var(--rad);box-shadow:var(--shadow-sm);border-color:var(--border)}
+.super-head{padding:13px 15px}
+.super-icon{width:38px;height:38px;font-size:16px}
+.super-head-name{font-size:15px}
+.super-head-badge{font-size:9px;padding:3px 8px;border-radius:6px}
+.super-body{padding:13px 15px;gap:8px}
+.super-row{grid-template-columns:78px 1fr;font-size:13px}
+.sr-label{font-size:9px;letter-spacing:1.2px}
+.super-tip{padding:11px 15px;font-size:12px}
+.waze-btn{padding:6px 13px;border-radius:8px;font-size:11px}
+
+/* ---------- GASTRONOMIA ---------- */
+.gastro-intro{border-radius:var(--rad);padding:16px 18px;font-size:13px;line-height:1.75}
+.prato-card{border-radius:var(--rad);box-shadow:var(--shadow-sm);border-color:var(--border);padding:14px 16px;gap:13px}
+.prato-num{font-size:26px}
+.prato-name{font-size:15px}
+.prato-desc{font-size:12.5px;line-height:1.55}
+.prato-where{font-size:11px;margin-top:5px}
+
+/* ---------- ORÇAMENTO ---------- */
+.budget-hero{border-radius:var(--rad);padding:18px 20px;gap:16px}
+.bt-value{font-size:32px}
+.bt-label{font-size:9.5px}
+.bud-block{border-radius:var(--rad);box-shadow:var(--shadow-sm);border-color:var(--border)}
+.bud-block-head{padding:12px 15px}
+.bud-block-name{font-size:15px}
+.bud-block-total{font-size:21px}
+.bud-row{padding:9px 15px;font-size:13px}
+.price-note{border-radius:var(--rad-sm);padding:11px 14px;font-size:12px}
+.nota{padding:11px 15px;font-size:11.5px}
+
+/* ---------- REALIZADO ---------- */
+.real-block{border-radius:var(--rad);box-shadow:var(--shadow-sm);border-color:var(--border)}
+.real-block-head{padding:12px 15px}
+.real-block-name{font-size:13px}
+.real-total{font-size:18px}
+.real-row{padding:9px 13px;font-size:12.5px}
+.real-input{padding:8px 8px;font-size:14px;border-radius:8px}
+.real-summary{border-radius:var(--rad);padding:18px}
+
+/* ============================================================
+   NAV INFERIOR (app-style) + PAINEL "MAIS"
+   ============================================================ */
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:200;display:grid;grid-template-columns:repeat(5,1fr);
+  background:rgba(17,35,59,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.08);padding:7px 4px calc(7px + env(safe-area-inset-bottom));
+  box-shadow:0 -8px 28px rgba(0,0,0,.2)}
+.bn-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.48);padding:5px 2px;font-family:'Jost',sans-serif;min-height:50px;transition:color .18s,transform .1s}
+.bn-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bn-btn span{font-size:9.5px;font-weight:600;letter-spacing:.4px}
+.bn-btn.active{color:var(--terra2)}
+.bn-btn:active{transform:scale(.92)}
+.bn-dots circle{fill:currentColor;stroke:none}
+
+.sheet-backdrop{position:fixed;inset:0;background:rgba(17,35,59,.5);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:210}
+.sheet-backdrop.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:220;background:var(--white);border-radius:24px 24px 0 0;
+  padding:8px 14px calc(18px + env(safe-area-inset-bottom));transform:translateY(115%);
+  transition:transform .32s cubic-bezier(.32,.72,0,1);box-shadow:0 -12px 44px rgba(0,0,0,.28);max-width:560px;margin:0 auto}
+.sheet.open{transform:translateY(0)}
+.sheet-grab{width:42px;height:4px;border-radius:4px;background:var(--border);margin:6px auto 14px}
+.sheet-title{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--navy);margin:0 6px 10px;font-weight:500}
+.sheet-item{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:none;border:none;border-radius:13px;
+  padding:13px 12px;font-family:'Jost',sans-serif;font-size:15px;font-weight:500;color:var(--text);cursor:pointer;transition:background .15s}
+.sheet-item:hover{background:var(--cream2)}
+.sheet-item.active{background:var(--cream2);color:var(--terra3)}
+.sheet-item .si-ic{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--cream2);flex-shrink:0}
+.sheet-item small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:1px}
+.sheet-item.danger{color:var(--red)}
+.sheet-item.danger .si-ic{background:var(--red-bg)}
+
+/* ============================================================
+   EXPERIÊNCIA "JORNADA" — Home/Mapa · Régua · Dia em tela cheia
+   ============================================================ */
+.mapa-view{max-width:880px;margin:0 auto;padding:18px 16px 124px}
+
+/* Hero */
+.trip-hero{margin:6px 2px 18px}
+.th-eyebrow{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.th-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--navy);line-height:1;letter-spacing:-.5px}
+.th-title em{font-style:italic;color:var(--terra)}
+.th-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;align-items:center}
+.th-chip{display:inline-flex;align-items:baseline;gap:6px;font-size:12px;color:var(--muted)}
+.th-chip b{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--navy);line-height:1}
+.th-count{margin-left:auto;display:inline-flex;align-items:baseline;gap:7px;background:var(--navy3);color:#fff;border-radius:999px;padding:7px 15px}
+.th-count b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--terra2);line-height:1}
+.th-count span{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+/* Section label */
+.jx-label{display:flex;align-items:center;gap:10px;margin:8px 2px 12px;font-size:10px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted)}
+.jx-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ---------- MAPA ---------- */
+.map-stage{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch}
+@media(max-width:680px){.map-stage{grid-template-columns:1fr}}
+.map-panel{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-md);
+  background:linear-gradient(105deg,#D9E3EC 0%,#DFE7EE 16%,#EFE8DA 27%,var(--cream) 60%,#EFE7D8 100%);
+  height:clamp(400px,58vh,620px)}
+.map-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.map-ocean-label{position:absolute;left:9px;top:34%;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#7E96AB;font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.8}
+.map-compass{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--navy2);letter-spacing:.5px}
+.map-compass::before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);border:4px solid transparent;border-bottom-color:var(--terra)}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:0;background:none;border:none;cursor:pointer;z-index:3;padding:0}
+.pin-dot{width:30px;height:30px;border-radius:50% 50% 50% 2px;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 9px rgba(17,35,59,.32);border:2px solid #fff;transition:transform .2s,box-shadow .2s}
+.pin-dot b{transform:rotate(-45deg);color:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1}
+.pin-label{margin-top:7px;background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:7px;padding:2px 7px;font-size:10.5px;font-weight:600;color:var(--navy);white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.08);transition:opacity .2s;opacity:0;pointer-events:none}
+.pin:hover .pin-label,.pin.sel .pin-label{opacity:1}
+.pin.sel{z-index:6}
+.pin:hover .pin-dot,.pin.sel .pin-dot{transform:rotate(45deg) scale(1.16)}
+.pin.sel .pin-dot{box-shadow:0 0 0 5px rgba(255,255,255,.55),0 4px 12px rgba(17,35,59,.4)}
+.pin.dim{opacity:.5}
+
+/* Base info card (right of map / below on mobile) */
+.base-card{border-radius:20px;border:1px solid var(--border);box-shadow:var(--shadow-sm);background:var(--white);padding:18px;display:flex;flex-direction:column}
+.bc-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.bc-name{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:500;color:var(--navy);line-height:1.05;margin:5px 0 2px}
+.bc-dates{font-size:12.5px;color:var(--muted)}
+.bc-stats{display:flex;gap:18px;margin:15px 0;padding:13px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.bc-stat .v{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);line-height:1}
+.bc-stat .l{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.bc-line{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:auto}
+.bc-line strong{color:var(--terra3)}
+.bc-go{margin-top:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--navy3);color:#fff;border:none;border-radius:12px;padding:13px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:.3px;cursor:pointer;transition:background .15s}
+.bc-go:hover{background:var(--navy)}
+.bc-go .arrow{transition:transform .18s}
+.bc-go:hover .arrow{transform:translateX(3px)}
+
+/* ---------- RÉGUA / TIMELINE ---------- */
+.ribbon-wrap{margin-top:26px}
+.ribbon{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 2px 12px;scrollbar-width:thin}
+.ribbon::-webkit-scrollbar{height:6px}
+.ribbon::-webkit-scrollbar-thumb{background:var(--border);border-radius:6px}
+.rb-group{display:flex;flex-direction:column;flex-shrink:0;padding-right:14px;margin-right:14px;border-right:1px dashed var(--border)}
+.rb-group:last-child{border-right:none;margin-right:0}
+.rb-group-hd{display:flex;align-items:center;gap:6px;margin:0 2px 8px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy)}
+.rb-group-hd .swatch{width:9px;height:9px;border-radius:3px}
+.rb-days{display:flex;gap:8px}
+.day-chip{scroll-snap-align:start;flex-shrink:0;width:104px;text-align:left;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--bloco,#999);border-radius:12px;padding:10px 11px;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow-sm);position:relative}
+.day-chip:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.dch-top{display:flex;align-items:baseline;justify-content:space-between}
+.dch-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--navy);line-height:1}
+.dch-dow{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.dch-date{font-size:10.5px;font-weight:600;color:var(--terra3);margin-top:5px}
+.dch-sub{font-size:10.5px;color:var(--muted);line-height:1.35;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dch-star{position:absolute;top:8px;right:9px;font-size:11px}
+.day-chip.dim{opacity:.45}
+
+/* ---------- DIA EM TELA CHEIA ---------- */
+.day-ov{position:fixed;inset:0;z-index:300;background:var(--cream);transform:translateY(100%);transition:transform .34s cubic-bezier(.32,.72,0,1);
+  display:flex;flex-direction:column;visibility:hidden}
+.day-ov.open{transform:translateY(0);visibility:visible}
+.day-ov-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.day-ov-hero{position:relative;padding:22px 20px 26px;color:#fff;background:linear-gradient(150deg,var(--bloco,#1B3252),#11233B)}
+.day-ov-hero.bd-birthday{background:linear-gradient(150deg,#7A2E0E,#3A1200)}
+.day-ov-hero.bd-anniversary{background:linear-gradient(150deg,#4A2160,#23103A)}
+.dov-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.dov-base{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra2)}
+.dov-numrow{display:flex;align-items:flex-end;gap:14px;margin-top:8px}
+.dov-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;line-height:.82}
+.dov-numlabel{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:7px}
+.dov-date{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;margin-bottom:3px}
+.dov-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.dov-mchip{font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:999px;background:rgba(255,255,255,.13);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.16)}
+.dov-mchip.special{background:rgba(255,255,255,.92);color:var(--terra3)}
+.day-ov-body{padding:20px 18px 30px;max-width:720px;margin:0 auto;width:100%;display:grid;gap:15px}
+.day-ov-nav{display:flex;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--white);border-top:1px solid var(--border);box-shadow:0 -6px 20px rgba(0,0,0,.06)}
+.dov-arrow{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--cream2);border:1px solid var(--border);border-radius:12px;padding:13px;font-family:'Jost',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);cursor:pointer;min-height:48px;transition:background .15s}
+.dov-arrow:hover:not(:disabled){background:var(--cream3)}
+.dov-arrow:disabled{opacity:.32;cursor:default}
+.dov-counter{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);white-space:nowrap;text-align:center;min-width:78px}
+.dov-counter b{display:block;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--navy);font-weight:500}
+.day-ov-body .period:first-child,.day-ov-body .pri-row:first-child{margin-top:0}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="eyebrow">Plano Operacional · Versão Final</div>
+  <div class="hdr-top">
+    <div class="eyebrow">Plano Operacional · V5</div>
+    <div class="hdr-dates">29 Jun – 21 Jul · 23 dias</div>
+  </div>
   <div class="main-title">Portugal <em>2026</em></div>
   <div class="header-meta">
-    <div class="hm"><strong>29 Jun – 21 Jul 2026</strong> · 23 dias</div>
     <div class="hm"><strong>Alexandre, Sara + Nicolas</strong> ~10 meses</div>
-    <div class="hm"><strong>5 bases · Carro · Cidadania PT</strong></div>
+    <div class="hm"><strong>5 bases</strong> · Carro · Cidadania PT</div>
+  </div>
+  <div class="date-banner">
+    <div class="date-chip chip-birthday">🎂 Aniversário Alexandre · 03/07 · Sesimbra</div>
+    <div class="date-chip chip-anniversary">💍 Casamento 15·16/07 · Comporta + SAL</div>
   </div>
 </header>
 
-<div class="date-banner">
-  <div class="date-chip chip-birthday">🎂 Aniversário Alexandre · 03/07 · Dia 5 · Sesimbra</div>
-  <div class="date-chip chip-anniversary">💍 Casamento 15/07 · Celebração 16/07 · Ferry + Comporta + SAL</div>
-</div>
+<!-- ==================== MAPA / HOME ==================== -->
+<section id="mapa" class="tab-section active">
+  <div class="mapa-view">
+    <div class="trip-hero">
+      <div class="th-eyebrow">Plano da Viagem · V5</div>
+      <div class="th-title">A Jornada por <em>Portugal</em></div>
+      <div class="th-meta">
+        <span class="th-chip"><b>23</b>&nbsp;dias</span>
+        <span class="th-chip"><b>5</b>&nbsp;bases</span>
+        <span class="th-chip"><b>~1.900</b>&nbsp;km</span>
+        <span class="th-count" id="th-count"><b>—</b><span>p/ embarcar</span></span>
+      </div>
+    </div>
+    <div class="jx-label">Mapa da rota · toque numa base</div>
+    <div class="map-stage">
+      <div class="map-panel" id="map-panel">
+        <div class="map-ocean-label">Atlântico</div>
+        <div class="map-compass">N</div>
+      </div>
+      <div class="base-card" id="base-card"></div>
+    </div>
+    <div class="ribbon-wrap">
+      <div class="jx-label">Os 23 dias · toque para abrir</div>
+      <div class="ribbon" id="ribbon"></div>
+    </div>
+  </div>
+</section>
 
-<nav class="tab-nav">
-  <button class="tab-btn active" onclick="showTab('roteiro',this)">Roteiro</button>
-  <button class="tab-btn" onclick="showTab('atracoes',this)">Atrações</button>
-  <button class="tab-btn" onclick="showTab('gastronomia',this)">Gastronomia</button>
-  <button class="tab-btn" onclick="showTab('supermercados',this)">Supermercados</button>
-  <button class="tab-btn" onclick="showTab('reservas',this)">Reservas</button>
-  <button class="tab-btn" onclick="showTab('logistica',this)">Logística</button>
-  <button class="tab-btn" onclick="showTab('emergencia',this)">🆘 Emergência</button>
-  <button class="tab-btn" onclick="showTab('orcamento',this)">Orçamento</button>
-  <button class="tab-btn" onclick="showTab('realizado',this)">✏ Realizado</button>
-</nav>
-
-<!-- ==================== ROTEIRO ==================== -->
-<section id="roteiro" class="tab-section active">
+<!-- ==================== ROTEIRO (lista + fonte de dados) ==================== -->
+<section id="roteiro" class="tab-section">
 <div class="sec-title">Roteiro Dia a Dia</div>
 <div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas · planos B · clique para expandir · <strong>V5: alternativas adicionais nos Dias 6, 7, 12, 18</strong></div>
 
@@ -274,7 +559,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">30/06 · Terça</div><div class="dsub">Praia da Califórnia · entrada leve</div></div>
     <div class="dright"><div class="dkm">~5 km</div><div class="dkmlabel">Local</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG/400px-Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG" alt="Praia da Califórnia" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20da%20Calif%C3%B3rnia%20%28Sesimbra%29%202.JPG?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Praia da Califórnia</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Primeira praia · referência de base para Nicolas</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span>Supermercado Pingo Doce Sesimbra Castelo (EN379, logo na entrada da vila). Compras para a semana.<br><span class="ptime">10h30</span><strong>Praia da Califórnia</strong> — extensa, estruturada, acesso plano. Entrar com barraca UV montada antes das 11h.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Retorno à base. Almoço simples. Não sair com Nicolas no calor do meio-dia de julho.</div></div>
@@ -296,7 +581,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">01/07 · Quarta</div><div class="dsub">Fortaleza + Vila histórica</div></div>
     <div class="dright"><div class="dkm">~8 km</div><div class="dkmlabel">Local</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sesimbra_castle.jpg/400px-Sesimbra_castle.jpg" alt="Fortaleza de Sesimbra" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Sesimbra%20castle.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Fortaleza de Sesimbra</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Praia_de_Sesimbra.JPG/400px-Praia_de_Sesimbra.JPG" alt="Vila de Sesimbra" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20de%20Sesimbra.JPG?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Vila de Sesimbra</div></div></div>
     <div class="pri-row"><span class="priority pri-recommended">🟡 Recomendado</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Fortaleza de Sesimbra</strong> — espaço aberto, panorama da costa. Acesso em rampa para carrinho. 1h.<br><span class="ptime">11h00</span>Centro histórico (mochila portabebê nos trechos estreitos).</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Restaurante Isaías</strong> — instituição local, só peixe assado, meia dúzia de mesas. Chegar às 12h. <em>Sem Multibanco — levar dinheiro.</em> Ou <strong>Peixaria Currais</strong> (R. Dr. Peixoto Correia, 33) como alternativa.</div></div>
@@ -318,7 +603,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">02/07 · Quinta</div><div class="dsub">Lisboa — Belém + Oceanário</div></div>
     <div class="dright"><div class="dkm">~100 km</div><div class="dkmlabel">RT</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Torre_bel%C3%A9m.jpg/400px-Torre_bel%C3%A9m.jpg" alt="Torre de Belém" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Torre%20bel%C3%A9m.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Torre de Belém</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Mosteiro_dos_Jeronimos_-_Entrances.jpg/400px-Mosteiro_dos_Jeronimos_-_Entrances.jpg" alt="Mosteiro dos Jerónimos" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro%20dos%20Jeronimos%20-%20Entrances.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Mosteiro dos Jerónimos</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Oceanarium_Lisbon.jpg/400px-Oceanarium_Lisbon.jpg" alt="Oceanário" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Oceanarium%20Lisbon.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Oceanário</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Oceanário — reação de Nicolas garantida</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h00</span>Saída Sesimbra. A2→N10.<br><span class="ptime">09h00</span><strong>Torre de Belém</strong> (exterior, beira do Tejo) · <strong>Mosteiro dos Jerónimos</strong> (exterior + claustro).<br><span class="ptime">10h30</span><strong>Pastéis de Belém</strong> — chegar antes das 10h30. A receita original desde 1837.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Time Out Market Lisboa</strong> — variado, AC, sem fila, familiar.</div></div>
@@ -344,7 +629,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
     <div class="dright"><div class="dkm">~80 km</div><div class="dkmlabel">RT Sesimbra</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cabo_Espichel_-_2012-08-28.jpg/400px-Cabo_Espichel_-_2012-08-28.jpg" alt="Cabo Espichel" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cabo%20Espichel%20-%202012-08-28.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Cabo Espichel</div></div></div>
     <div class="special-notice sn-birthday"><div class="sn-title">🎂 Aniversário de Alexandre · 03/07 · Sexta</div>Manhã dramática no fim do mundo de Portugal. Tarde de descanso. Jantar no melhor restaurante gastronômico de Sesimbra.</div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Cabo Espichel</strong> — 30 min de Sesimbra. Falésia de 100m sobre o Atlântico, Santuário do séc. XVII, pegadas de dinossauros. Paisagem do "fim do mundo". Carrinho nos arredores do santuário. Para a beira da falésia: mochila portabebê. Entrada gratuita.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Retorno Sesimbra. <strong>Restaurante Modesto</strong> — almoço de choco frito, rápido e local.</div></div>
@@ -365,7 +650,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">04/07 · Sábado</div><div class="dsub">Buffer e praia <span class="tag-weekend">SÁB</span></div></div>
     <div class="dright"><div class="dkm">—</div><div class="dkmlabel">Local</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo opt-a"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG/400px-Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG" alt="Opção A · Praia Califórnia" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20da%20Calif%C3%B3rnia%20%28Sesimbra%29%202.JPG?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Opção A · Praia Califórnia</div></div><div class="rt-photo opt-b"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Castelo_de_S%C3%A3o_Jorge_%2814005714101%29.jpg/400px-Castelo_de_S%C3%A3o_Jorge_%2814005714101%29.jpg" alt="Opção B · Castelo S. Jorge" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Castelo%20de%20S%C3%A3o%20Jorge%20%2814005714101%29.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Opção B · Castelo S. Jorge</div></div></div>
     <div class="pri-row"><span class="priority pri-optional">🟢 Dia livre · Decidir no dia</span><span style="font-size:11px;color:var(--muted)">Buffer estratégico OU Lisboa real (alternativa)</span></div>
     <div class="period"><div class="plabel">Opção A</div><div class="pcontent"><span class="priority pri-optional" style="display:inline-flex;margin-bottom:4px">🟢 Buffer + Praia</span><br><span class="ptime">08h30</span>Praia da Califórnia — antes das 09h30 (sábado enche rápido).<br><span class="ptime">14h–17h</span>Descanso total. Preparar malas para Porto. <strong>Plano preferido</strong> se Nicolas estiver cansado ou viagem estiver intensa.</div></div>
     <div class="period"><div class="plabel">Opção B</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Lisboa real — só se bebê estiver bem</span><br><span class="ptime">09h00</span>Saída Sesimbra → Lisboa centro. Estacionar Camões/Chiado ou Martim Moniz.<br><span class="ptime">10h00</span><strong>Alfama</strong> a pé partindo do Largo das Portas do Sol — mirante com Tejo aberto. Ladeiras estreitas: mochila portabebê.<br><span class="ptime">11h00</span><strong>Castelo de São Jorge</strong> — esplanada plana com pavões, vista total. Carrinho funciona no jardim. €15 adulto, bebê grátis.<br><span class="ptime">12h30</span><strong>Time Out Market</strong> (Cais do Sodré) — 30+ bancas, AC, cadeira alta. Manteigaria para pastel de nata.<br><span class="ptime">14h–16h</span>Descanso obrigatório (Jardim da Estrela ou retorno).<br><span class="ptime">16h00</span>Retorno Sesimbra. <em>Sábado de julho em Alfama = pico — chegar cedo é mandatório.</em></div></div>
@@ -412,7 +697,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">06/07 · Segunda</div><div class="dsub">Ribeira + Ponte Dom Luís I + Jardim do Morro</div></div>
     <div class="dright"><div class="dkm">~4 km</div><div class="dkmlabel">A pé/metro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ribeira_Square%2C_Porto.jpg/400px-Ribeira_Square%2C_Porto.jpg" alt="Cais da Ribeira" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ribeira%20Square%2C%20Porto.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Cais da Ribeira</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Cais da Ribeira</strong> — casas coloridas, vida local, Douro à vista. Mochila portabebê nos trechos de calçada irregular.<br><span class="ptime">10h30</span>Atravessar <strong>Ponte Dom Luís I</strong> pelo nível inferior (carrinho OK). Vista para Gaia e as caves.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Taberna dos Mercadores</strong> (R. dos Mercadores 36) — petiscos criativos, ambiente autêntico, sem fila. ~€40–55 casal. Reservar.</div></div>
@@ -434,7 +719,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">07/07 · Terça</div><div class="dsub">Centro histórico · São Bento · Lello</div></div>
     <div class="dright"><div class="dkm">~3 km</div><div class="dkmlabel">Centro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Sao_Bento_railway_station_-_interior.jpg/400px-Sao_Bento_railway_station_-_interior.jpg" alt="Estação de São Bento" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Sao%20Bento%20railway%20station%20-%20interior.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Estação de São Bento</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Livraria_Lello_-_Escadaria.jpg/400px-Livraria_Lello_-_Escadaria.jpg" alt="Livraria Lello" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Livraria%20Lello%20-%20Escadaria.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Livraria Lello</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Estação São Bento</strong> — 20.000 azulejos. Rápido, AC, sem fila cedo.<br><span class="ptime">09h30</span><strong>Sé Catedral</strong> (exterior).<br><span class="ptime">10h00</span><strong>Rua das Flores</strong> — calçada plana.<br><span class="ptime">10h30</span><strong>Livraria Lello</strong> — só entrar se fila &lt;30 min. Ingresso €8. Escada estreita: mochila portabebê.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Café Santiago</strong> (R. Passos Manuel 226) — a francesinha original do Porto. Chegar às 12h ou reservar. Ou <strong>Brasão Cervejaria</strong> (versão mais moderna).</div></div>
@@ -455,7 +740,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">08/07 · Quarta</div><div class="dsub">Serralves · Museu + Parque · Foz</div></div>
     <div class="dright"><div class="dkm">~6 km</div><div class="dkmlabel">Foz do Douro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Serralves_Museum.jpg/400px-Serralves_Museum.jpg" alt="Fundação Serralves" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Serralves%20Museum.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Fundação Serralves</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Melhor experiência Porto com bebê — 18ha planos</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h30</span><strong>Fundação Serralves</strong> — Parque (18ha, plano, sombreado, 100% carrinho). Museu AC para o calor. Ingresso ~€12 adulto. serralves.pt — comprar online.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">13h00</span><strong>Foz do Douro</strong> — zona nobre, brisa atlântica. <strong>Cafeína</strong> (reservar) ou <strong>O Lusitano em Matosinhos</strong>.</div></div>
@@ -497,7 +782,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">10/07 · Sexta</div><div class="dsub">Piscinas de Leça da Palmeira ou Aveiro</div></div>
     <div class="dright"><div class="dkm">~130 km</div><div class="dkmlabel">RT se Aveiro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo opt-a"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg/400px-Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg" alt="Opção A · Piscinas de Leça" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Piscina%20das%20Mar%C3%A9s%2C%20Le%C3%A7a%20da%20Palmeira.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Opção A · Piscinas de Leça</div></div></div>
     <div class="period"><div class="plabel">Opção A</div><div class="pcontent"><span class="priority pri-essential" style="display:inline-flex;margin-bottom:4px">🔴 Piscinas de Leça</span><br><strong>Piscinas de Maré de Leça da Palmeira</strong> — obra de Álvaro Siza Vieira (1966). Piscinas naturais oceânicas integradas nas rochas, entrada gratuita, zona rasa perfeita para Nicolas. ~15 min de Gaia. Chegar às 08h30. Almoço em Matosinhos (frutos do mar, referência nacional). Waze: "Piscinas de Maré de Leça da Palmeira".</div></div>
     <div class="period"><div class="plabel">Opção B</div><div class="pcontent"><span class="priority pri-recommended" style="display:inline-flex;margin-bottom:4px">🟡 Aveiro</span><br>Saída 08h → Moliceiro (€13/adulto, 35 min pelos canais) → Costa Nova (fachadas listradas) → retorno 13h. Soneca de carro.</div></div>
     <div class="period"><div class="plabel">Opção C</div><div class="pcontent"><span class="priority pri-optional" style="display:inline-flex;margin-bottom:4px">🟢 Trem Panorâmico do Douro — só se bebê estiver bem</span><br><span class="ptime">08h30</span><strong>Linha do Douro</strong> — sair da Estação Campanhã (Porto) com destino <strong>Pinhão</strong>. ~2h15–2h30 de trajeto. O trecho cênico real começa após a Régua, com terraços vinhateiros da Região Demarcada (UNESCO) descendo ao rio. Lado direito do trem (sentido Pinhão) tem a vista. ~€14/adulto, &lt;3 anos grátis. Reservar em <strong>cp.pt</strong>.<br><span class="ptime">~11h00</span>Chegada Pinhão. Estação de azulejos icônica. Almoço no <strong>DOC Restaurant</strong> (chef Rui Paula, à beira do rio) ou <strong>Veladouro</strong>. Ambos com cadeira alta.<br><span class="ptime">14h30</span>Trem de retorno Pinhão→Campanhã. Chegada ~17h. <em>Dia longo — só executar se ciclos de sono de Nicolas estiverem firmes.</em></div></div>
@@ -561,7 +846,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">13/07 · Segunda</div><div class="dsub">Centro histórico UNESCO de Guimarães</div></div>
     <div class="dright"><div class="dkm">~8 km</div><div class="dkmlabel">Centro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Guimaraes_Castle_5.jpg/400px-Guimaraes_Castle_5.jpg" alt="Castelo de Guimarães" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Guimaraes%20Castle%205.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Castelo de Guimarães</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Pa%C3%A7o_dos_Duques_de_Bragan%C3%A7a.jpg/400px-Pa%C3%A7o_dos_Duques_de_Bragan%C3%A7a.jpg" alt="Paço dos Duques" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Pa%C3%A7o%20dos%20Duques%20de%20Bragan%C3%A7a.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Paço dos Duques</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">UNESCO · Berço de Portugal</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span><strong>Largo da Oliveira + Praça de Santiago</strong> — coração medieval. Mochila portabebê no paralelepípedo.<br><span class="ptime">10h30</span><strong>Paço dos Duques de Bragança</strong> (exterior) — espaço aberto.<br><span class="ptime">11h00</span><strong>Castelo de Guimarães</strong> — entrada €2. Estacionar: Parque de Couros.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span><strong>Histórico by Papaboa</strong> — jardim interior, ambiente histórico, polvo à lagareiro e bochechas de porco preto. Centro histórico. ~€25–35/pax. Muito bem avaliado.</div></div>
@@ -583,7 +868,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">14/07 · Terça</div><div class="dsub">Braga · Bom Jesus do Monte</div></div>
     <div class="dright"><div class="dkm">~60 km</div><div class="dkmlabel">RT Guimarães→Braga</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG/400px-Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG" alt="Bom Jesus do Monte · Braga" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Santuario%20Bom%20Jesus%20do%20Monte%2C%20Braga%2C%20Portugal%2C%202012-08-11%2C%20DD%2004.JPG?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Bom Jesus do Monte · Braga</div></div></div>
     <div class="pri-row"><span class="priority pri-recommended">🟡 Recomendado</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span>Saída São Torcato → Braga (~30 min).<br><span class="ptime">09h30</span><strong>Bom Jesus do Monte</strong> — parque inferior, subir de <strong>funicular</strong> (€3/pax). Jardins superiores planos, sombreados. ~1h30.<br><span class="ptime">11h00</span>Sé de Braga (exterior, 20 min) — se Nicolas bem-disposto.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h30</span>Braga centro — <strong>Toca do Abade</strong> (petiscos minhotos, ambiente de tasca, muito bem avaliado).</div></div>
@@ -635,12 +920,12 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
     <div class="dright"><div class="dkm">~120 km</div><div class="dkmlabel">Ferry+Comporta</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Atlantic_Ferries_Setubal.jpg/400px-Atlantic_Ferries_Setubal.jpg" alt="Ferry · golfinhos do Sado" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Atlantic%20Ferries%20Setubal.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Ferry · golfinhos do Sado</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Carrasqueira_Cais_Palaf%C3%ADtico.jpg/400px-Carrasqueira_Cais_Palaf%C3%ADtico.jpg" alt="Cais da Carrasqueira" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Carrasqueira%20Cais%20Palaf%C3%ADtico.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Cais da Carrasqueira</div></div></div>
     <div class="special-notice sn-anniversary"><div class="sn-title">💍 Celebração do Casamento · 16/07</div>O dia mais especial da viagem. A grande refeição-celebração é o almoço com vista para o mar na Comporta. Bacalhôa → Ferry pelo Estuário do Sado (golfinhos) → SAL Comporta ou JNcQUOI (alternativa) → Comporta → Carrasqueira ao fim da tarde → regresso a Setúbal para jantar leve.</div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">10h00</span><strong>Palácio da Bacalhôa</strong> (Azeitão, ~25 min de Setúbal) <span class="ptag anniversary">CASAMENTO</span> — Visita guiada às 10h00 + prova de 4 vinhos com queijo de Azeitão e frutos secos. €6/pax. Chegar 9h50 para validação. Reservar antecipadamente. <em>Atenção: este é o Palácio em Azeitão — não confundir com Bacalhôa Buddha Eden, que fica em Bombarral (norte de Lisboa).</em> bacalhoa.pt / portugalvineyards.com</div></div>
     <div class="period"><div class="plabel">Ferry</div><div class="pcontent"><span class="ptime">11h30</span><strong>Ferry Setúbal→Tróia com carro</strong> <span class="ptag ferry">FERRY</span> — Atlantic Ferries, Terminal Av. Jaime Rebelo (Doca do Comércio). ~25 min de travessia. Frequência ~30 min em alta temporada. Golfinhos roazes do Sado frequentes. Carro+condutor ~€21 ida / ~€37,80 ida e volta · cada adulto extra +€10,80 · Nicolas grátis (&lt;5 anos). <strong>Sem reserva antecipada</strong> — chegar 30 min antes. Tel: +351 265 235 101</div></div>
     <div class="period"><div class="plabel">Almoço · Plano A</div><div class="pcontent"><span class="ptime">12h45</span>Tróia→Carvalhal (~25 min N253-1).<br><strong>Restaurante SAL · Praia do Carvalhal, Comporta</strong> <span class="ptag res">WALK-IN</span><br>Peixe fresco com pés na areia e oceano à frente. <strong>O SAL abre às 12h30</strong> (fecha à quarta; quinta funciona). Tentar <strong>reservar por telefone primeiro</strong> (+351 968 992 498 / +351 265 490 129); se não aceitarem reserva em alta temporada, chegar <strong>12h00–12h15</strong> para a fila de abertura.</div></div>
-    <div class="period"><div class="plabel">Almoço · Plano A alternativo</div><div class="pcontent"><span class="ptime">13h30</span><strong>JNcQUOI Beach Club · Praia do Pego</strong> <span class="ptag res">RESERVA PREVENTIVA</span><br>~5 min de carro do SAL. Mesmo segmento beach club premium, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Atmosfera romântica reconhecida. Reservar com mesa interna e cadeira alta — cancelável se SAL der certo. <em>Estratégia: tentar SAL primeiro; se fila &gt;30 min ou Nicolas irritado, deslocar para JNcQUOI já confirmado.</em><br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · book@jncquoibeachclub.com</div></div>
+    <div class="period"><div class="plabel">Almoço · Plano A alternativo</div><div class="pcontent"><span class="ptime">13h30</span><strong>JNcQUOI Beach Club · Praia do Pego</strong> <span class="ptag res">RESERVA PREVENTIVA</span><br>~5 min de carro do SAL. Mesmo segmento beach club premium, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Atmosfera romântica reconhecida. Reservar com mesa interna e cadeira alta — cancelável se SAL der certo. <em>Estratégia: tentar SAL primeiro; se fila &gt;30 min ou Nicolas irritado, deslocar para JNcQUOI já confirmado.</em><br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573538383c173d39342622383e353236343f343b22357934383a">[email&#160;protected]</a></div></div>
     <div class="period"><div class="plabel">Tarde</div><div class="pcontent"><span class="ptime">15h30</span><strong>Comporta village</strong> — ruas brancas, arroz, design.<br><span class="ptime">17h00</span><strong>Cais Palafítico da Carrasqueira</strong> — palafitas sobre o Sado, pôr do sol.</div></div>
     <div class="jantar-block">
       <div class="jantar-label">🍽 Jantar leve em Setúbal</div>
@@ -663,7 +948,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">17/07 · Sexta</div><div class="dsub">Mercado do Livramento + Choco frito</div></div>
     <div class="dright"><div class="dkm">~5 km</div><div class="dkmlabel">Centro</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Mercado_do_Livramento%2C_Set%C3%BAbal.jpg/400px-Mercado_do_Livramento%2C_Set%C3%BAbal.jpg" alt="Mercado do Livramento" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Mercado%20do%20Livramento%2C%20Set%C3%BAbal.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Mercado do Livramento</div></div></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">08h30</span><strong>Mercado do Livramento</strong> — um dos melhores mercados de peixe de Portugal. Sexta = movimento pleno. Chegar antes das 09h30. Seg–Sáb.</div></div>
     <div class="period"><div class="plabel">Almoço</div><div class="pcontent"><span class="ptime">12h00</span><strong>Casa Santiago</strong> — referência do choco frito de Setúbal. Tel: +351 265 221 688. Reservar.</div></div>
     <div class="period"><div class="plabel">Tarde</div><div class="pcontent">Descanso. <strong>Malas prontas esta noite.</strong></div></div>
@@ -707,7 +992,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">18/07 · Sábado</div><div class="dsub">Arrábida → Chegada Lagos + Praia Dona Ana à tarde <span class="tag-weekend">SÁB</span></div></div>
     <div class="dright"><div class="dkm">~260 km</div><div class="dkmlabel">Setúbal→Lagos</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo opt-a"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Arrabida_5.jpg/400px-Arrabida_5.jpg" alt="Plano A · Figueirinha (Arrábida)" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Arrabida%205.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Plano A · Figueirinha (Arrábida)</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Praia_da_Dona_Ana_-_Lagos_02.JPG/400px-Praia_da_Dona_Ana_-_Lagos_02.JPG" alt="Tarde · Praia Dona Ana" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20da%20Dona%20Ana%20-%20Lagos%2002.JPG?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Tarde · Praia Dona Ana</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Figueirinha · chegar cedo — parque tarifado, acesso à Arrábida condicionado no verão</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">07h00</span>Saída Setúbal. Malas no carro desde ontem à noite.<br><span class="ptime">07h45–12h30</span><strong>Praia da Figueirinha (Arrábida)</strong> — areal raso e abrigado, ideal para o Nicolas, com <strong>parque de estacionamento próprio tarifado</strong> (~240 lugares). Chegar antes das 08h. <em>No verão (4 jun–15 set) o programa Arrábida sem Carros condiciona o acesso de viaturas; o Portinho e o Creiro fecham ao trânsito quando lotam — a Figueirinha é a opção segura de chegar de carro.</em> Almoço no apoio de praia.</div></div>
     <div class="period"><div class="plabel">Lagos</div><div class="pcontent"><span class="ptime">14h00</span>Saída Arrábida → A2→A22 → Lagos. Parada Grândola A2 ~15h30 (25 min).<br><span class="ptime">~17h00</span>Check-in Lagos. <strong>Airbnb Bérrio — T1 Marina de Lagos</strong>. Anfitriã: Susana · R. Teixeira da Mota 21. Instalar base e descanso.<br><span class="ptime">18h30</span>(Se Nicolas OK) <strong>Praia Dona Ana</strong> — 12 min de carro. Entrada às 18h30 com sombra natural nas falésias. Banho curto de 45 min. Falésias douradas ao fim do dia = foto mais bonita da praia.</div></div>
@@ -733,7 +1018,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">19/07 · Domingo</div><div class="dsub">🌟 Praia da Marinha + Gruta Benagil de barco <span class="tag-weekend">DOM</span></div></div>
     <div class="dright"><div class="dkm">~85 km</div><div class="dkmlabel">RT Lagos→Marinha</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg/400px-Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg" alt="Praia da Marinha" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20da%20Marinha%2C%20Algarve%2C%20Portugal%20%28revisited%29%20-%20360%C2%B0%20Equirectangular%20%28panorama%29%20%2848797558578%29.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Praia da Marinha</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Benagil_cave%2C_Algarve%2C_Portugal.jpg/400px-Benagil_cave%2C_Algarve%2C_Portugal.jpg" alt="Gruta de Benagil" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Benagil%20cave%2C%20Algarve%2C%20Portugal.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Gruta de Benagil</div></div><div class="rt-photo opt-b"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/400px-Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" alt="Plano B · Ponta da Piedade" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ponta%20da%20Piedade%2C%20Lagos%2C%20Portugal%20%28PPL1-Corrected%29%20julesvernex2.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Plano B · Ponta da Piedade</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">O dia mais impressionante do Algarve — Marinha é top 10 praias do mundo</span></div>
     <div class="alert special"><span>🌟</span> <strong>Praia da Marinha</strong> — classificada pelo Guia Michelin entre as 100 praias mais bonitas do mundo e eleita repetidamente a melhor do Algarve. Falésias douradas com arcos naturais em forma de coração ("O Coração do Algarve"), águas turquesa de clareza extraordinária, proteção natural das ondas. A 43 km de Lagos — 37 min pela A22.</div>
     <div class="period"><div class="plabel">Saída</div><div class="pcontent"><span class="ptime">07h30</span>Saída Lagos → A22 → saída Lagoa → N125 → sinais para Praia da Marinha. <strong>Chegar antes das 08h30</strong> — estacionamento pequeno, esgota rápido em domingo de julho. Waze: "Praia da Marinha Lagoa".</div></div>
@@ -763,7 +1048,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">20/07 · Segunda</div><div class="dsub">Ponta da Piedade barco (manhã) + Meia Praia + Silves</div></div>
     <div class="dright"><div class="dkm">~70 km</div><div class="dkmlabel">Lagos+Silves RT</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/400px-Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" alt="Ponta da Piedade" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ponta%20da%20Piedade%2C%20Lagos%2C%20Portugal%20%28PPL1-Corrected%29%20julesvernex2.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Ponta da Piedade</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meia_Praia_%2824536988853%29.jpg/400px-Meia_Praia_%2824536988853%29.jpg" alt="Meia Praia" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Meia%20Praia%20%2824536988853%29.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Meia Praia</div></div><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Silves_castle_-_panoramio.jpg/400px-Silves_castle_-_panoramio.jpg" alt="Castelo de Silves" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Silves%20castle%20-%20panoramio.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Castelo de Silves</div></div></div>
     <div class="pri-row"><span class="priority pri-essential">🔴 Essencial</span><span style="font-size:11px;color:var(--muted)">Barco sai da Marina — 3 min a pé da base · Nicolas sem necessidade de carro</span></div>
     <div class="period"><div class="plabel">Manhã</div><div class="pcontent"><span class="ptime">09h00</span><strong>Barco Ponta da Piedade</strong> — saída do Cais de Lagos, 3 min a pé do Airbnb. ~45 min pelas grutas e formações rochosas alaranjadas. <span class="ptag res">RESERVAR ONLINE</span><br>Segunda = menos turistas. <em>Não fazer trilha a pé com bebê — escadas sem proteção.</em><br>Operadoras: Sea Dreams · Blue Boat Lagos · Seafaris Lagos. ~€15–20 adulto · bebê grátis.</div></div>
     <div class="period"><div class="plabel">Praia</div><div class="pcontent"><span class="ptime">11h00</span>Retorno. Descanso 30 min na base.<br><span class="ptime">11h30</span>Carro → <strong>Meia Praia</strong> (15 min). <strong>A melhor praia para bebê do Algarve</strong> — 5,5 km de areia plana, carrinho na areia, bandeira azul, estrutura completa. Sair às 13h30.</div></div>
@@ -771,7 +1056,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="jantar-block" style="background:linear-gradient(135deg,#1B3252 0%,#0F1E33 100%)">
       <div class="jantar-label" style="color:var(--terra2)">🍽 Jantar de Encerramento da Viagem</div>
       <div class="jantar-name" style="color:#fff">Vila Velha · R. Paroquial 1 · Lagos</div>
-      <div class="jantar-detail" style="color:rgba(255,255,255,.65)">O melhor fine dining de Lagos — gastronomia portuguesa criativa, frutos do mar de altitude. Vista jardim. ~€55–80 casal. Reservar com antecedência. Alternativa casual: Adega da Marina (esplanada sobre a marina, ~€40–55).</div>
+      <div class="jantar-detail" style="color:rgba(255,255,255,.65)">O melhor fine dining de Lagos — gastronomia portuguesa criativa, frutos do mar de altitude. Vista jardim. ~€55–80 casal. Reservar com antecedência. Alternativa casual: Adega da Marina (~€40–55). Alternativa única: <strong>Caniço</strong> — restaurante dentro de gruta nas falésias de Alvor (~20 min), só com reserva (967 764 290).</div>
       <div class="jantar-meta"><span class="jm-chip res">Reservar</span><span class="jm-chip special">Última noite em Portugal</span><span class="jm-chip view">Lagos</span></div>
     </div>
     <div class="planob">
@@ -789,7 +1074,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     <div class="dinfo"><div class="ddate">21/07 · Terça</div><div class="dsub">Lagos → Lisboa → Embarque · Checkout 10h</div></div>
     <div class="dright"><div class="dkm">~280 km</div><div class="dkmlabel">Lagos→LIS</div></div>
   </div>
-  <div class="dc-body hidden">
+  <div class="dc-body hidden"><div class="rt-photos"><div class="rt-photo"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Lagos%2C_Algarve.jpg/400px-Lagos%2C_Algarve.jpg" alt="Lagos · centro histórico" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Lagos%2C%20Algarve.jpg?width=400'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"><div class="rt-fb">📷</div><div class="rt-cap">Lagos · centro histórico</div></div></div>
     <div class="period"><div class="plabel">Opcional 07h</div><div class="pcontent"><span class="ptime">07h30–09h00</span><strong>Praia da Batata</strong> — 8 min a pé da Marina. Última praia em Portugal com Nicolas. Abrigada, calma, pequena, vista para o Forte da Bandeira. Ideal para o adeus ao Atlântico.</div></div>
     <div class="period"><div class="plabel">Checkout</div><div class="pcontent"><span class="ptime">10h00</span>Saída Lagos. A22 → A2 Norte. Chegada Lisboa ~13h.<br>Parada: Área Grândola A2 ~08h45 (20 min).</div></div>
     <div class="period"><div class="plabel">Carro</div><div class="pcontent">Fotografar 360° antes de entregar. Drive on Holidays: shuttle do aeroporto → terminal.</div></div>
@@ -812,11 +1097,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 <style>
 .atr-dest{margin-bottom:32px}
 .atr-dest-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
-.atr-dest-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--navy)}
+.atr-dest-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--navy)}
 .atr-dest-period{font-size:10px;color:var(--muted);font-weight:300}
 .atr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.atr-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s}
-.atr-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.10)}
+.atr-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s}
+.atr-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .atr-card.essential{border-top:3px solid var(--red)}
 .atr-card.recommended{border-top:3px solid var(--amber)}
 .atr-card.optional{border-top:3px solid var(--green)}
@@ -825,14 +1110,14 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 .atr-img-placeholder{width:100%;height:155px;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,var(--cream2),var(--cream3))}
 .atr-body{padding:12px 13px;flex:1;display:flex;flex-direction:column;gap:6px}
 .atr-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.atr-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;flex:1}
+.atr-name{font-size:14.5px;font-weight:600;color:var(--text);line-height:1.3;flex:1}
 .atr-pri{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:2px;flex-shrink:0;white-space:nowrap}
 .pri-ess{background:var(--red-bg);color:var(--red)}
 .pri-rec{background:var(--amber-bg);color:var(--amber)}
 .pri-opt{background:var(--green-bg);color:var(--green)}
 .pri-spe{background:#F0E5F8;color:var(--purple)}
 .atr-day{font-size:10px;color:var(--navy2);font-weight:600}
-.atr-desc{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5;flex:1}
+.atr-desc{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.55;flex:1}
 .atr-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:2px}
 .atr-chip{font-size:9px;font-weight:600;padding:2px 7px;border-radius:10px;background:var(--cream2);color:var(--muted);white-space:nowrap}
 .atr-chip.free{background:var(--green-bg);color:var(--green)}
@@ -840,7 +1125,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 .atr-chip.baby{background:#FFF0E8;color:var(--terra)}
 .atr-chip.res{background:var(--red-bg);color:var(--red)}
 .atr-links{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.atr-link{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:3px;font-size:10px;font-weight:600;text-decoration:none;transition:opacity .18s;white-space:nowrap}
+.atr-link{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:600;text-decoration:none;transition:opacity .18s;white-space:nowrap}
 .atr-link:hover{opacity:.78}
 .atr-link.maps{background:var(--info-bg);color:var(--navy2)}
 .atr-link.web{background:var(--cream2);color:var(--navy)}
@@ -848,7 +1133,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 .legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;font-size:11px;align-items:center}
 .leg-item{display:flex;align-items:center;gap:5px}
 .leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
-</style>
+
+.rt-photos{display:flex;gap:6px;margin:0 0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:3px}
+.rt-photos::-webkit-scrollbar{height:5px}.rt-photos::-webkit-scrollbar-thumb{background:var(--cream3,#E8DFD3);border-radius:3px}
+.rt-photo{position:relative;flex:0 0 auto;width:148px;height:96px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,var(--cream2,#F0E9DE),var(--cream3,#E8DFD3));border:1px solid var(--border)}
+.rt-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.rt-photo .rt-fb{display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:26px}
+.rt-photo .rt-cap{position:absolute;left:0;right:0;bottom:0;font-size:9px;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:14px 7px 5px;line-height:1.15}
+.rt-photo.opt-a{border-color:var(--green,#3E7C5A)}.rt-photo.opt-b{border-color:var(--amber,#C98A1B)}
+</style></style>
 
 <div class="legend-row">
   <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>Essencial — não pular</div>
@@ -867,7 +1160,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/7b/4b/89/praia-da-california.jpg?w=600&h=400&s=1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Praia da Califórnia">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG/800px-Praia_da_Calif%C3%B3rnia_%28Sesimbra%29_2.JPG" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia%20da%20Calif%C3%B3rnia%20%28Sesimbra%29%202.JPG?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Praia da Califórnia">
       <div class="atr-img-placeholder" style="display:none">🏖️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Praia da Califórnia</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -881,7 +1174,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card special">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Cabo_Espichel_-_2012-08-28.jpg/1200px-Cabo_Espichel_-_2012-08-28.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cabo Espichel">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cabo_Espichel_-_2012-08-28.jpg/800px-Cabo_Espichel_-_2012-08-28.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cabo_Espichel_-_2012-08-28.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Cabo Espichel">
       <div class="atr-img-placeholder" style="display:none">🌊</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Cabo Espichel</div><span class="atr-pri pri-spe">🎂 Aniversário</span></div>
@@ -895,7 +1188,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sesimbra_castle.jpg/1200px-Sesimbra_castle.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Fortaleza Sesimbra">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sesimbra_castle.jpg/800px-Sesimbra_castle.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Sesimbra_castle.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Fortaleza Sesimbra">
       <div class="atr-img-placeholder" style="display:none">🏰</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Fortaleza de Sesimbra</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -921,7 +1214,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Torre_belém.jpg/1200px-Torre_belém.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Torre de Belém">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Torre_bel%C3%A9m.jpg/800px-Torre_bel%C3%A9m.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Torre_bel%C3%A9m.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Torre de Belém">
       <div class="atr-img-placeholder" style="display:none">🗼</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Torre de Belém</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -936,7 +1229,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Mosteiro_dos_Jeronimos_-_Entrances.jpg/1200px-Mosteiro_dos_Jeronimos_-_Entrances.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Mosteiro dos Jerónimos">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Mosteiro_dos_Jeronimos_-_Entrances.jpg/800px-Mosteiro_dos_Jeronimos_-_Entrances.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jeronimos_-_Entrances.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Mosteiro dos Jerónimos">
       <div class="atr-img-placeholder" style="display:none">⛪</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Mosteiro dos Jerónimos</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -951,7 +1244,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oceanarium_Lisbon.jpg/1200px-Oceanarium_Lisbon.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Oceanário de Lisboa">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Oceanarium_Lisbon.jpg/800px-Oceanarium_Lisbon.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Oceanarium_Lisbon.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Oceanário de Lisboa">
       <div class="atr-img-placeholder" style="display:none">🦈</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Oceanário de Lisboa</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -978,7 +1271,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ribeira_Square%2C_Porto.jpg/1200px-Ribeira_Square%2C_Porto.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cais da Ribeira Porto">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ribeira_Square%2C_Porto.jpg/800px-Ribeira_Square%2C_Porto.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ribeira_Square%2C_Porto.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Cais da Ribeira Porto">
       <div class="atr-img-placeholder" style="display:none">🏘️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Cais da Ribeira + Ponte Dom Luís I</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -992,7 +1285,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Sao_Bento_railway_station_-_interior.jpg/1200px-Sao_Bento_railway_station_-_interior.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Estação São Bento">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Sao_Bento_railway_station_-_interior.jpg/800px-Sao_Bento_railway_station_-_interior.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Sao_Bento_railway_station_-_interior.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Estação São Bento">
       <div class="atr-img-placeholder" style="display:none">🚉</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Estação de São Bento</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1006,7 +1299,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Serralves_Museum.jpg/1200px-Serralves_Museum.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Fundação Serralves">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Serralves_Museum.jpg/800px-Serralves_Museum.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Serralves_Museum.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Fundação Serralves">
       <div class="atr-img-placeholder" style="display:none">🌿</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Fundação Serralves</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1036,7 +1329,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg/1200px-Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Piscinas de Leça da Palmeira">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg/800px-Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Piscina_das_Mar%C3%A9s%2C_Le%C3%A7a_da_Palmeira.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Piscinas de Leça da Palmeira">
       <div class="atr-img-placeholder" style="display:none">🌊</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Piscinas de Maré de Leça da Palmeira</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1050,7 +1343,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Livraria_Lello_-_Escadaria.jpg/800px-Livraria_Lello_-_Escadaria.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Livraria Lello">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Livraria_Lello_-_Escadaria.jpg/800px-Livraria_Lello_-_Escadaria.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Livraria_Lello_-_Escadaria.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Livraria Lello">
       <div class="atr-img-placeholder" style="display:none">📚</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Livraria Lello</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -1077,7 +1370,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Guimaraes_Castle_5.jpg/1200px-Guimaraes_Castle_5.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Castelo de Guimarães">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Guimaraes_Castle_5.jpg/800px-Guimaraes_Castle_5.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Guimaraes_Castle_5.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Castelo de Guimarães">
       <div class="atr-img-placeholder" style="display:none">🏰</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Castelo de Guimarães</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1091,7 +1384,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Paço_dos_Duques_de_Bragança.jpg/1200px-Paço_dos_Duques_de_Bragança.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Paço dos Duques de Bragança">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Pa%C3%A7o_dos_Duques_de_Bragan%C3%A7a.jpg/800px-Pa%C3%A7o_dos_Duques_de_Bragan%C3%A7a.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Pa%C3%A7o_dos_Duques_de_Bragan%C3%A7a.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Paço dos Duques de Bragança">
       <div class="atr-img-placeholder" style="display:none">👑</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Paço dos Duques + Praça de Santiago</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1105,7 +1398,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG/1200px-Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Bom Jesus do Monte Braga">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG/800px-Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Santuario_Bom_Jesus_do_Monte%2C_Braga%2C_Portugal%2C_2012-08-11%2C_DD_04.JPG?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Bom Jesus do Monte Braga">
       <div class="atr-img-placeholder" style="display:none">⛪</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Bom Jesus do Monte — Braga</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -1132,7 +1425,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card special">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Atlantic_Ferries_Setubal.jpg/1200px-Atlantic_Ferries_Setubal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ferry Setúbal Tróia">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Atlantic_Ferries_Setubal.jpg/800px-Atlantic_Ferries_Setubal.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Atlantic_Ferries_Setubal.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Ferry Setúbal Tróia">
       <div class="atr-img-placeholder" style="display:none">⛴️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Ferry Setúbal → Tróia com golfinhos</div><span class="atr-pri pri-spe">💍 Aniversário</span></div>
@@ -1161,7 +1454,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card special">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Carrasqueira_Cais_Palaf%C3%ADtico.jpg/1200px-Carrasqueira_Cais_Palaf%C3%ADtico.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Cais Palafítico Carrasqueira">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Carrasqueira_Cais_Palaf%C3%ADtico.jpg/800px-Carrasqueira_Cais_Palaf%C3%ADtico.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Carrasqueira_Cais_Palaf%C3%ADtico.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Cais Palafítico Carrasqueira">
       <div class="atr-img-placeholder" style="display:none">🛶</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Cais Palafítico da Carrasqueira</div><span class="atr-pri pri-spe">💍 Aniversário</span></div>
@@ -1175,7 +1468,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Arrabida_5.jpg/1200px-Arrabida_5.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Portinho da Arrábida">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Arrabida_5.jpg/800px-Arrabida_5.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Arrabida_5.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Portinho da Arrábida">
       <div class="atr-img-placeholder" style="display:none">🏖️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Portinho da Arrábida</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1190,7 +1483,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Mercado_do_Livramento%2C_Set%C3%BAbal.jpg/1200px-Mercado_do_Livramento%2C_Set%C3%BAbal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Mercado do Livramento Setúbal">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Mercado_do_Livramento%2C_Set%C3%BAbal.jpg/800px-Mercado_do_Livramento%2C_Set%C3%BAbal.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Mercado_do_Livramento%2C_Set%C3%BAbal.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Mercado do Livramento Setúbal">
       <div class="atr-img-placeholder" style="display:none">🐟</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Mercado do Livramento — Setúbal</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -1216,7 +1509,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
   <div class="atr-grid">
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg/1200px-Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Praia da Marinha">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg/800px-Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Praia_da_Marinha%2C_Algarve%2C_Portugal_%28revisited%29_-_360%C2%B0_Equirectangular_%28panorama%29_%2848797558578%29.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Praia da Marinha">
       <div class="atr-img-placeholder" style="display:none">🏖️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">🌟 Praia da Marinha</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1231,7 +1524,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Benagil_cave%2C_Algarve%2C_Portugal.jpg/1200px-Benagil_cave%2C_Algarve%2C_Portugal.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Gruta de Benagil">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Benagil_cave%2C_Algarve%2C_Portugal.jpg/800px-Benagil_cave%2C_Algarve%2C_Portugal.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Benagil_cave%2C_Algarve%2C_Portugal.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Gruta de Benagil">
       <div class="atr-img-placeholder" style="display:none">🌊</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">🌟 Gruta de Benagil — Passeio de Barco</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1247,7 +1540,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card essential">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/1200px-Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ponta da Piedade Lagos">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg/800px-Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Ponta_da_Piedade%2C_Lagos%2C_Portugal_%28PPL1-Corrected%29_julesvernex2.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Ponta da Piedade Lagos">
       <div class="atr-img-placeholder" style="display:none">🚤</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Ponta da Piedade — Barco</div><span class="atr-pri pri-ess">Essencial</span></div>
@@ -1262,7 +1555,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Silves_castle_-_panoramio.jpg/1200px-Silves_castle_-_panoramio.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Castelo de Silves">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Silves_castle_-_panoramio.jpg/800px-Silves_castle_-_panoramio.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Silves_castle_-_panoramio.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Castelo de Silves">
       <div class="atr-img-placeholder" style="display:none">🏰</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Castelo de Silves</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -1276,7 +1569,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card recommended">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Lagos%2C_Algarve.jpg/1200px-Lagos%2C_Algarve.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Lagos centro histórico">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Lagos%2C_Algarve.jpg/800px-Lagos%2C_Algarve.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Lagos%2C_Algarve.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Lagos centro histórico">
       <div class="atr-img-placeholder" style="display:none">🏘️</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Lagos — Centro Histórico</div><span class="atr-pri pri-rec">Recomendado</span></div>
@@ -1290,7 +1583,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
     </div>
 
     <div class="atr-card optional">
-      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alvor_ria.jpg/1200px-Alvor_ria.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ria de Alvor">
+      <img class="atr-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Alvor_ria.jpg/800px-Alvor_ria.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Alvor_ria.jpg?width=800'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" alt="Ria de Alvor">
       <div class="atr-img-placeholder" style="display:none">🌅</div>
       <div class="atr-body">
         <div class="atr-top"><div class="atr-name">Ria de Alvor ao pôr do sol</div><span class="atr-pri pri-opt">Opcional</span></div>
@@ -1518,7 +1811,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
       <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
     </div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 13h30 · ~5 min do SAL · Reserva preventiva cancelável</div>
-    <div style="font-size:11px;color:var(--text);line-height:1.5">Mesmo segmento beach club premium do SAL, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Pedir mesa interna e cadeira alta. Mencionar possibilidade de cancelamento se SAL der certo. <br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · book@jncquoibeachclub.com</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Mesmo segmento beach club premium do SAL, com reserva possível. Chef Jerónimo Ferreira, paellas portuguesas, peixe atlântico. Design Vincent Van Duysen. 9.1/10 TheFork. Pedir mesa interna e cadeira alta. Mencionar possibilidade de cancelamento se SAL der certo. <br>thefork.com/restaurant/jncquoi-beach-club-r813045 · +351 269 249 890 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9c919195be94909d8f8b91979c9b9f9d969d928b9cd09d9193">[email&#160;protected]</a></div>
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
@@ -1526,15 +1819,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
       <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
     </div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:6px">16/07 (Quinta) · 20h00 · Castelo São Filipe · Vista estuário do Sado</div>
-    <div style="font-size:11px;color:var(--text);line-height:1.5">Jantar de encerramento do aniversário. Terraço sobre o estuário ao pôr do sol (~21h). pousadas.pt ou telefone.</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Jantar de encerramento do aniversário. Terraço sobre o estuário ao pôr do sol (~21h). <strong>Confirmar se opera em julho/2026 ANTES de contar com ela</strong> (teve período prolongado de encerramento); caso contrário, jantar leve em Setúbal. pousadas.pt ou telefone.</div>
   </div>
   <div style="background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:3px;padding:10px 13px">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px">
-      <div style="font-size:13px;font-weight:500">🍽 Caniço · Alvor · Jantar de encerramento da viagem</div>
+      <div style="font-size:13px;font-weight:500">🍽 Caniço · Alvor · Alternativa de encerramento (gruta)</div>
       <span style="background:var(--red-bg);color:var(--red);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;flex-shrink:0">IMEDIATO</span>
     </div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:6px">20/07 (Segunda) · 20h00 · Tel: 967 764 290 · Restaurante dentro de gruta nas falésias de Alvor</div>
-    <div style="font-size:11px;color:var(--text);line-height:1.5">Só funciona com reserva. Espaço muito limitado. Experiência única — não deixar para tentar de Portugal.</div>
+    <div style="font-size:11px;color:var(--text);line-height:1.5">Alternativa única ao <strong>Vila Velha (Lagos)</strong>, que é o jantar de encerramento definido no roteiro. Só funciona com reserva, espaço muito limitado. Experiência única — não deixar para tentar de Portugal.</div>
   </div>
 </div>
 
@@ -1804,15 +2097,208 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);fon
 </div>
 </section>
 
-<script>
+<!-- ============ DIA EM TELA CHEIA ============ -->
+<div class="day-ov" id="day-ov">
+  <div class="day-ov-scroll">
+    <div class="day-ov-hero" id="dov-hero">
+      <button class="dov-close" onclick="closeDay()" aria-label="Fechar">×</button>
+      <div class="dov-base" id="dov-base"></div>
+      <div class="dov-numrow"><div class="dov-num" id="dov-num"></div><div class="dov-numlabel">Dia</div></div>
+      <div class="dov-date" id="dov-date"></div>
+      <div class="dov-meta" id="dov-meta"></div>
+    </div>
+    <div class="day-ov-body" id="dov-body"></div>
+  </div>
+  <div class="day-ov-nav">
+    <button class="dov-arrow" id="dov-prev" onclick="stepDay(-1)">‹ Dia anterior</button>
+    <div class="dov-counter"><b id="dov-counter-n"></b>de 23</div>
+    <button class="dov-arrow" id="dov-next" onclick="stepDay(1)">Próximo dia ›</button>
+  </div>
+</div>
+
+<!-- ============ NAV INFERIOR (app-style) ============ -->
+<nav class="bottom-nav">
+  <button class="bn-btn active" data-tab="mapa" onclick="showTab('mapa',this)">
+    <svg viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg><span>Mapa</span>
+  </button>
+  <button class="bn-btn" data-tab="atracoes" onclick="showTab('atracoes',this)">
+    <svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.6 6.8 19l1-5.8-4.2-4.1 5.8-.8z"/></svg><span>Atrações</span>
+  </button>
+  <button class="bn-btn" data-tab="gastronomia" onclick="showTab('gastronomia',this)">
+    <svg viewBox="0 0 24 24"><path d="M6 3v7M9 3v7M7.5 3v18M7.5 10a1.5 1.5 0 0 0 1.5-1.5"/><path d="M17 3c-1.4 0-2.5 2-2.5 4.5S15.6 12 17 12v9"/></svg><span>Comer</span>
+  </button>
+  <button class="bn-btn" data-tab="orcamento" onclick="showTab('orcamento',this)">
+    <svg viewBox="0 0 24 24"><path d="M16.5 6.5A6 6 0 1 0 17 18"/><path d="M5 10.5h8M5 13.5h7"/></svg><span>Custos</span>
+  </button>
+  <button class="bn-btn" data-more onclick="openSheet()">
+    <svg class="bn-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg><span>Mais</span>
+  </button>
+</nav>
+
+<div class="sheet-backdrop" id="sheet-bd" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-grab"></div>
+  <div class="sheet-title">Mais seções</div>
+  <button class="sheet-item" data-tab="roteiro" onclick="showTab('roteiro',this)">
+    <span class="si-ic">📋</span><span>Roteiro · lista completa<small>Todos os 23 dias em sequência</small></span>
+  </button>
+  <button class="sheet-item" data-tab="supermercados" onclick="showTab('supermercados',this)">
+    <span class="si-ic">🛒</span><span>Supermercados<small>Compras por base · horários validados</small></span>
+  </button>
+  <button class="sheet-item" data-tab="reservas" onclick="showTab('reservas',this)">
+    <span class="si-ic">📑</span><span>Reservas<small>Lista por urgência · fazer antes de embarcar</small></span>
+  </button>
+  <button class="sheet-item" data-tab="logistica" onclick="showTab('logistica',this)">
+    <span class="si-ic">🚗</span><span>Logística<small>Voos · carro · ferry · paradas · apps</small></span>
+  </button>
+  <button class="sheet-item danger" data-tab="emergencia" onclick="showTab('emergencia',this)">
+    <span class="si-ic">🆘</span><span>Emergência e Saúde<small>112 · hospital pediátrico por base</small></span>
+  </button>
+  <button class="sheet-item" data-tab="realizado" onclick="showTab('realizado',this)">
+    <span class="si-ic">✏️</span><span>Custos Realizados<small>Preencher durante a viagem</small></span>
+  </button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // TAB NAV
+var SHEET_TABS=['roteiro','supermercados','reservas','logistica','emergencia','realizado'];
 function showTab(id,btn){
-  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active');});
+  var sec=document.getElementById(id);
+  if(sec) sec.classList.add('active');
+  document.querySelectorAll('.bn-btn').forEach(function(b){
+    if(b.hasAttribute('data-more')) b.classList.toggle('active', SHEET_TABS.indexOf(id)>=0);
+    else b.classList.toggle('active', b.dataset.tab===id);
+  });
+  document.querySelectorAll('.sheet-item').forEach(function(b){b.classList.toggle('active', b.dataset.tab===id);});
+  closeSheet();
   window.scrollTo({top:0,behavior:'smooth'});
 }
+function openSheet(){document.getElementById('sheet').classList.add('open');document.getElementById('sheet-bd').classList.add('open');}
+function closeSheet(){document.getElementById('sheet').classList.remove('open');document.getElementById('sheet-bd').classList.remove('open');}
+
+/* ============ EXPERIÊNCIA JORNADA: mapa · régua · dia ============ */
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+var BASES=[
+  {name:'Sesimbra',region:'costa de Setúbal',nights:6,dates:'29 Jun – 5 Jul',days:[1,7],x:33,y:56,c:'--b1',note:'Praias calmas, Cabo Espichel e o <strong>aniversário do Alexandre</strong>. Base de bate-volta para Lisboa (Belém + Oceanário).'},
+  {name:'Porto / Gaia',region:'Douro · norte',nights:7,dates:'5 – 12 Jul',days:[8,14],x:35,y:16,c:'--b2',note:'Ribeira, Serralves, caves do vinho do Porto e jantares com vista para o Douro.'},
+  {name:'Guimarães',region:'São Torcato · Minho',nights:3,dates:'12 – 15 Jul',days:[15,17],x:52,y:10,c:'--b3',note:'O <strong>berço de Portugal</strong> (UNESCO), Braga e o Bom Jesus do Monte. Base rural tranquila.'},
+  {name:'Setúbal',region:'Arrábida · Sado',nights:3,dates:'15 – 18 Jul',days:[18,19],x:47,y:58,c:'--b4',note:'A <strong>celebração do casamento</strong>: ferry pelo Sado, Comporta e o SAL. Mercado do Livramento.'},
+  {name:'Lagos',region:'Algarve · marina',nights:3,dates:'18 – 21 Jul',days:[20,23],x:35,y:90,c:'--b5',note:'Praia da Marinha, gruta de Benagil de barco e Ponta da Piedade. Encerramento da viagem.'}
+];
+var DAYS=[];
+function parseDays(){
+  var out=[],bloco=0;
+  document.querySelectorAll('#roteiro .block-hd, #roteiro .day-card').forEach(function(el){
+    if(el.classList.contains('block-hd')){bloco++;return;}
+    var dd=el.querySelector('.ddate');
+    var dateText=dd?dd.childNodes[0].textContent.trim():'';
+    var slab=el.querySelector('.special-label');
+    out.push({
+      num:(el.querySelector('.dnum')||{}).textContent?el.querySelector('.dnum').textContent.trim():'',
+      date:dateText,
+      sub:el.querySelector('.dsub')?el.querySelector('.dsub').textContent.trim():'',
+      km:el.querySelector('.dkm')?el.querySelector('.dkm').textContent.trim():'',
+      kmlabel:el.querySelector('.dkmlabel')?el.querySelector('.dkmlabel').textContent.trim():'',
+      special:el.classList.contains('special-birthday')?'birthday':el.classList.contains('special-anniversary')?'anniversary':'',
+      specialText:slab?slab.textContent.trim():'',
+      bloco:bloco,
+      html:el.querySelector('.dc-body')?el.querySelector('.dc-body').innerHTML:''
+    });
+  });
+  return out;
+}
+function buildMap(){
+  var panel=document.getElementById('map-panel');
+  var pts=BASES.map(function(b){return b.x+','+b.y;}).join(' L ');
+  var svg='<svg class="map-svg" viewBox="0 0 100 100" preserveAspectRatio="none">'
+    +'<path d="M22,-4 C18,12 27,22 24,35 C21,48 29,58 25,71 C22,83 30,93 27,104" fill="none" stroke="rgba(120,150,171,.5)" stroke-width="1.2" vector-effect="non-scaling-stroke"/>'
+    +'<path d="M '+pts+'" fill="none" stroke="#11233B" stroke-opacity=".48" stroke-width="2.2" stroke-dasharray="4 3.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'
+    +'</svg>';
+  panel.insertAdjacentHTML('afterbegin',svg);
+  BASES.forEach(function(b,i){
+    var btn=document.createElement('button');
+    btn.className='pin';btn.style.left=b.x+'%';btn.style.top=b.y+'%';
+    btn.innerHTML='<span class="pin-dot" style="background:var('+b.c+')"><b>'+(i+1)+'</b></span><span class="pin-label">'+b.name+'</span>';
+    btn.onclick=function(){selectBase(i);};
+    panel.appendChild(btn);
+  });
+}
+var selBase=null;
+function selectBase(i){
+  selBase=(selBase===i)?null:i;
+  document.querySelectorAll('.pin').forEach(function(p,idx){
+    p.classList.toggle('sel',idx===selBase);
+    p.classList.toggle('dim',selBase!==null&&idx!==selBase);
+  });
+  document.querySelectorAll('.day-chip').forEach(function(c){
+    c.classList.toggle('dim',selBase!==null&&(+c.dataset.bloco)!==(selBase+1));
+  });
+  buildBaseCard(selBase);
+  if(selBase!==null){var rb=document.getElementById('ribbon'),g=document.getElementById('rbg-'+(selBase+1));if(g)rb.scrollTo({left:Math.max(0,g.offsetLeft-12),behavior:'smooth'});}
+}
+function buildBaseCard(i){
+  var el=document.getElementById('base-card');
+  if(i===null){
+    var leg=BASES.map(function(b,k){return '<span style="display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="width:12px;height:12px;border-radius:4px;background:var('+b.c+');flex-shrink:0"></span><b style="font-weight:600;color:var(--navy)">'+(k+1)+'. '+b.name+'</b><span style="color:var(--muted);margin-left:auto;font-size:11px">'+b.dates+'</span></span>';}).join('');
+    el.innerHTML='<div class="bc-eyebrow">A rota · norte a sul</div><div class="bc-name">5 bases, 1 carro</div><div class="bc-dates">Toque num pino do mapa para abrir os dias de cada base.</div><div class="bc-stats"><div class="bc-stat"><div class="v">23</div><div class="l">dias</div></div><div class="bc-stat"><div class="v">5</div><div class="l">bases</div></div><div class="bc-stat"><div class="v">~1.900</div><div class="l">km</div></div></div><div class="bc-line" style="display:flex;flex-direction:column">'+leg+'</div>';
+    return;
+  }
+  var b=BASES[i];
+  el.innerHTML='<div class="bc-eyebrow" style="color:var('+b.c+')">Bloco '+(i+1)+' · '+b.region+'</div><div class="bc-name">'+b.name+'</div><div class="bc-dates">'+b.dates+' · '+b.nights+' noites</div><div class="bc-stats"><div class="bc-stat"><div class="v">'+b.days[0]+'–'+b.days[1]+'</div><div class="l">dias</div></div><div class="bc-stat"><div class="v">'+b.nights+'</div><div class="l">noites</div></div></div><div class="bc-line">'+b.note+'</div><button class="bc-go" onclick="openDay('+(b.days[0]-1)+')">Abrir dias '+b.days[0]+'–'+b.days[1]+' <span class="arrow">→</span></button>';
+}
+function buildRibbon(){
+  var rb=document.getElementById('ribbon');rb.innerHTML='';
+  BASES.forEach(function(b,i){
+    var g=document.createElement('div');g.className='rb-group';g.id='rbg-'+(i+1);
+    var chips=DAYS.filter(function(d){return d.bloco===i+1;}).map(function(d){
+      var parts=d.date.split('·'),dd=(parts[0]||'').trim(),dow=(parts[1]||'').trim().slice(0,3).toUpperCase();
+      var idx=(+d.num)-1,star=d.special==='birthday'?'🎂':d.special==='anniversary'?'💍':'';
+      return '<button class="day-chip" data-bloco="'+d.bloco+'" style="--bloco:var('+b.c+')" onclick="openDay('+idx+')">'+(star?'<span class="dch-star">'+star+'</span>':'')+'<div class="dch-top"><span class="dch-num">'+d.num+'</span><span class="dch-dow">'+dow+'</span></div><div class="dch-date">'+dd+'</div><div class="dch-sub">'+d.sub+'</div></button>';
+    }).join('');
+    g.innerHTML='<div class="rb-group-hd"><span class="swatch" style="background:var('+b.c+')"></span>'+b.name+'</div><div class="rb-days">'+chips+'</div>';
+    rb.appendChild(g);
+  });
+}
+var curDay=0;
+function openDay(idx){
+  if(idx<0||idx>=DAYS.length)return;
+  curDay=idx;var d=DAYS[idx],b=BASES[d.bloco-1];
+  var hero=document.getElementById('dov-hero');
+  hero.className='day-ov-hero'+(d.special==='birthday'?' bd-birthday':d.special==='anniversary'?' bd-anniversary':'');
+  hero.style.setProperty('--bloco',cssVar(b.c));
+  document.getElementById('dov-base').textContent='Bloco '+d.bloco+' · '+b.name;
+  document.getElementById('dov-num').textContent=d.num;
+  document.getElementById('dov-date').textContent=d.date;
+  var meta=[];
+  if(d.km&&d.km!=='—'&&d.km!=='-')meta.push('<span class="dov-mchip">🚗 '+d.km+(d.kmlabel?' · '+d.kmlabel:'')+'</span>');
+  else meta.push('<span class="dov-mchip">📍 Dia local</span>');
+  if(d.specialText)meta.push('<span class="dov-mchip special">'+d.specialText+'</span>');
+  document.getElementById('dov-meta').innerHTML=meta.join('');
+  document.getElementById('dov-body').innerHTML=d.html;
+  document.getElementById('dov-counter-n').textContent=d.num;
+  document.getElementById('dov-prev').disabled=(idx===0);
+  document.getElementById('dov-next').disabled=(idx===DAYS.length-1);
+  var ov=document.getElementById('day-ov');ov.classList.add('open');
+  ov.querySelector('.day-ov-scroll').scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function stepDay(delta){openDay(curDay+delta);}
+function closeDay(){document.getElementById('day-ov').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('day-ov').classList.contains('open'))return;
+  if(e.key==='ArrowRight')stepDay(1);else if(e.key==='ArrowLeft')stepDay(-1);else if(e.key==='Escape')closeDay();
+});
+(function(){var x0=null,ov=document.getElementById('day-ov');
+  ov.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  ov.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>60){if(dx<0)stepDay(1);else stepDay(-1);}x0=null;},{passive:true});
+})();
+(function initJornada(){
+  DAYS=parseDays();buildMap();buildRibbon();buildBaseCard(null);
+  var dep=new Date(2026,5,29),now=new Date(),diff=Math.ceil((dep-now)/86400000);
+  var cb=document.querySelector('#th-count b'),cs=document.querySelector('#th-count span');
+  if(cb&&cs){if(diff>0){cb.textContent=diff;cs.textContent='dias p/ embarcar';}else if(diff===0){cb.textContent='🛫';cs.textContent='é hoje!';}else{cb.textContent='✈';cs.textContent='em viagem';}}
+})();
 function toggle(el){
   el.nextElementSibling.classList.toggle('hidden');
 }
