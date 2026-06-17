@@ -492,6 +492,17 @@ body{font-size:15px;-webkit-font-smoothing:antialiased}
 .ticket-meta{font-size:11px;color:var(--muted,#667)}
 .ticket-link{align-self:flex-start;margin-top:4px;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-size:11px;font-weight:600;text-decoration:none;background:#1B5E3A;color:#fff}
 .ticket-link:hover{opacity:.85}
+.clock-bar{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.clock-card{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);border-radius:14px;padding:9px 14px;min-width:138px}
+.clock-flag{font-size:23px;line-height:1}
+.clock-info{display:flex;flex-direction:column;line-height:1.12}
+.clock-label{font-size:9px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.clock-time{display:flex;align-items:baseline;gap:3px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.clock-hm{font-size:22px;letter-spacing:.5px}
+.clock-sec{font-size:11px;font-weight:600;color:var(--amber)}
+.clock-arrow{display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.6);font-size:14px;line-height:1.1}
+.clock-diff-val{font-size:10px;font-weight:700;color:var(--amber);letter-spacing:.5px}
+@media(max-width:360px){.clock-card{min-width:0;flex:1 1 42%}}
 </style>
 </head>
 <body>
@@ -506,6 +517,11 @@ body{font-size:15px;-webkit-font-smoothing:antialiased}
   <div class="header-meta">
     <div class="hm"><strong>Alexandre, Sarah + Nicolas</strong> ~10 meses</div>
     <div class="hm"><strong>5 bases</strong> · Carro · Cidadania PT</div>
+  </div>
+  <div class="clock-bar">
+    <div class="clock-card"><span class="clock-flag">🇵🇹</span><span class="clock-info"><span class="clock-label">Portugal</span><span class="clock-time"><span class="clock-hm" id="clkPT">--:--</span><span class="clock-sec" id="clkPTs">00</span></span></span></div>
+    <div class="clock-arrow"><span>⇄</span><span class="clock-diff-val" id="clkDiffVal">+4h</span></div>
+    <div class="clock-card"><span class="clock-flag">🇧🇷</span><span class="clock-info"><span class="clock-label">Brasil · Fortaleza</span><span class="clock-time"><span class="clock-hm" id="clkBR">--:--</span><span class="clock-sec" id="clkBRs">00</span></span></span></div>
   </div>
   <div class="date-banner">
     <div class="date-chip chip-birthday">🎂 Aniversário Alexandre · 03/07 · Sesimbra</div>
@@ -544,7 +560,7 @@ body{font-size:15px;-webkit-font-smoothing:antialiased}
 <!-- ==================== ROTEIRO (lista + fonte de dados) ==================== -->
 <section id="roteiro" class="tab-section">
 <div class="sec-title">Roteiro Dia a Dia</div>
-<div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas flexíveis · planos B · clique para expandir · <strong>V16: bilhetes (Jerónimos + Oceanário) no dia 02/07</strong></div>
+<div class="sec-sub">23 dias · manhã / tarde / jantar · sonecas flexíveis · planos B · clique para expandir · <strong>V17: relógio Portugal × Brasil no cabeçalho</strong></div>
 
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:11px">
   <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--red)"></span>Essencial</span>
@@ -2706,6 +2722,13 @@ function updateTotal(){
     dl.textContent='(est.)';dl.style.color='rgba(255,255,255,.3)';
   }
 }
+;(function(){
+  function tzParts(tz,d){var f=new Intl.DateTimeFormat("en-GB",{timeZone:tz,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"});var o={};f.formatToParts(d).forEach(function(p){o[p.type]=p.value;});return o;}
+  function offMin(tz,d){var p=tzParts(tz,d);var u=Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute,+p.second);return Math.round((u-d.getTime())/60000);}
+  function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
+  function tick(){var d=new Date();var pt=tzParts("Europe/Lisbon",d),br=tzParts("America/Fortaleza",d);setT("clkPT",pt.hour+":"+pt.minute);setT("clkPTs",pt.second);setT("clkBR",br.hour+":"+br.minute);setT("clkBRs",br.second);var diff=Math.round((offMin("Europe/Lisbon",d)-offMin("America/Fortaleza",d))/60);setT("clkDiffVal",(diff>=0?"+":"")+diff+"h");}
+  tick();setInterval(tick,1000);
+})();
 </script>
 </body>
 </html>
